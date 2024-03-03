@@ -3,7 +3,7 @@ export default function Home() {
       //Todo fix icons
 
       <>
-
+          <span>this is home page</span>
       </>
   );
 }
