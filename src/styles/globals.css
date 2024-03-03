@@ -1,3 +1,107 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+@layer base {
+    *{
+        box-sizing: border-box;
+    }
+}
+
+@layer components {
+
+    .swiper {
+        @apply h-full
+    }
+
+    .swiper-slide {
+        @apply text-center bg-white flex items-center
+    }
+
+    .swiper-slide img {
+        @apply w-full object-cover object-center
+    }
+
+    .swiper-button-prev {
+        @apply left-3/4 top-[85%] font-bold !important
+    }
+
+    .swiper-button-next {
+        @apply left-[85%] top-[85%] font-bold !important
+    }
+
+    .mySwiper1 .swiper-pagination-bullet{
+        @apply w-3 h-3 border border-white opacity-100 transform translate-x-[-30px] translate-y-[-50%]
+    }
+
+    .mySwiper1 .swiper-pagination-bullet{
+        background: none;
+    }
+
+    .mySwiper1 .swiper-pagination-bullet-active{
+        background: white;
+    }
+
+    .mySwiper .swiper-slide::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom:0;
+        left: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.31) 0%, rgba(0, 0, 0, 0.01) 100%);
+        border-radius: 0 0 0 100px;
+    }
+
+    .mySwiper1 .swiper-slide::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom:0;
+        left: 0;
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.39) 0%, rgba(0, 0, 0, 0.00) 100%);
+        border-radius: 60px;
+    }
+
+    .mySwiper2 .swiper-slide::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom:0;
+        left: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.17) 0%, rgba(0, 0, 0, 0.67) 100%);
+        border-radius: 30px;
+    }
+
+    :root {
+        --swiper-theme-color: #ffff !important;
+        --swiper-navigation-size: 20px !important;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+    }
+
+}
+
+
+
+
+
