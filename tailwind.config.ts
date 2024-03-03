@@ -44,15 +44,15 @@ const config: Config = {
           500:"#EBEBEB",
         },
       },
-      backgroundImage:{
-        "hero": "url('../img/slider1-1.jpg')",
-        "about-baner": "url('../img/about/martin-katler-cQEz1B0LPFs-unsplash22.jpg')",
-        "location-baner": "url('../img/alec-jones-WDsmqzxy8Ig-unsplash.jpg')",
-        "products-baner": "url('../img/serjan-midili-8iZdhhP5bwg-unsplash.jpg')",
-        "contact-baner": "url('../img/serjan-midili--tMDG1xRhnQ-unsplash.jpg')",
 
+      // backgroundImage:{
+      //   "hero": "url('../img/slider1-1.jpg')",
+      //   "about-baner": "url('../img/about/martin-katler-cQEz1B0LPFs-unsplash22.jpg')",
+      //   "location-baner": "url('../img/alec-jones-WDsmqzxy8Ig-unsplash.jpg')",
+      //   "products-baner": "url('../img/serjan-midili-8iZdhhP5bwg-unsplash.jpg')",
+      //   "contact-baner": "url('../img/serjan-midili--tMDG1xRhnQ-unsplash.jpg')",
+      // },
 
-      },
       boxShadow: {
         'Xl': '0px 26px 40px 0px rgba(38, 58, 126, 0.14)',
         '3xl': '0px 31px 81px 0px rgba(0, 17, 77, 0.20)',
@@ -61,9 +61,8 @@ const config: Config = {
         '6xl': '0px 12px 24px 0px rgba(13, 61, 229, 0.24)',
         '7xl': '0px 4px 10px 0px rgba(0, 0, 0, 0.18)',
         '8xl': '0px 16px 35px 0px rgba(0, 0, 0, 0.15)',
-
-
       },
+
       screens: {
         'xs': '420px'
       }
