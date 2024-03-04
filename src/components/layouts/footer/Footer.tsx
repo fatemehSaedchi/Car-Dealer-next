@@ -15,7 +15,7 @@ export function Footer() {
                         <div className="flex pt-5 sm:pt-9 lg:pt-14 gap-2 lg:gap-4">
                             <PhoneButton buttonStyle={"bg-white"}/>
                             <button
-                                className="text-[8px] sm:text-xs lg:text-base py-1 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg border-2 border-White-200 text-White-200 font-medium">
+                                className="text-[8px] sm:text-xs lg:text-base py-1 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg border border-White-200 text-White-200 font-medium">
                                 Contact Us
                             </button>
                         </div>
