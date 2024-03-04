@@ -1,5 +1,4 @@
 import {IconBox, Logo, Menu, PhoneButton} from "@/components";
-import Link from "next/link";
 
 export function Header() {
     return (
@@ -16,8 +15,8 @@ export function Header() {
                         <Menu/>
                     </nav>
                     <div className="order-2 text-xs xl:text-sm 2xl:text-base lg:flex xl:w-fit xl:h-fit lg:gap-3 lg:pt-6">
-                        <PhoneButton buttonStyle={"hidden lg:flex bg-White-200 hover:border-primary-100 hover:shadow-lg"}/>
-                        <button className="text-secondary-400 border-2 border-White-200 p-3 rounded-lg hover:bg-White-200 hover:shadow-lg font-semibold"> EN
+                        <PhoneButton buttonStyle={"hidden lg:flex bg-White-200 hover:shadow-lg border border-White-200 hover:border-primary-100"}/>
+                        <button className="text-secondary-400 border border-White-200 p-3 rounded-lg hover:border-primary-100 hover:shadow-lg font-semibold"> EN
                             <IconBox icon={'icon-chevron-down text-primary-100'}/>
                         </button>
                     </div>
