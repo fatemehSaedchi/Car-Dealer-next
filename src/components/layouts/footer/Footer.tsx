@@ -1,4 +1,4 @@
-import {IconBox, ImageView, Logo} from "@/components";
+import {IconBox, ImageView, Logo, PhoneButton} from "@/components";
 import Link from "next/link";
 
 export function Footer() {
@@ -13,9 +13,7 @@ export function Footer() {
                         <p className="w-full text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white lg:pt-2">
                             about us?</p>
                         <div className="flex pt-5 sm:pt-9 lg:pt-14 gap-2 lg:gap-4">
-                            <button className="text-[8px] sm:text-sm lg:text-base py-1 lg:py-2 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg bg-White-200 text-primary-100 font-bold">
-                                <IconBox icon={'icon-phone'} title={'224 000 22 11 33'}/>
-                            </button>
+                            <PhoneButton buttonStyle={"bg-white"}/>
                             <button
                                 className="text-[8px] sm:text-xs lg:text-base py-1 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg border-2 border-White-200 text-White-200 font-medium">
                                 Contact Us
