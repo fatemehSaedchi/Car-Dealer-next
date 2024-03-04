@@ -12,7 +12,7 @@ export function Menu() {
             {
                 menuMock.map((item, index)=>{
                     return (
-                        <li className="border-b-4 border-transparent lg:text-sm 2xl:text-base lg:hover:border-primary-100  pt-10 lg:pt-9 lg:pb-7 hover:text-primary-100">
+                        <li key={index} className="border-b-4 border-transparent lg:text-sm 2xl:text-base lg:hover:border-primary-100  pt-10 lg:pt-9 lg:pb-7 hover:text-primary-100">
                             <Link href={item.link}>{item.title}</Link>
                         </li>
                     )
