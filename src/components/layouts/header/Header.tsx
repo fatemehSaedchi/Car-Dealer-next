@@ -13,14 +13,11 @@ export function Header() {
                         </button>
                         <Menu/>
                     </nav>
-                    <div
-                        className="order-2 text-xs xl:text-sm 2xl:text-base lg:flex xl:w-fit xl:h-fit lg:gap-3 lg:pt-6">
-                        <Link className="hidden lg:flex gap-2 bg-White-200 py-3 px-5 text-primary-100 font-bold rounded-lg hover:shadow-lg"
-                           href="tel:+224000221133"><span><i className="fa fa-solid fa-phone"></i></span> 224
-                            000 22 11 33</Link>
-                        <button
-                            className="text-secondary-400 border-2 border-White-200 p-3 rounded-lg hover:bg-White-200 hover:shadow-lg font-semibold">
-                            EN <i className="fa-solid fa-chevron-down text-primary-100"></i>
+                    <div className="order-2 text-xs xl:text-sm 2xl:text-base lg:flex xl:w-fit xl:h-fit lg:gap-3 lg:pt-6">
+                        <IconBox icon={'icon-phone'} title={'224 000 22 11 33'} link={"tel:+224000221133"} linkClassName={"hidden lg:flex gap-2 bg-White-200 py-3 px-5 text-primary-100 font-bold rounded-lg hover:shadow-lg"}/>
+
+                        <button className="text-secondary-400 border-2 border-White-200 p-3 rounded-lg hover:bg-White-200 hover:shadow-lg font-semibold"> EN
+                            <IconBox icon={'icon-chevron-down text-primary-100'}/>
                         </button>
                     </div>
                 </div>
