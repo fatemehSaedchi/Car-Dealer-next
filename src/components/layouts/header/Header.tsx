@@ -1,5 +1,4 @@
 import {IconBox, Logo, Menu, PhoneButton} from "@/components";
-import Link from "next/link";
 
 export function Header() {
     return (
