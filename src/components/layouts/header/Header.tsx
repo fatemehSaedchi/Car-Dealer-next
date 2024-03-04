@@ -1,4 +1,4 @@
-import {ImageView} from "@/components";
+import {IconBox, ImageView} from "@/components";
 import Link from "next/link";
 
 export function Header() {
@@ -11,7 +11,7 @@ export function Header() {
                     </Link>
                     <nav className="order-3 lg:order-2 h-full">
                         <button id="navButt" className="border-2 border-White-200 py-[5px] px-4 rounded-lg text-center hover:bg-White-200 hover:shadow-lg lg:hidden">
-                            <i className="fa-solid fa-bars text-xl text-secondary-400"></i>
+                            <IconBox icon={'icon-phone text-secondary-400'}/>
                         </button>
                         <ul id="navList"
                             className="absolute bg-White-200 text-secondary-300 font-semibold z-[9999] left-0 top-0 w-full h-screen py-5 px-4 -translate-x-full sm:w-8/12
