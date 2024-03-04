@@ -1,31 +1,31 @@
 export const menuMock = [
     {
-        title: 'Home',
+        title: 'HOME',
         link: "#"
     },
 
     {
-        title: 'About',
+        title: 'ABOUT',
         link: "#"
     },
 
     {
-        title: 'Service',
+        title: 'SERVICE',
         link: "#"
     },
 
     {
-        title: 'Car Collection',
+        title: 'CAR COLLECTION',
         link: "#"
     },
 
     {
-        title: 'Location',
+        title: 'LOCATION',
         link: "#"
     },
 
     {
-        title: 'Contact',
+        title: 'CONTACT',
         link: "#"
     },
 ]
