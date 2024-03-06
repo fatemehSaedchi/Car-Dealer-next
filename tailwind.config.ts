@@ -45,13 +45,14 @@ const config: Config = {
         },
       },
 
-      // backgroundImage:{
-      //   "hero": "url('../img/slider1-1.jpg')",
-      //   "about-baner": "url('../img/about/martin-katler-cQEz1B0LPFs-unsplash22.jpg')",
-      //   "location-baner": "url('../img/alec-jones-WDsmqzxy8Ig-unsplash.jpg')",
-      //   "products-baner": "url('../img/serjan-midili-8iZdhhP5bwg-unsplash.jpg')",
-      //   "contact-baner": "url('../img/serjan-midili--tMDG1xRhnQ-unsplash.jpg')",
-      // },
+      backgroundImage:{
+        'searchBg': 'linear-gradient(0deg, rgba(255,255,255,0.4375) 0%, rgba(0,0,0,0.12097338935574231) 100%)'
+        // "hero": "url('../img/slider1-1.jpg')",
+        // "about-baner": "url('../img/about/martin-katler-cQEz1B0LPFs-unsplash22.jpg')",
+        // "location-baner": "url('../img/alec-jones-WDsmqzxy8Ig-unsplash.jpg')",
+        // "products-baner": "url('../img/serjan-midili-8iZdhhP5bwg-unsplash.jpg')",
+        // "contact-baner": "url('../img/serjan-midili--tMDG1xRhnQ-unsplash.jpg')",
+      },
 
       boxShadow: {
         'Xl': '0px 26px 40px 0px rgba(38, 58, 126, 0.14)',
