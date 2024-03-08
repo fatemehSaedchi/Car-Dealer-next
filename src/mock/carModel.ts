@@ -1,0 +1,1 @@
+export const carModel =['RAV4','A4','Highlander','4Runner']
