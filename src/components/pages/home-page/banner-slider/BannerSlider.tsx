@@ -2,10 +2,13 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation} from "swiper/modules";
 
 interface Props {
-    sliderData: Array<any>
+    sliderData: Array<any>,
+    nextEl?: string,
+    prevEl?: string
+
 }
 
-export function BannerSlider({sliderData}: Props) {
+export function BannerSlider({sliderData, nextEl, prevEl}: Props) {
     return (
 
 
@@ -13,7 +16,10 @@ export function BannerSlider({sliderData}: Props) {
             className={'rounded-bl-[100px]'}
             slidesPerView={1}
             modules={[Navigation,Autoplay]}
-            navigation={true}
+            navigation={{
+                nextEl:nextEl,
+                prevEl:prevEl
+            }}
             autoplay={true}
         >
             {

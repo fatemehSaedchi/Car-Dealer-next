@@ -4,6 +4,7 @@ import {bannerSliderData} from "@/mock/bannerSliderData";
 export default function Home() {
   return (
       //Todo fix icons
+      //Todo fix banner slider navigation
 
       <>
           <section className={'relative'}>
@@ -11,10 +12,12 @@ export default function Home() {
                   <img src="/assets/images/circleElement.svg" alt=""
                        className="absolute w-14 top-[60px] right-[85%] lg:right-[52%]"/>
                   <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
-                      <BannerSlider sliderData={bannerSliderData}/>
+                      <BannerSlider sliderData={bannerSliderData} nextEl={".swiper-button-next"} prevEl={".swiper-button-prev"}/>
+                      <div className="swiper-button-next"></div>
+                      <div className="swiper-button-prev"></div>
                   </div>
                   <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">
-                      <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
+                  <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
                           <button
                               className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">
                               TRENDING
