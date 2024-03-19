@@ -9,7 +9,9 @@ export function Layout({children}: Props) {
     return (
         <>
             <Header/>
-            <main>{children}</main>
+            <main>
+                {children}
+            </main>
             <Footer/>
         </>
     );
