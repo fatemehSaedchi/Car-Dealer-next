@@ -22,7 +22,7 @@ export function BannerSlider({sliderData, nextEl, prevEl}: Props) {
             autoplay={true}
         >
             {
-                sliderData.map((slideData,index)=>{
+                sliderData.map((slideData, index)=>{
                     return(
                         <SwiperSlide key={index} className={'relative'}>
                             <img className="rounded-bl-[100px] h-96 lg:h-[700px] w-full"

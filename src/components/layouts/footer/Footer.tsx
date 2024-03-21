@@ -55,17 +55,17 @@ export function Footer() {
                             </li>
                             <li>
                                 <Link href="#">
-                                    <IconBox icon={"icon-twitter text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
+                                    <IconBox icon={"icon-twitterLogo text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#">
-                                    <IconBox icon={"icon-facebook text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
+                                    <IconBox icon={"icon-facebookLogo text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="#">
-                                    <IconBox icon={"icon-instagram text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
+                                    <IconBox icon={"icon-instagramLogo text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
                                 </Link>
                             </li>
                         </ul>
@@ -79,7 +79,8 @@ export function Footer() {
                             <li className="flex">
                                 <div
                                     className="bg-primary-100 flex justify-center items-center w-12 h-12 rounded-full left-6 relative translate-y-1.5 lg:translate-y-2">
-                                    <i className="fa-solid fa-building text-white text-2xl"></i></div>
+                                    <IconBox icon={'icon-building text-white text-2xl'}></IconBox>
+                                </div>
                                 <p className="text-sm lg:text-base bg-white-100 py-5 pl-12 text-left w-[87%] bg-primary-50 rounded-xl">
                                     77 Highfield Road London
                                     N36 7SB
@@ -93,27 +94,36 @@ export function Footer() {
                                 <Link className="text-sm lg:text-base bg-white-100 bg-primary-50 rounded-xl w-[87%] flex self-end py-5 pl-12"
                                    href="tel:+4124441124">412 444 1124</Link>
                             </li>
-
                         </ul>
                     </div>
                     <div className="mb-10 basis-1/2 text-center xl:basis-1/6">
                         <h4 className="font-bold mb-5">Quick Links</h4>
                         <ul className="flex flex-col gap-3 text-secondary-100 text-sm lg:text-base">
-                            <li><Link href="#">
+                            <li>
+                                <Link href="#">
                                 About us
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Contact us
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Products
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Login
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Sign Up
-                            </Link></li>
+                            </Link>
+                            </li>
                         </ul>
                     </div>
                     <div className="mb-20 basis-1/2 text-center xl:basis-1/6">
@@ -121,21 +131,31 @@ export function Footer() {
                             Support
                         </h4>
                         <ul className="flex flex-col gap-3 text-secondary-100 text-sm lg:text-base">
-                            <li><Link href="#">
+                            <li>
+                                <Link href="#">
                                 Affiliates
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Sitemap
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Cancelation Policy
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Privacy Policy
-                            </Link></li>
-                            <li><Link href="#">
+                            </Link>
+                            </li>
+                            <li>
+                                <Link href="#">
                                 Legal Disclaimer
-                            </Link></li>
+                            </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
