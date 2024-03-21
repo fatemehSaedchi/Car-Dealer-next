@@ -1,7 +1,5 @@
 import {IconBox, SearchList} from "@/components";
-import {carModels} from "@/mock";
-import {carClasses} from "@/mock";
-import {carModel} from "@/mock";
+import {CarClassesMock, CarModelsMock} from "@/mock";
 
 interface Props {
     className?: string
@@ -15,18 +13,18 @@ export function SearchBox({className}: Props) {
                     <div className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative hover:text-blue-600">
                         BRAND
                         <IconBox icon={'icon-angleDown'}/>
-                        <SearchList searchData={carModels}/>
+                        <SearchList searchData={CarModelsMock}/>
                     </div>
                     <div
                         className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg pl-4 sm:pl-6 2xl:px-12 cursor-pointer border-l-2 relative hover:text-blue-600">
                         CLASS
                         <IconBox icon={'icon-angleDown'}/>
-                        <SearchList searchData={carClasses}/>
+                        <SearchList searchData={CarClassesMock}/>
                     </div>
                     <div className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg pl-4 sm:pl-6 2xl:px-12 cursor-pointer border-l-2 relative hover:text-blue-600">
                         MODEL
                         <IconBox icon={'icon-angleDown'}/>
-                        <SearchList searchData={carModel}/>
+                        <SearchList searchData={CarModelsMock}/>
                     </div>
                     <button className="bg-primary-100 text-[10px] sm:text-base xl:text-lg text-white font-bold h-full px-5 sm:px-8 rounded-lg hover:bg-gray-400 hover:text-blue-600">
                         FIND
