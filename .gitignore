@@ -40,3 +40,7 @@ next-env.d.ts
 .idea
 /.idea
 \.idea
+.idea/car-dealer.iml
+.idea/modules.xml
+/.idea
+/.idea
