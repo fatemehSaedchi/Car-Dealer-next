@@ -39,3 +39,8 @@ next-env.d.ts
 /.vscode/
 .idea
 /.idea
+\.idea
+.idea/car-dealer.iml
+.idea/modules.xml
+/.idea
+/.idea

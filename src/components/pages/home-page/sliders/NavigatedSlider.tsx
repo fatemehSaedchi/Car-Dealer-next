@@ -8,7 +8,7 @@ interface Props {
 
 }
 
-export function BannerSlider({sliderData, nextEl, prevEl}: Props) {
+export function NavigatedSlider({sliderData, nextEl, prevEl}: Props) {
     return (
 
 

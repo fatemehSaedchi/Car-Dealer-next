@@ -1,1 +1,0 @@
-export const carClasses=['Compact SUV','Compact SUV','Full-size SUV','Luxury Car']
