@@ -1,6 +1,7 @@
 import {Autoplay, Pagination} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {twMerge} from "tailwind-merge";
+import {ImageView} from "@/components";
 
 interface Props {
     sliderData: Array<string>
@@ -8,14 +9,16 @@ interface Props {
 }
 
 export function VerticalSlider({sliderData, sliderClass}: Props) {
+
+
     return (
         <>
             <Swiper
-                className={twMerge('mySwiper rounded-bl-[100px]', sliderClass) }
+                direction={'vertical'}
+                className={twMerge('swiper mySwiper rounded-bl-[100px]', sliderClass) }
                 slidesPerView={1}
                 modules={[Autoplay, Pagination]}
                 autoplay={true}
-                direction={'vertical'}
                 pagination={{
                     clickable: true,
                 }}
@@ -24,7 +27,7 @@ export function VerticalSlider({sliderData, sliderClass}: Props) {
                     sliderData.map((slideData, index)=>{
                         return(
                             <SwiperSlide key={index} className={'relative'}>
-                                <img className="object-cover object-center h-full"
+                                <ImageView height={1920} width={1280} classname="object-cover object-center h-full"
                                      src={slideData} alt=""/>
                             </SwiperSlide>
                         )
