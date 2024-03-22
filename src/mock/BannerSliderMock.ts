@@ -1,4 +1,7 @@
-export const bannerSliderData = [
+// todo replace data with api response
+
+
+export const BannerSliderMock = [
     {
         image: "/assets/images/slider1/slider1-1.jpg",
         class: 'SPORT CAR',

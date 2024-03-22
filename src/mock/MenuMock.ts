@@ -1,4 +1,7 @@
-export const menuMock = [
+// todo replace data with api response
+
+
+export const MenuMock = [
     {
         title: 'HOME',
         link: "#"

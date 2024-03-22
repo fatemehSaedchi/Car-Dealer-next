@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {menuMock} from "@/mock/menu";
+import {MenuMock} from "@/mock";
 
 export function Menu() {
     return (
@@ -10,7 +10,7 @@ export function Menu() {
                 </button>
             </li>
             {
-                menuMock.map((item, index)=>{
+                MenuMock.map((item, index)=>{
                     return (
                         <li key={index} className="border-b-4 border-transparent lg:text-sm 2xl:text-base lg:hover:border-primary-100  pt-10 lg:pt-9 lg:pb-7 hover:text-primary-100">
                             <Link href={item.link}>{item.title}</Link>
