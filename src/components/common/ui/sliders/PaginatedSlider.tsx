@@ -1,4 +1,4 @@
-import {ImageView} from "@/components";
+import {CarDetails, ImageView} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination} from "swiper/modules";
 
@@ -18,6 +18,16 @@ export function PaginatedSlider({sliderData}: Props) {
                 className="mySwiper rounded-[30px]"
                 pagination={{
                     clickable: true
+                }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    }
                 }}
             >
 
@@ -40,28 +50,7 @@ export function PaginatedSlider({sliderData}: Props) {
                                     className="px-4 py-2 bg-primary-100 rounded-[30px] text-base xl:text-lg font-semibold mt-8">
                                     $ {item.price}
                                 </button>
-                                <div className="flex text-xs xl:text-sm gap-8 xl:gap-11 pt-7">
-                                    <p>
-                                        Transmition
-                                    </p>
-                                    <p>
-                                        Fuel
-                                    </p>
-                                    <p>
-                                        Passenger
-                                    </p>
-                                </div>
-                                <div className="flex text-sm md:text-base gap-6 xl:gap-8 font-semibold pt-3">
-                                    <p>
-                                        {item.transmition}
-                                    </p>
-                                    <p>
-                                        {item.fuel}
-                                    </p>
-                                    <p>
-                                        {item.passenger} Person
-                                    </p>
-                                </div>
+                                <CarDetails item={item}/>
                             </div>
                         </SwiperSlide>
                         </>
