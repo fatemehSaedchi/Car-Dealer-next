@@ -17,13 +17,6 @@ export default function Location() {
 
             <Section>
                 <div className="container mx-auto px-4 pt-14 lg:pt-24">
-                    <h3 className="font-bold text-2xl md:text-4xl xl:text-5xl text-center">Our dealer
-                        shops</h3>
-                    <p className="sm:w-3/5 max-w-3xl mx-auto py-3 lg:py-5 text-center text-xs md:text-sm xl:text-base leading-5">
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                        minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
                     <Map/>
                     <div className="grid grid-cols-2 lg:grid-cols-4 sm:w-4/5 lg:w-full max-w-7xl mx-auto gap-x-5 sm:gap-x-8 justify-center items-center">
                         {
