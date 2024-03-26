@@ -19,6 +19,7 @@ export function PaginatedSlider({sliderData}: Props) {
                 pagination={{
                     clickable: true
                 }}
+                slidesPerView={1}
                 breakpoints={{
                     640: {
                         slidesPerView: 2,
@@ -34,7 +35,7 @@ export function PaginatedSlider({sliderData}: Props) {
                 {sliderData.map((item, index: number)=>{
                     return(
                         <>
-                            <SwiperSlide key={index} className={'relative'}>
+                            <SwiperSlide key={index} className={'relative rounded-[30px] overflow-hidden'}>
                             <ImageView height={1920} width={2880}
                                        classname="rounded-[30px] h-[435px] xl:h-[495px]"
                                        src={item.thumbnail} alt=""/>
