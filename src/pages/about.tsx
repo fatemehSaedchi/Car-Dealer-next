@@ -26,7 +26,7 @@ export default function About({}: Props) {
                     {
                         ProccessCardMock.map((item,index)=>{
                             return (
-                                <div className="basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14">
+                                <div key={index} className="basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14">
                                     <div
                                         className="w-[90%] h-[4px] mb-[30px] md:mb-[50px] xl:mb-[70px] relative bg-primary-400">
                                         <div
