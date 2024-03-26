@@ -1,8 +1,7 @@
-
-export const ServicesMock=[
+export const ProccessCardMock=[
     {
         icon: 'icon-star',
-        title: 'EXCLUSIVE',
+        title: 'FIND',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
     },
     {
@@ -14,5 +13,11 @@ export const ServicesMock=[
         icon: 'icon-shield',
         title: 'SECURE',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+    },
+    {
+        icon: 'icon-Vector',
+        title: 'WE DELIVER',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
     }
+
 ]
