@@ -1,4 +1,4 @@
-import {HeroSection, IconBox, OurTeam, Section, Map, ServicesCard} from "@/components";
+import {HeroSection, OurTeam, Section, Map, ServicesCard} from "@/components";
 import {TeamMembersMock} from "@/mock";
 import {ProccessCardMock} from "@/mock/proccessCard";
 
@@ -24,7 +24,7 @@ export default function About({}: Props) {
                 </div>
                 <div className="flex flex-wrap pt-7 md:pt-11">
                     {
-                        ProccessCardMock.map((item,inde)=>{
+                        ProccessCardMock.map((item,index)=>{
                             return (
                                 <div className="basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14">
                                     <div
