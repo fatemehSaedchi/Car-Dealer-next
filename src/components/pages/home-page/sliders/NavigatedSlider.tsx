@@ -11,7 +11,6 @@ interface Props {
 export function NavigatedSlider({sliderData, nextEl, prevEl}: Props) {
     return (
 
-
         <Swiper
             className={'rounded-bl-[100px]'}
             slidesPerView={1}
