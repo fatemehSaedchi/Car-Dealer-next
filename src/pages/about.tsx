@@ -90,7 +90,7 @@ export default function About({}: Props) {
                 </div>
             </Section>
 
-            <Map/>
+            <Map className={'mb-10 lg:mb-28'}/>
 
             <Section>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-24 lg:gap-48">
