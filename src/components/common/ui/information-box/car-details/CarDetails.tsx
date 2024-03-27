@@ -5,28 +5,28 @@ interface Props {
 export function CarDetails({item}: Props) {
     return (
         <>
-            <div className="flex text-xs xl:text-sm gap-8 xl:gap-11 pt-7">
-                <p>
+            <ul className="flex text-xs xl:text-sm gap-8 xl:gap-11 pt-7">
+                <li>
                     Transition
-                </p>
-                <p>
+                </li>
+                <li>
                     Fuel
-                </p>
-                <p>
+                </li>
+                <li>
                     Passenger
-                </p>
-            </div>
-            <div className="flex text-sm md:text-base gap-6 xl:gap-8 font-semibold pt-3">
-                <p>
+                </li>
+            </ul>
+            <ul className="flex text-sm md:text-base gap-6 xl:gap-8 font-semibold pt-3">
+                <li>
                     {item.transmition}
-                </p>
-                <p>
+                </li>
+                <li>
                     {item.fuel}
-                </p>
-                <p>
+                </li>
+                <li>
                     {item.passenger} Person
-                </p>
-            </div>
+                </li>
+            </ul>
         </>
     );
 }
