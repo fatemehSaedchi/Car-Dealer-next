@@ -1,4 +1,4 @@
-import {CarDetails, ImageView} from "@/components";
+import {CarFeatures, ImageView} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination} from "swiper/modules";
 
@@ -50,7 +50,7 @@ export function PaginatedSlider({sliderData}: Props) {
                                     className="px-4 py-2 bg-primary-100 rounded-[30px] text-base xl:text-lg font-semibold mt-8">
                                     $ {item.price}
                                 </button>
-                                <CarDetails item={item}/>
+                                <CarFeatures item={item}/>
                             </div>
                         </SwiperSlide>
                         </>

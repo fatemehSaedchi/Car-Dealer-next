@@ -2,7 +2,7 @@ interface Props {
     item: any
 }
 
-export function CarDetails({item}: Props) {
+export function CarFeatures({item}: Props) {
     return (
         <>
             <ul className="flex text-xs xl:text-sm gap-8 xl:gap-11 pt-7">
