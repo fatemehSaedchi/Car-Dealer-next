@@ -39,9 +39,7 @@ export default function About({}: Props) {
                     }
                 </div>
             </Section>
-
             <Map className={'mb-10 lg:mb-28'}/>
-
             <Section>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-24 lg:gap-48">
                     <h3 className="font-bold text-2xl md:text-4xl xl:text-5xl">
@@ -51,10 +49,7 @@ export default function About({}: Props) {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.
                     </p>
                 </div>
-
                 <OurTeam data={TeamMembersMock}/>
-
-
             </Section>
         </>
     )
