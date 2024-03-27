@@ -1,5 +1,5 @@
 import {BranchesCard, HeroSection, Map, Section} from "@/components";
-import {LocationMock} from "@/mock/location";
+import {LocationMock} from "@/mock";
 
 export default function Location() {
 
