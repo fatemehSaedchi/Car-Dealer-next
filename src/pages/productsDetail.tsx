@@ -1,7 +1,7 @@
 import {Section} from "@/components";
 import Link from "next/link";
 
-export default function Products() {
+export default function ProductsDetail() {
     return (
         <>
             <Section className="container px-4 mx-auto">

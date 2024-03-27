@@ -1,3 +1,5 @@
+// todo creat card component
+
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation} from "swiper/modules";
 
