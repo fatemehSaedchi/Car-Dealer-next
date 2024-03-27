@@ -89,7 +89,12 @@ export default function Home() {
                         {
                             ServicesMock.map((service, index) => {
                                 return (
-                                    <ServicesCard key={index} data={service}/>
+                                    <div
+                                        className="basis-1/3 flex flex-col justify-center items-center shadow-Xl rounded-2xl bg-white">
+                                        <div className="w-4/5 py-5 lg:py-8">
+                                            <ServicesCard key={index} data={service}/>
+                                        </div>
+                                    </div>
                                 )
                             })
                         }
@@ -152,7 +157,6 @@ export default function Home() {
                 <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">
 
                     <PaginatedSlider sliderData={TopDealsCarsMock}/>
-
 
                 </div>
             </Section>
