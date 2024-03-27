@@ -1,3 +1,5 @@
+// todo replace mock data with api
+
 import Link from "next/link";
 import {MenuMock} from "@/mock";
 
