@@ -39,8 +39,7 @@ export function PaginatedSlider({sliderData}: Props) {
                             <ImageView height={1920} width={2880}
                                        classname="rounded-[30px] h-[435px] xl:h-[495px]"
                                        src={item.thumbnail} alt=""/>
-                            <div
-                                className="absolute top-8 md:top-9 xl:top-11 left-6 xl:left-10 text-white flex flex-col items-start">
+                            <div className="absolute top-8 md:top-9 xl:top-11 left-6 xl:left-10 text-white flex flex-col items-start">
                                 <p className="text-xs xl:text-sm font-medium tracking-[4px]">
                                     {item.car_type} CAR
                                 </p>
