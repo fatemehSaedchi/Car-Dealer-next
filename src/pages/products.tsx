@@ -1,8 +1,8 @@
+
 // todo replace mock data with api
 
 import {Filter, HeroSection, ProductsList, Section} from "@/components";
 import {CarBrandsMock, CarsMock} from "@/mock";
-
 interface Props {
 
 }
