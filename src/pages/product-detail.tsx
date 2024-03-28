@@ -1,7 +1,7 @@
 import {CarAlbum, CarFeatures, CarInformation, IconBox, PhoneButton, Section, SocialMediaShare} from "@/components";
 import Link from "next/link";
 
-export default function Products() {
+export default function ProductDetail() {
 
     //Todo edit item of CarFeatures component
     //Todo add Linkedin Icon to icons
