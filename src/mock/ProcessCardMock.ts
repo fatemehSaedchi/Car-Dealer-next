@@ -1,4 +1,4 @@
-export const ProccessCardMock=[
+export const ProcessCardMock=[
     {
         icon: 'icon-star',
         title: 'FIND',

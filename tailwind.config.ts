@@ -50,7 +50,7 @@ const config: Config = {
                 // "hero": "url('../img/slider1-1.jpg')",
                 // "about-baner": "url('../img/about/martin-katler-cQEz1B0LPFs-unsplash22.jpg')",
                 // "location-baner": "url('../img/alec-jones-WDsmqzxy8Ig-unsplash.jpg')",
-                // "products-baner": "url('../img/serjan-midili-8iZdhhP5bwg-unsplash.jpg')",
+                // "products.tsx-baner": "url('../img/serjan-midili-8iZdhhP5bwg-unsplash.jpg')",
                 // "contact-baner": "url('../img/serjan-midili--tMDG1xRhnQ-unsplash.jpg')",
             },
 

@@ -1,6 +1,7 @@
+// todo replace mock data with api
+
 import {HeroSection, OurTeam, Section, Map, ServicesCard} from "@/components";
-import {TeamMembersMock} from "@/mock";
-import {ProccessCardMock} from "@/mock/proccessCard";
+import {TeamMembersMock, ProcessCardMock} from "@/mock";
 
 interface Props {
 
@@ -10,6 +11,9 @@ export default function About({}: Props) {
     return (
         <>
             <HeroSection title={'About Mobhil'}/>
+
+            // todo move the ServicesCard to a component
+
             <Section>
                 <div className="pt-7 sm:pt-14 md:pt-20 sm:flex sm:gap-10 lg:gap-14">
                     <div className="flex flex-col gap-1 sm:gap-3 md:gap-5 lg:gap-6 sm:basis-[40%]">
@@ -24,7 +28,7 @@ export default function About({}: Props) {
                 </div>
                 <div className="flex flex-wrap pt-7 md:pt-11">
                     {
-                        ProccessCardMock.map((item,index)=>{
+                        ProcessCardMock.map((item, index)=>{
                             return (
                                 <div key={index} className="basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14">
                                     <div

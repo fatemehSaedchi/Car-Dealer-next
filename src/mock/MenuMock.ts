@@ -1,4 +1,3 @@
-// todo replace data with api response
 
 
 export const MenuMock = [

@@ -1,3 +1,5 @@
+// todo creat card component
+
 import {Autoplay, Pagination} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {twMerge} from "tailwind-merge";
