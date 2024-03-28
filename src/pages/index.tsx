@@ -87,6 +87,9 @@ export default function Home() {
                     <div
                         className="sm:w-11/12 lg:w-[70%] order-1 lg:order-2 flex flex-row pt-80 lg:pt-0 gap-2.5 sm:gap-5 justify-between self-end 2xl:pr-24">
                         {
+                            // todo move the ServicesCard to a component
+                            // todo creat a glob component for this
+
                             ServicesMock.map((service, index) => {
                                 return (
                                     <div

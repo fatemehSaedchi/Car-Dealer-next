@@ -1,3 +1,5 @@
+// todo replace mock data with api
+
 import {
     ProductAlbum,
     Section,
@@ -6,16 +8,13 @@ import {
 } from "@/components";
 import Link from "next/link";
 import {TopDealsCarsMock} from "@/mock";
-import {RatingCard} from "@/components/pages/product-detail-page/rating-card/RatingCard";
+import {RatingCard} from "@/components";
 
 export default function ProductDetail() {
 
-    //Todo edit item of CarFeatures component
-    //Todo add Linkedin Icon to icons
-    //Todo add Api for ProductAlbum component
-    //Todo add Api for CarInformation component
-    //Todo add Api for ProductDescription component
-
+// todo  take the mock data and api to this page and just pass the data to these components
+// todo  creat an mock data with * populate of car id 0 and creat temporary interface inside it with the type generator website
+// todo  just pass the data={data} to the components *** only one prop ***
     return (
         <>
             <Section className={"mb-10 lg:mb-12"}>

@@ -5,9 +5,9 @@ interface Props {
 export function CarFeatures({item}: Props) {
     return (
         <>
-            <ul className="flex text-xs xl:text-sm gap-8 xl:gap-11 pt-7">
+            <ul className="grid grid-cols-3 justify-center text-center text-xs gap-y-5 xl:text-sm gap-x-8 xl:gap-x-11 pt-7">
                 <li>
-                    Transition
+                    Transition <br/>
                 </li>
                 <li>
                     Fuel
@@ -15,8 +15,6 @@ export function CarFeatures({item}: Props) {
                 <li>
                     Passenger
                 </li>
-            </ul>
-            <ul className="flex text-sm md:text-base gap-6 xl:gap-8 font-semibold pt-3">
                 <li>
                     {item.transmition}
                 </li>

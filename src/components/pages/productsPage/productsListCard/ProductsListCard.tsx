@@ -1,15 +1,17 @@
-import {IconBox, ImageView} from "@/components";
+import {CarFeatures, IconBox, ImageView} from "@/components";
 import {Daum} from "@/mock";
+import {twMerge} from "tailwind-merge";
 
 interface Props {
 data: Daum
+    className?: string
 }
 
-export function ProductsListCard({data}: Props) {
+export function ProductsListCard({data, className}: Props) {
     return (
         <>
             <div
-                className="w-full max-w-sm mx-auto overflow-hidden rounded-lg shadow-7xl hover:shadow-8xl hover:transition-shadow hover:duration-500 duration-500 cursor-pointer relative">
+                className={twMerge("w-full max-w-sm mx-auto overflow-hidden rounded-lg shadow-7xl hover:shadow-8xl hover:transition-shadow hover:duration-500 duration-500 cursor-pointer relative", className) }>
                 <div className={'relative'}>
                     <ImageView classname="h-48 w-full object-cover object-center"
                                src={data.attributes.thumbnail.data.attributes.formats.thumbnail.url} height={data.attributes.thumbnail.data.attributes.height} width={data.attributes.thumbnail.data.attributes.width} alt=""/>
@@ -28,20 +30,7 @@ export function ProductsListCard({data}: Props) {
                         className="px-4 py-2 bg-primary-100 rounded-[30px] text-base font-semibold text-white absolute top-[45%] right-5 z-50">
                         $ {data.attributes.price}
                     </span>
-                    <ul className="grid grid-cols-3 text-center text-xs xl:text-sm gap-x-8 xl:gap-x-11 gap-y-3 pt-7">
-                        <li>
-                            Transmission <br/>
-                            {data.attributes.transmition}
-                        </li>
-                        <li>
-                            Fuel <br/>
-                            {data.attributes.fuel}
-                        </li>
-                        <li>
-                            Passenger <br/>
-                            {data.attributes.passenger} Person
-                        </li>
-                    </ul>
+                    <CarFeatures item={data.attributes}/>
                 </div>
             </div>
         </>

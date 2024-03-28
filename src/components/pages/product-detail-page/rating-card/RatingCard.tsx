@@ -1,10 +1,10 @@
-import {Rating} from "@/components/pages/product-detail-page/rating";
+import {Rating} from "@/components";
 
 interface Props {
     rate?: number
 }
 
-export function RatingCard({rate=5}: Props) {
+export function RatingCard({rate=4}: Props) {
     return (
         <div className="bg-primary-100 text-white rounded-lg h-fit grid justify-items-center py-8">
             <h4 className="font-bold mb-5 text-6xl lg:text-7xl">{rate}<span

@@ -113,7 +113,7 @@ export function Filter({}: Props) {
 
                                 {
                                     // todo replace the range input with a library
-                                    // todo add min and max value with cheapest and most expensive car prise
+                                    // todo add min and max value with cheapest and most expensive car price
                                 }
                                 <label>
                                     min
