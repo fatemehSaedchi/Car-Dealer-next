@@ -1,11 +1,12 @@
 import {
     ProductAlbum,
-    IconBox,
     Section,
     SocialMediaShare,
-    ProductSpecification, ProductDescription
+    ProductSpecification, ProductDescription, ImageView, VerticalSlider, PaginatedSlider
 } from "@/components";
 import Link from "next/link";
+import {Rating} from "@/components/pages/product-detail-page/rating";
+import {TopDealsCarsMock, VerticalSliderMock} from "@/mock";
 
 export default function ProductDetail() {
 
@@ -38,7 +39,7 @@ export default function ProductDetail() {
             </Section>
 
             <Section>
-                <div className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20">
+                <div className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10">
                     <div>
                         <ul className="flex gap-3 text-secondary-10 mb-5 lg:text-xl">
                             <li className="active:font-bold active:text-secondary-400"><Link href="">Description</Link></li>
@@ -51,16 +52,23 @@ export default function ProductDetail() {
                     </div>
                     <div className="bg-primary-100 text-white rounded-lg h-fit grid justify-items-center py-8">
                         <h4 className="font-bold mb-5 text-6xl lg:text-7xl">4.5 <span className="text-sm text-secondary-10 font-medium">/ 5.0</span></h4>
-                        <p className="font-bold flex gap-9"> Rating
-                            <span className="flex gap-1 text-sm">
-                                <IconBox icon={"icon-star text-yellow-300"}/>
-                                <IconBox icon={"icon-star text-yellow-300"}/>
-                                <IconBox icon={"icon-star text-yellow-300"}/>
-                                <IconBox icon={"icon-star text-yellow-300"}/>
-                                <IconBox icon={"icon-star text-yellow-300"}/>
-                            </span>
-                        </p>
+                        <span className="font-bold flex gap-9"> Rating
+                            <Rating rate={4}/>
+                        </span>
                     </div>
+                </div>
+            </Section>
+
+            <Section className={"flex flex-col 2xl:px-32"}>
+                <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl pb-3">
+                    Top deals of the week
+                </h2>
+                <p className="max-w-lg lg:max-w-2xl text-sm lg:text-lg leading-6 xl:leading-8 pt-2 md:pt-5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div className="h-fit w-4/5 sm:w-full pt-10 self-center">
+                    <PaginatedSlider sliderData={TopDealsCarsMock}/>
                 </div>
             </Section>
         </>
