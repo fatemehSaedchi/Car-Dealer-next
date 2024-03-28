@@ -2,11 +2,11 @@ import {
     ProductAlbum,
     Section,
     SocialMediaShare,
-    ProductSpecification, ProductDescription, ImageView, VerticalSlider, PaginatedSlider
+    ProductSpecification, ProductDescription, PaginatedSlider
 } from "@/components";
 import Link from "next/link";
 import {Rating} from "@/components/pages/product-detail-page/rating";
-import {TopDealsCarsMock, VerticalSliderMock} from "@/mock";
+import {TopDealsCarsMock} from "@/mock";
 
 export default function ProductDetail() {
 
