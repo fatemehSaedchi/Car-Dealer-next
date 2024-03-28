@@ -4,7 +4,7 @@ interface Props {
     
 }
 
-export function CarInformation({}: Props) {
+export function ProductSpecification({}: Props) {
     //Todo add Api for CarFeatures component
     return (
         <>

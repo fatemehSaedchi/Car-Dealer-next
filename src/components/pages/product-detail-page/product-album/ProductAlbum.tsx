@@ -4,7 +4,7 @@ interface Props {
     
 }
 
-export function CarAlbum({}: Props) {
+export function ProductAlbum({}: Props) {
     return (
         <div className="flex flex-wrap justify-center gap-y-3 lg:gap-y-7">
             <div className="w-11/12 mb-3">

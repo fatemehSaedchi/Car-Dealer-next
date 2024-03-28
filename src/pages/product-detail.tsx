@@ -1,11 +1,17 @@
-import {CarAlbum, CarFeatures, CarInformation, IconBox, PhoneButton, Section, SocialMediaShare} from "@/components";
+import {
+    ProductAlbum,
+    IconBox,
+    Section,
+    SocialMediaShare,
+    ProductSpecification
+} from "@/components";
 import Link from "next/link";
 
 export default function ProductDetail() {
 
     //Todo edit item of CarFeatures component
     //Todo add Linkedin Icon to icons
-    //Todo add Api for CarAlbum component
+    //Todo add Api for ProductAlbum component
     //Todo add Api for CarInformation component
 
     return (
@@ -22,9 +28,9 @@ export default function ProductDetail() {
 
             <Section>
                 <div className={"grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10"}>
-                    <CarAlbum/>
+                    <ProductAlbum/>
                     <div>
-                        <CarInformation/>
+                        <ProductSpecification/>
                         <SocialMediaShare/>
                     </div>
                 </div>
