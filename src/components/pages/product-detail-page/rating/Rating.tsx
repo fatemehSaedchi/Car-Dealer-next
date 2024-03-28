@@ -6,17 +6,21 @@ interface Props {
 
 export function Rating({rate}: Props) {
 
-    //Todo add icon-star-empty to icons.css
-
-    const star =[]
-    const notStar =[]
-    for(let i=0; i<rate; i++){
-        star.push(<li className="flex"><IconBox icon={"icon-star-full text-yellow-300"} size={12}/></li>
+    const star = []
+    const notStar = []
+    for (let i = 0; i < rate; i++) {
+        star.push(
+            <li className="flex">
+                <IconBox icon={"icon-star-full text-yellow-300"} size={12}/>
+            </li>
         )
     }
 
-    for(let i=rate; i<5; i++){
-        notStar.push(<li className="flex"><IconBox icon={"icon-star-empty text-yellow-300"} size={12}/></li>
+    for (let i = rate; i < 5; i++) {
+        notStar.push(
+            <li className="flex">
+                <IconBox icon={"icon-star-full text-gray-300"} size={12}/>
+            </li>
         )
     }
 
