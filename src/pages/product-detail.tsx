@@ -33,11 +33,11 @@ export default function ProductDetail() {
                     <ProductAlbum/>
                     <div>
                         <ProductSpecification
-                            name={'SMART GT AA-211'}
-                            model={'SPORT CAR'}
-                            information={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n' +
+                            model={'SMART GT AA-211'}
+                            carClass={'SPORT CAR'}
+                            excerpt={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n' +
                                 '                labore et dolore magna aliqua. Ut enim ad minim veniam'}
-                            price={'34,500'}/>
+                            price={34500}/>
                         <SocialMediaShare/>
                     </div>
                 </div>
