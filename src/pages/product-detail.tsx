@@ -5,7 +5,6 @@ import {
     ProductSpecification, ProductDescription, PaginatedSlider
 } from "@/components";
 import Link from "next/link";
-import {Rating} from "@/components/pages/product-detail-page/rating";
 import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components/pages/product-detail-page/rating-card/RatingCard";
 
@@ -33,7 +32,12 @@ export default function ProductDetail() {
                 <div className={"grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10"}>
                     <ProductAlbum/>
                     <div>
-                        <ProductSpecification/>
+                        <ProductSpecification
+                            name={'SMART GT AA-211'}
+                            model={'SPORT CAR'}
+                            information={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n' +
+                                '                labore et dolore magna aliqua. Ut enim ad minim veniam'}
+                            price={'34,500'}/>
                         <SocialMediaShare/>
                     </div>
                 </div>
@@ -43,9 +47,11 @@ export default function ProductDetail() {
                 <div className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10">
                     <div>
                         <ul className="flex gap-3 text-secondary-10 mb-5 lg:text-xl">
-                            <li className="active:font-bold active:text-secondary-400"><Link href="">Description</Link></li>
+                            <li className="active:font-bold active:text-secondary-400"><Link href="">Description</Link>
+                            </li>
                             <li>|</li>
-                            <li className="active:font-bold active:text-secondary-400"><Link href="">Discussion</Link></li>
+                            <li className="active:font-bold active:text-secondary-400"><Link href="">Discussion</Link>
+                            </li>
                             <li>|</li>
                             <li className="active:font-bold active:text-secondary-400"><Link href="">Reviews</Link></li>
                         </ul>
