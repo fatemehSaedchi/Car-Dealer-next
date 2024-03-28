@@ -8,7 +8,7 @@ interface Props {
 
 export function Section({className='', children}: Props) {
     return (
-        <section className={twMerge("container mx-auto px-4 mb-28 relative lg:mb-52",className)}>
+        <section className={twMerge("container mx-auto px-4 mb-16 relative lg:mb-24",className)}>
             {children}
         </section>
     )
