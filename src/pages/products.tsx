@@ -13,7 +13,7 @@ export default function Products({}: Props) {
 
 
             <HeroSection title={'About Mobhil'}/>
-            <Section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+            <Section className="grid grid-cols-1 md:grid md:grid-cols-2 xl:grid-cols-3">
 
 
                 <Filter/>

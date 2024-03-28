@@ -8,13 +8,13 @@ interface Props {
 export function ProductsList({data}: Props) {
     return (
         <>
-            <div className="grid grid-cols-1 gap-y-9 xl:grid-cols-2 mt-10">
+            <div className="grid gap-x-4 gap-y-9 mt-10 2xl:grid-cols-3 justify-center items-center">
 
                 {
                     data && 
                     data.data.map((value, index)=>{
                         return(
-                            <ProductsListCard key={index} data={value}/>
+                            <ProductsListCard className={'col-span-2 xl:col-span-1 block'} key={index} data={value}/>
                         )
                     })
                 }
