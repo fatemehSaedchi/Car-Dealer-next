@@ -1,3 +1,5 @@
+// todo creat card
+
 import {ImageView} from "@/components";
 
 interface Props {

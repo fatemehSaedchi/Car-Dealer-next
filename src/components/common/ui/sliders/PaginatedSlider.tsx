@@ -1,3 +1,5 @@
+// todo creat card component
+
 import {CarDetails, ImageView} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination} from "swiper/modules";
