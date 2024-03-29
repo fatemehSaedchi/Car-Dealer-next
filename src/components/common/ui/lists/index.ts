@@ -1,1 +1,2 @@
-export * from './search-list'
+export * from './searchList'
+export * from './servicesList'
