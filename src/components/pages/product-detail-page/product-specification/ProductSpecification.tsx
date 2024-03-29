@@ -1,5 +1,4 @@
 import {CarFeatures, PhoneButton} from "@/components";
-import {CarsMock} from "@/mock";
 import {Root} from "@/mock/CarMock";
 
 interface Props {
