@@ -8,9 +8,8 @@ import {
     Section,
     ImageView,
     IconBox,
-    ServicesCard,
     VerticalSlider,
-    PaginatedSlider
+    PaginatedSlider, ServicesList
 } from "@/components";
 import {BannerSliderMock, ServicesMock, CarBrandsMock, VerticalSliderMock, TopDealsCarsMock} from "@/mock";
 
@@ -86,21 +85,9 @@ export default function Home() {
                 <div className="flex flex-col lg:items-end gap-9 2xl:gap-16">
                     <div
                         className="sm:w-11/12 lg:w-[70%] order-1 lg:order-2 flex flex-row pt-80 lg:pt-0 gap-2.5 sm:gap-5 justify-between self-end 2xl:pr-24">
-                        {
-                            // todo move the ServicesCard to a component
-                            // todo creat a glob component for this
 
-                            ServicesMock.map((service, index) => {
-                                return (
-                                    <div
-                                        className="basis-1/3 flex flex-col justify-center items-center shadow-Xl rounded-2xl bg-white">
-                                        <div className="w-4/5 py-5 lg:py-8">
-                                            <ServicesCard key={index} data={service}/>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
+                        <ServicesList data={ServicesMock}/>
+
                     </div>
                     <div className="w-full lg:w-3/5 order-2 lg:order-1 lg:pl-16">
                         <h2 className="text-base md:text-lg text-primary-100 font-semibold tracking-[9px] md:pt-8 lg:pt-16">
