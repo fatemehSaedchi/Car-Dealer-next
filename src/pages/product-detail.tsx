@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
+import {CarMock} from "@/mock/CarMock";
 
 export default function ProductDetail() {
 
@@ -29,7 +30,7 @@ export default function ProductDetail() {
 
             <Section>
                 <div className={"grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10"}>
-                    <ProductAlbum/>
+                    <ProductAlbum data={CarMock}/>
                     <div>
                         <ProductSpecification
                             model={'SMART GT AA-211'}
