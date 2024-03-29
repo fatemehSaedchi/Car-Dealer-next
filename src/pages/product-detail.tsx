@@ -49,7 +49,7 @@ export default function ProductDetail() {
                         </ul>
                         <ProductDescription/>
                     </div>
-                    <RatingCard/>
+                    <RatingCard rate={CarMock.attributes.rate}/>
                 </div>
             </Section>
 
