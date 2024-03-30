@@ -9,12 +9,10 @@ import {
 import Link from "next/link";
 import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
+import {CarMock} from "@/mock/CarMock";
 
 export default function ProductDetail() {
 
-// todo  take the mock data and api to this page and just pass the data to these components
-// todo  creat an mock data with * populate of car id 0 and creat temporary interface inside it with the type generator website
-// todo  just pass the data={data} to the components *** only one prop ***
     return (
         <>
             <Section className={"mb-10 lg:mb-12"}>
@@ -29,14 +27,9 @@ export default function ProductDetail() {
 
             <Section>
                 <div className={"grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10"}>
-                    <ProductAlbum/>
+                    <ProductAlbum data={CarMock}/>
                     <div>
-                        <ProductSpecification
-                            model={'SMART GT AA-211'}
-                            carClass={'SPORT CAR'}
-                            excerpt={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n' +
-                                '                labore et dolore magna aliqua. Ut enim ad minim veniam'}
-                            price={34500}/>
+                        <ProductSpecification data={CarMock}/>
                         <SocialMediaShare/>
                     </div>
                 </div>
@@ -56,7 +49,7 @@ export default function ProductDetail() {
                         </ul>
                         <ProductDescription/>
                     </div>
-                    <RatingCard/>
+                    <RatingCard rate={CarMock.attributes.rate}/>
                 </div>
             </Section>
 
