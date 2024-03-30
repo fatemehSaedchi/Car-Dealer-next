@@ -4,12 +4,13 @@ import {
     ProductAlbum,
     Section,
     SocialMediaShare,
-    ProductSpecification, ProductDescription, PaginatedSlider
+    ProductSpecification, PaginatedSlider
 } from "@/components";
 import Link from "next/link";
 import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
 import {CarMock} from "@/mock/CarMock";
+import {ProductTexts} from "@/components/pages/product-detail-page/productTexts/productTexts";
 
 export default function ProductDetail() {
 
@@ -36,20 +37,11 @@ export default function ProductDetail() {
             </Section>
 
             <Section>
-                <div className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10">
-                    <div>
-                        <ul className="flex gap-3 text-secondary-10 mb-5 lg:text-xl">
-                            <li className="active:font-bold active:text-secondary-400"><Link href="">Description</Link>
-                            </li>
-                            <li>|</li>
-                            <li className="active:font-bold active:text-secondary-400"><Link href="">Discussion</Link>
-                            </li>
-                            <li>|</li>
-                            <li className="active:font-bold active:text-secondary-400"><Link href="">Reviews</Link></li>
-                        </ul>
-                        <ProductDescription/>
-                    </div>
+                <div className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
+
+                    <ProductTexts data={CarMock.attributes}/>
                     <RatingCard rate={CarMock.attributes.rate}/>
+
                 </div>
             </Section>
 
