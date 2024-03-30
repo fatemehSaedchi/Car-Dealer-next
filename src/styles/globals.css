@@ -25,7 +25,7 @@
 @layer components {
 
     .swiper {
-        @apply h-full
+        @apply h-full w-full
     }
 
     .swiper-slide {
@@ -33,7 +33,7 @@
     }
 
     .swiper-slide img {
-        @apply w-full object-cover object-center
+        @apply w-full object-cover object-center block h-full
     }
 
     .swiper-button-prev {
@@ -44,17 +44,6 @@
         @apply left-[85%] top-[85%] font-bold !important
     }
 
-    .mySwiper1 .swiper-pagination-bullet{
-        @apply w-3 h-3 border border-white opacity-100 transform translate-x-[-30px] translate-y-[-50%]
-    }
-
-    .mySwiper1 .swiper-pagination-bullet{
-        background: none;
-    }
-
-    .mySwiper1 .swiper-pagination-bullet-active{
-        background: white;
-    }
 
     .mySwiper .swiper-slide::before{
         content: "";
@@ -65,28 +54,6 @@
         left: 0;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.31) 0%, rgba(0, 0, 0, 0.01) 100%);
         border-radius: 0 0 0 100px;
-    }
-
-    .mySwiper1 .swiper-slide::before{
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom:0;
-        left: 0;
-        background: linear-gradient(270deg, rgba(0, 0, 0, 0.39) 0%, rgba(0, 0, 0, 0.00) 100%);
-        border-radius: 60px;
-    }
-
-    .mySwiper2 .swiper-slide::before{
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom:0;
-        left: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.17) 0%, rgba(0, 0, 0, 0.67) 100%);
-        border-radius: 30px;
     }
 
     :root {
