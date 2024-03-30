@@ -6,8 +6,6 @@ interface Props {
 }
 
 export function ProductSpecification({data}: Props) {
-    //Todo add Api for CarFeatures component
-
     return (
         <>
             <h1 className="font-bold text-xl lg:text-3xl mb-3">{data?.attributes?.car_model?.data?.attributes?.title}</h1>

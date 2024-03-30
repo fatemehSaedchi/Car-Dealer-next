@@ -1,6 +1,6 @@
 export * from './product-album'
 export * from './product-specification'
 export * from './socialMedia-share'
-export * from './product-description'
+export * from './productTexts/productDescription'
 export * from './rating-card'
 export * from './rating'
