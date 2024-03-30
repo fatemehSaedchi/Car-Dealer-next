@@ -3,27 +3,27 @@
 export const MenuMock = [
     {
         title: 'HOME',
-        link: "#"
+        link: "/"
     },
 
     {
         title: 'ABOUT',
-        link: "#"
+        link: "/about"
     },
 
     {
-        title: 'SERVICE',
-        link: "#"
+        title: 'Products',
+        link: "/products"
     },
 
     {
-        title: 'CAR COLLECTION',
-        link: "#"
+        title: 'ProductsDetail',
+        link: "/productDetail"
     },
 
     {
         title: 'LOCATION',
-        link: "#"
+        link: "/location"
     },
 
     {

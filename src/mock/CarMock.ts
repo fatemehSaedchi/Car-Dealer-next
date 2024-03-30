@@ -10,6 +10,8 @@ export interface Attributes {
     price: number;
     passenger: number;
     description: string;
+    discussion: null | string
+    reviews: null | string
     rate: number;
     createdAt: string;
     updatedAt: string;
@@ -198,8 +200,10 @@ export const CarMock: Root =
             transmition: "Automatic",
             price: 28675,
             passenger: 5,
-            description: "The Toyota RAV4 is a compact crossover SUV produced by the Japanese automobile manufacturer Toyota. It made its debut in Japan and Europe in 1994, and in North America in 1995, being launched in January 1996. The RAV4 is known for starting the wave of compact crossovers, offering a blend of SUV benefits such as increased cargo room, higher visibility, and the option of full-time four-wheel drive, along with maneuverability and versatility. The vehicle’s name is an abbreviation of “Recreational Active Vehicle with 4-wheel drive” or “Robust Accurate Vehicle with 4-wheel drive,” although not all models come equipped with the four-wheel drive system.",
-            rate: 3.9,
+            description: "The Toyota RAV4 is a compact crossover SUV produced by the Japanese automobile manufacturer Toyota. It made its debut in Japan and Europe in 1994, and in North America in 1995, being launched in January 1996. The RAV4 is known for starting the wave of compact crossovers, offering a blend of SUV benefits such as increased cargo room, higher visibility, and the option of full-time four-wheel drive, along with maneuverability and versatility. The vehicle’s name is an abbreviation of “Recreational Active Vehicle with 4-wheel drive” or “Robust Accurate Vehicle with 4-wheel drive,” although not all models come equipped with the four-wheel drive system.The Toyota RAV4 is a compact crossover SUV produced by the Japanese automobile manufacturer Toyota. It made its debut in Japan and Europe in 1994, and in North America in 1995, being launched in January 1996. The RAV4 is known for starting the wave of compact crossovers, offering a blend of SUV benefits such as increased cargo room, higher visibility, and the option of full-time four-wheel drive, along with maneuverability and versatility. The vehicle’s name is an abbreviation of “Recreational Active Vehicle with 4-wheel drive” or “Robust Accurate Vehicle with 4-wheel drive,” although not all models come equipped with the four-wheel drive system.",
+            discussion: 'The Toyota RAV4 is a compact crossover SUV produced by the Japanese automobile manufacturer Toyota. It made its debut in Japan and Europe in 1994, and in North America in 1995, being launched in January 1996. The RAV4 is known for starting the wave of compact crossovers, offering a blend of SUV benefits such as increased cargo room, higher visibility, and the option of full-time four-wheel drive, along with maneuverability and versatility. The vehicle’s name is an abbreviation of “Recreational Active Vehicle with 4-wheel drive” or “Robust Accurate Vehicle with 4-wheel drive,” although not all models come equipped with the four-wheel drive system.',
+            reviews: 'The Toyota RAV4 is a compact crossover SUV produced by the Japanese automobile manufacturer Toyota.',
+            rate: 3.65,
             createdAt: "2024-02-12T16:39:10.396Z",
             updatedAt: "2024-02-13T12:13:25.398Z",
             dealCount: null,
@@ -259,14 +263,14 @@ export const CarMock: Root =
                                     width: 156,
                                     height: 156,
                                     size: 9.45,
-                                    url: "/uploads/thumbnail_RHV_MY_23_0003_V003_1x1_Ui_P_Zk_W4_De6f_Zf_V_Mg_Qg_O_9337b242ea.jpg"
+                                    url: "/assets/images/alain-gehri-w77TcvuhtWE-unsplash01.jpg"
                                 }
                             },
                             hash: "RHV_MY_23_0003_V003_1x1_Ui_P_Zk_W4_De6f_Zf_V_Mg_Qg_O_9337b242ea",
                             ext: ".jpg",
                             mime: "image/jpeg",
                             size: 48.59,
-                            url: "/uploads/RHV_MY_23_0003_V003_1x1_Ui_P_Zk_W4_De6f_Zf_V_Mg_Qg_O_9337b242ea.jpg",
+                            url: "/assets/images/alain-gehri-w77TcvuhtWE-unsplash01.jpg",
                             previewUrl: null,
                             provider: "local",
                             provider_metadata: null,
@@ -292,14 +296,14 @@ export const CarMock: Root =
                                     width: 156,
                                     height: 156,
                                     size: 6.83,
-                                    url: "/uploads/thumbnail_RHV_MY_23_0009_V003_1x1_Y3bkgrntckryonm9_C_05c4a7593b.jpg"
+                                    url: "/assets/images/alain-gehri-w77TcvuhtWE-unsplash01.jpg"
                                 }
                             },
                             hash: "RHV_MY_23_0009_V003_1x1_Y3bkgrntckryonm9_C_05c4a7593b",
                             ext: ".jpg",
                             mime: "image/jpeg",
                             size: 32.41,
-                            url: "/uploads/RHV_MY_23_0009_V003_1x1_Y3bkgrntckryonm9_C_05c4a7593b.jpg",
+                            url: "/assets/images/alain-gehri-w77TcvuhtWE-unsplash01.jpg",
                             previewUrl: null,
                             provider: "local",
                             provider_metadata: null,
