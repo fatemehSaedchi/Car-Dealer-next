@@ -29,7 +29,7 @@ export function ProductAlbum({data}: Props) {
                         <ImageView
                             key={index}
                             src={galleryItem.attributes.url}
-                            alt={galleryItem.attributes.name}
+                            alt={''}
                             width={galleryItem.attributes.width}
                             height={galleryItem.attributes.height}
                             classname={"w-full aspect-square rounded-xl object-cover object-center"}

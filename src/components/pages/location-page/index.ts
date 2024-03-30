@@ -1,1 +1,2 @@
-export * from './branches-card'
+export * from './branchesCard'
+export * from './branches'
