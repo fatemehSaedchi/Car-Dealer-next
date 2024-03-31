@@ -12,8 +12,20 @@ import {
     PaginatedSlider, ServicesList
 } from "@/components";
 import {BannerSliderMock, ServicesMock, CarBrandsMock, VerticalSliderMock, TopDealsCarsMock} from "@/mock";
+import {apiClient} from "@/api";
+import {useQuery} from "@tanstack/react-query";
 
 export default function Home() {
+
+const {data: response} = useQuery(
+    {
+        queryKey: ['1'],
+        queryFn: ()=> {
+            return apiClient.get('/cars')
+        }
+    }
+)
+    console.log(response)
     return (
 
         <>
