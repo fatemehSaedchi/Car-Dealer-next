@@ -9,12 +9,24 @@ import 'swiper/css/pagination'
 import type { AppProps } from "next/app";
 import {Layout} from "@/components";
 import {Montserrat} from "next/font/google";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import {ToastContainer} from "react-toastify";
 
 
 
 const montserrat = Montserrat({
     subsets :['latin']
 })
+
+const queryClient = new QueryClient({defaultOptions:{
+    queries:{
+        refetchOnWindowFocus: false,
+        refetchIntervalInBackground: false,
+        retry: false
+    }
+    }})
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -24,9 +36,27 @@ export default function App({ Component, pageProps }: AppProps) {
                   font-family: ${montserrat.style.fontFamily};
               }
           `}</style>
-          <Layout>
-              <Component {...pageProps} />
-          </Layout>
+
+          <QueryClientProvider client={queryClient}>
+
+              <Layout>
+                  <Component {...pageProps} />
+              </Layout>
+
+              <ReactQueryDevtools initialIsOpen={false}/>
+              <ToastContainer
+                  position="top-right"
+                  autoClose={false}
+                  newestOnTop
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss={false}
+                  draggable={false}
+                  theme="light"
+              />
+          </QueryClientProvider>
       </>
+
+
   );
 }
