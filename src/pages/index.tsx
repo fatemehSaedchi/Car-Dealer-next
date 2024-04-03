@@ -12,17 +12,19 @@ import {
     PaginatedSlider, ServicesList
 } from "@/components";
 import {BannerSliderMock, ServicesMock, CarBrandsMock, VerticalSliderMock, TopDealsCarsMock} from "@/mock";
-import {apiClient} from "@/api";
 import {useQuery} from "@tanstack/react-query";
+import {getAllCarsApi} from "@/api";
 
 export default function Home() {
 
 const {data: response} = useQuery(
     {
-        queryKey: ['1'],
-        queryFn: ()=> {
-            return apiClient.get('/cars')
-        }
+        queryKey: [getAllCarsApi.name],
+        queryFn: ()=> getAllCarsApi({
+                populate: [
+                    'thumbnail',
+                ],
+            })
     }
 )
     console.log(response)
@@ -34,8 +36,10 @@ const {data: response} = useQuery(
                     <ImageView src="/assets/images/circleElement.svg" alt=""
                                classname="absolute w-14 top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
                     <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
+
                         <NavigatedSlider sliderData={BannerSliderMock} nextEl={".swiper-button-next"}
                                          prevEl={".swiper-button-prev"}/>
+
                         <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div>
                     </div>
