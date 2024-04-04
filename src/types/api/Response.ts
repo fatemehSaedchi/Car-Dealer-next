@@ -1,5 +1,5 @@
 export interface ApiResponseType<T> {
-    data: EntityType<T>[]
+    data: Array<EntityType<T>>
     meta: MetaType
 }
 
