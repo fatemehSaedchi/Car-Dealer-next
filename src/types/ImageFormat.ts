@@ -5,6 +5,7 @@ export interface ImageFormatType {
 }
 
 export interface Thumbnail {
+    data: {
     name: string
     hash: string
     ext: string
@@ -14,6 +15,8 @@ export interface Thumbnail {
     height: number
     size: number
     url: string
+}
+
 }
 
 export interface Small {

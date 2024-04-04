@@ -14,11 +14,16 @@ export interface CarsType {
     dealCount?: string
     title: string
     Trending: boolean
-    thumbnail: EntityType<ImageType>
+    thumbnail: {
+        data: EntityType<ImageType>
+    }
     gallery: PopulateType<ImageType>
-    car_model: EntityType<ModelBrandClassType>
+    car_model: {
+        data: EntityType<ModelBrandClassType> }
     car_type: EntityType<ModelBrandClassType>
-    car_class: EntityType<ModelBrandClassType>
+    car_class: {
+        data: EntityType<ModelBrandClassType>
+    }
     car_brand: EntityType<ModelBrandClassType>
     slides: PopulateType<SlideType>
 }
