@@ -1,14 +1,28 @@
 import {Branches, HeroSection, Map, Section} from "@/components";
-import {LocationMock} from "@/mock";
+import {useQuery} from "@tanstack/react-query";
+import {InView} from "react-intersection-observer";
+import {getLocationApiCall} from "@/api";
+import {ApiResponseType, LocationType} from "@/types/api";
 
 export default function Location() {
 
-    return(
+    const {data: locationData, refetch} = useQuery<ApiResponseType<LocationType>>(
+        {
+            queryKey: [getLocationApiCall.name],
+            queryFn: getLocationApiCall,
+            enabled: false
+        })
+
+
+    return (
         <>
             <HeroSection title={"Dealer Locations"}/>
             <Section className={'pt-14 lg:pt-24'}>
-                    <Map/>
-                    <Branches data={LocationMock}/>
+                <Map/>
+                <InView onChange={(InView)=>{InView ? refetch(): ''}}>
+                    {(locationData && InView) &&
+                        <Branches data={locationData.data}/>}
+                </InView>
             </Section>
         </>
     )
