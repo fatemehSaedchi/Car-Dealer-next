@@ -1,21 +1,20 @@
 import {IconBox, Logo, Menu, PhoneButton} from "@/components";
-import {useEffect, useState, MouseEvent} from "react";
+import {useState, MouseEvent} from "react";
+import {useOverlay} from "@/hooks/use-overlay";
 
 export function Header() {
     const [showMobileMenu,setShowMobileMenu] = useState(false)
+
+    useOverlay({
+        onClick: () => {
+            setShowMobileMenu(false)
+        }
+    })
 
     const showMobileMenuHandler =(e: MouseEvent)=>{
         e.stopPropagation()
         setShowMobileMenu((prevState)=> !prevState)
     }
-
-    useEffect(()=>{
-        const closeHandler = ()=> setShowMobileMenu (false)
-        document.addEventListener('click', closeHandler)
-        return ()=>{
-            document.removeEventListener('click', closeHandler)
-        }
-    },[])
 
     return (
         <header className="shadow-5xl">
