@@ -1,6 +1,6 @@
 import {BranchesCard} from "@/components";
-import {EntityType} from "@/types/Response";
-import {LocationType} from "@/types/Location";
+import {EntityType,LocationType} from "@/types";
+
 
 interface Props {
 data: Array<EntityType<LocationType>>

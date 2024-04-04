@@ -3,5 +3,5 @@ import {ApiResponseType} from "@/types/Response";
 import {LocationType} from "@/types/Location";
 
 export async function getLocationApiCall():Promise<ApiResponseType<LocationType>> {
-    return apiClient.get('/branches')
+    return await apiClient.get('/branches')
 }
