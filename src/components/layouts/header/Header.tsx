@@ -1,12 +1,21 @@
 import {IconBox, Logo, Menu, PhoneButton} from "@/components";
-import {useState} from "react";
+import {useEffect, useState, MouseEvent} from "react";
 
 export function Header() {
     const [showMobileMenu,setShowMobileMenu] = useState(false)
 
-    const showMobileMenuHandler =()=>{
+    const showMobileMenuHandler =(e: MouseEvent)=>{
+        e.stopPropagation()
         setShowMobileMenu((prevState)=> !prevState)
     }
+
+    useEffect(()=>{
+        const closeHandler = ()=> setShowMobileMenu (false)
+        document.addEventListener('click', closeHandler)
+        return ()=>{
+            document.removeEventListener('click', closeHandler)
+        }
+    },[])
 
     return (
         <header className="shadow-5xl">
