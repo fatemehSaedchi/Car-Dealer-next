@@ -1,7 +1,7 @@
-import {EntityType, PopulateType} from "@/types/api/Response";
-import {ImageType} from "@/types/api/Image";
-import {ModelBrandClassType} from "@/types/api/CarModelBrandClass";
-import {SlideType} from "@/types/api/Slide";
+import {EntityType, PopulateType} from "@/types/Response";
+import {ImageType} from "@/types/Image";
+import {ModelBrandClassType} from "@/types/CarModelBrandClass";
+import {SlideType} from "@/types/Slide";
 
 export interface CarsType {
     excerpt: string

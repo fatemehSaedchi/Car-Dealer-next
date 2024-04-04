@@ -1,4 +1,4 @@
-import {ImageFormatType} from "@/types/api/ImageFormat";
+import {ImageFormatType} from "@/types/ImageFormat";
 
 export interface ImageType {
     name: string

@@ -4,7 +4,7 @@ import Link from "next/link";
 import {useQuery} from "@tanstack/react-query";
 import {getMenusApiCall} from "@/api/menu";
 import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
-import {MenuItemType} from "@/types/api/MenuItem";
+import {MenuItemType} from "@/types/MenuItem";
 import React, {Dispatch, SetStateAction, MouseEvent, useEffect} from "react";
 
 interface Props {

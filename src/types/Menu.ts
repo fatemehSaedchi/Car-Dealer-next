@@ -1,5 +1,5 @@
 import {PopulateType} from "@/types";
-import {MenuItemType} from "@/types/api/MenuItem";
+import {MenuItemType} from "@/types/MenuItem";
 
 export interface MenuType {
     title: string
