@@ -2,8 +2,25 @@
 
 import Link from "next/link";
 import {MenuMock} from "@/mock";
+import {useQuery} from "@tanstack/react-query";
+import {getMenusApiCall} from "@/api/menu";
+import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
+import {MenuItemType} from "@/types/api/MenuItem";
 
 export function Menu() {
+
+    const {data: menusData} = useQuery<ApiResponseType<MenuType>>({queryKey:[getMenusApiCall.name], queryFn:()=> getMenusApiCall()})
+
+    let mainMenuItems: PopulateType<MenuItemType> | null = null
+    if (menusData) {
+        const mainMenu = menusData.data.filter((item : EntityType<MenuType>)=> item.attributes.title === 'main menu');
+
+        if(mainMenu){
+            mainMenuItems = mainMenu[0].attributes.menu_items
+        }
+    }
+
+
     return (
         <ul id="navList" className="absolute bg-White-200 text-secondary-300 font-semibold z-[9999] left-0 top-0 w-full h-screen py-5 px-4 -translate-x-full sm:w-8/12 lg:translate-x-0 lg:relative lg:flex lg:bg-transparent lg:w-fit lg:gap-4 lg:p-0 lg:h-fit 2xl:gap-7">
             <li className="lg:hidden">
@@ -12,10 +29,11 @@ export function Menu() {
                 </button>
             </li>
             {
-                MenuMock.map((item, index)=>{
+                mainMenuItems &&
+                mainMenuItems?.data.map((item: EntityType<MenuItemType>, index: number)=>{
                     return (
                         <li key={index} className="border-b-4 border-transparent lg:text-sm 2xl:text-base lg:hover:border-primary-100  pt-10 lg:pt-9 lg:pb-7 hover:text-primary-100">
-                            <Link href={item.link}>{item.title}</Link>
+                            <Link href={item.attributes.link}>{item.attributes.title}</Link>
                         </li>
                     )
                 })

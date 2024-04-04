@@ -1,6 +1,5 @@
 import {IconBox} from "@/components";
-import {EntityType} from "@/types/Response";
-import {LocationType} from "@/types/Location";
+import {EntityType,LocationType} from "@/types";
 
 interface Props {
     cardData:EntityType<LocationType>

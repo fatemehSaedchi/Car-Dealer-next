@@ -15,7 +15,6 @@ export function Header() {
                             <span className="w-[24px] h-[1.5px] bg-secondary-400 inline-block rounded"></span>
                             <span className="w-[24px] h-[1.5px] bg-secondary-400 inline-block rounded"></span>
                         </button>
-
                         <Menu/>
                     </nav>
 
