@@ -1,24 +1,28 @@
+import {CarsType, EntityType} from "@/types";
+import {ImageView} from "@/components";
+import Link from "next/link";
+
 interface Props {
-    data: any
+    data: EntityType<CarsType>
 }
 
 export function NavigatedSliderCard({data}: Props) {
     return (
-        <>
-            <img className="rounded-bl-[100px] h-96 lg:h-[700px] w-full"
-                 src={data.image} alt=""/>
+        <Link href={`/productsDetail/${data.id}`}>
+                <ImageView height={data.attributes.thumbnail.data.attributes.height} width={data.attributes.thumbnail.data.attributes.width} classname="rounded-bl-[100px] h-96 lg:h-[700px] w-full"
+                     src={data.attributes.thumbnail.data.attributes.url ? data.attributes.thumbnail.data.attributes.url : ''} alt={data.attributes.title}/>
             <div className="w-9/12 absolute mx-auto left-0 right-0 top-9 sm:top-12 ">
                 <div className="flex w-full justify-between">
-                    <p className="text-white text-xs sm:text-sm md:text-base xl:text-lg font-semibold">{data.class}</p>
-                    <p className="text-white text-xs sm:text-sm md:text-base xl:text-lg font-light">{data.title}</p>
+                    <p className="text-white text-xs sm:text-sm md:text-base xl:text-lg font-semibold">{data.attributes.car_class.data.attributes.title ? data.attributes.car_class.data.attributes.title : ''}</p>
+                    <p className="text-white text-xs sm:text-sm md:text-base xl:text-lg font-light">{data.attributes.title ? data.attributes.title : ''}</p>
                 </div>
                 <div className="flex w-full justify-between mt-2.5">
                     <p className="text-white text-base sm:text-xl md:text-3xl xl:text-4xl font-light">
-                        {data.model}</p>
+                        {data.attributes.car_model.data.attributes.title ? data.attributes.car_model.data.attributes.title : ''}</p>
                     <p className="text-white text-base sm:text-xl md:text-3xl xl:text-4xl font-bold">$
-                        {data.price}</p>
+                        {data.attributes.price ? data.attributes.price : data.attributes.price}</p>
                 </div>
             </div>
-        </>
+        </Link>
     )
 }

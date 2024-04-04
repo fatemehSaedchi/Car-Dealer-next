@@ -1,4 +1,4 @@
-export * from './Car'
+export * from './Cars'
 export * from './CarModelBrandClass'
 export * from './Image'
 export * from './ImageFormat'

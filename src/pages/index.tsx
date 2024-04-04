@@ -9,25 +9,47 @@ import {
     ImageView,
     IconBox,
     VerticalSlider,
-    PaginatedSlider, ServicesList
+    PaginatedSlider, ServicesList, PopularBrands
 } from "@/components";
-import {BannerSliderMock, ServicesMock, CarBrandsMock, VerticalSliderMock, TopDealsCarsMock} from "@/mock";
+import {ServicesMock, VerticalSliderMock, TopDealsCarsMock} from "@/mock";
 import {useQuery} from "@tanstack/react-query";
 import {getAllCarsApi} from "@/api";
+import {getAllBrandsApi} from "@/api/brands";
+import {ApiResponseType, CarsType} from "@/types";
 
 export default function Home() {
 
-const {data: response} = useQuery(
-    {
-        queryKey: [getAllCarsApi.name],
-        queryFn: ()=> getAllCarsApi({
+    const {data: popularBrandsData} = useQuery(
+        {
+            queryKey: [getAllBrandsApi.name + ' popularBrandsData'],
+            queryFn: () => getAllBrandsApi({
+                pagination: {
+                    pageSize: 3
+                }
+            })
+        }
+    )
+    const {data: trendingCarData} = useQuery<ApiResponseType<CarsType>>(
+        {
+            queryKey: [getAllCarsApi.name + ' trendingCarData'],
+            queryFn: () => getAllCarsApi({
                 populate: [
                     'thumbnail',
+                    'car_class',
+                    'car_model'
                 ],
+                filters: {
+                    Trending: {
+                        $eq: true
+                    }
+                },
+                pagination: {
+                    pageSize: 5
+                }
             })
-    }
-)
-    console.log(response)
+        }
+    )
+
     return (
 
         <>
@@ -36,12 +58,14 @@ const {data: response} = useQuery(
                     <ImageView src="/assets/images/circleElement.svg" alt=""
                                classname="absolute w-14 top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
                     <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
-
-                        <NavigatedSlider sliderData={BannerSliderMock} nextEl={".swiper-button-next"}
-                                         prevEl={".swiper-button-prev"}/>
-
+                        {
+                            trendingCarData &&
+                            <NavigatedSlider sliderData={trendingCarData} nextEl={".swiper-button-next"}
+                                             prevEl={".swiper-button-prev"}/>
+                        }
                         <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div>
+
                     </div>
                     <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">
                         <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
@@ -49,10 +73,13 @@ const {data: response} = useQuery(
                                 className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">
                                 TRENDING
                             </button>
-                            <label>
-                                <input type="text" className="w-full h-full pl-44 bg-transparent outline-none pr-8"
-                                       placeholder="2020 FORT MUSTANG"/>
-                            </label>
+                            {
+                                trendingCarData &&
+                                <Link href={`/productsDetails/${trendingCarData.data[0].id}`}
+                                      className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-lg font-bold hover:bg-yellow-100 rounded-full">
+                                    {trendingCarData.data[0].attributes.title}
+                                </Link>
+                            }
                         </div>
                         <div>
                             <h1 className="text-4xl sm:text-5xl xl:text-6xl pr-2 sm:w-[500px] xl:w-[620px] font-bold sm:leading-[58px] xl:leading-[70px] pt-7 lg:pt-11">
@@ -62,10 +89,12 @@ const {data: response} = useQuery(
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                             </p>
                         </div>
-
+                        {
+                            //todo fix the SearchBox component
+                        }
                         <SearchBox className={'mb-10'}/>
 
-                        <Link href={'#'}
+                        <Link href={'/products'}
                               className="text-primary-100 text-sm sm:text-base md:text-lg pt-7">
                             Try advanced search
                             <IconBox icon={"icon-rightArrow pl-6"}/>
@@ -74,21 +103,10 @@ const {data: response} = useQuery(
                             <h3 className="text-xs md:text-base text-secondary-100 pt-8 2xl:pt-14">
                                 Popular Brands
                             </h3>
-                            <ul className="flex gap-[20px] sm:gap-[30px] lg:gap-[21px] mt-3.5">
-                                {
-                                    CarBrandsMock.data.slice(0, 3).map((item, index) => {
-                                        return (
-                                            <li key={index}
-                                                className="text-xs xs:text-sm sm:text-xl xl:text-2xl font-bold hover:text-blue-600">
-                                                {item.attributes.title}
-                                            </li>
-                                        )
-                                    })
-                                }
-                                <li className="text-xs xs:text-sm sm:text-xl xl:text-2xl font-bold text-White-100 cursor-pointer hover:text-blue-600">
-                                    24+ more
-                                </li>
-                            </ul>
+                            {
+                                popularBrandsData &&
+                                <PopularBrands data={popularBrandsData}/>
+                            }
                         </div>
                     </div>
                 </div>
