@@ -1,8 +1,7 @@
 import {apiClient} from "@/api/config";
-import {ApiResponseType, CarsType} from "@/types";
 
 interface Interface {
-    populate?: Array<'thumbnail' | 'car_class' | "car_model" | '*'>
+    populate?: Array<'thumbnail' | '*'>
     filters?: {}
     sort?: Array<string>
     pagination?: {
@@ -14,9 +13,8 @@ interface Interface {
     }
 }
 
-export function getAllCarsApi({populate, filters = {}, sort = [], pagination = {}}: Interface): Promise<ApiResponseType<CarsType>> {
-    return apiClient.get('/cars',
-        {
+export function getAllBrandsApi({populate, filters = {}, sort = [], pagination = {}}: Interface) {
+    return apiClient.get('/car-brands', {
             params: {
                 populate: populate?.join(','),
                 filters: filters,
