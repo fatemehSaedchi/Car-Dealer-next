@@ -1,4 +1,4 @@
-import {IconBox, ImageView, Logo, PhoneButton} from "@/components";
+import {ContactBox, IconBox, ImageView, Logo, PhoneButton} from "@/components";
 import Link from "next/link";
 import {useQuery} from "@tanstack/react-query";
 import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
@@ -94,22 +94,10 @@ export function Footer() {
                         </h4>
                         <ul className="flex flex-col gap-3">
                             <li className="flex">
-                                <div
-                                    className="bg-primary-100 flex justify-center items-center w-12 h-12 rounded-full left-6 relative translate-y-1.5 lg:translate-y-2">
-                                    <IconBox icon={'icon-building text-white text-2xl'}></IconBox>
-                                </div>
-                                <p className="text-sm lg:text-base bg-white-100 py-5 pl-12 text-left w-[87%] bg-primary-50 rounded-xl">
-                                    77 Highfield Road London
-                                    N36 7SB
-                                </p>
+                                <ContactBox text={'77 Highfield Road London N36 7SB'}/>
                             </li>
                             <li className="flex">
-                                <div
-                                    className="bg-primary-100 flex justify-center items-center w-12 h-12 rounded-full left-6 relative translate-y-1.5 lg:translate-y-2">
-                                    <IconBox icon={'icon-phone text-white'} size={24}/>
-                                </div>
-                                <Link className="text-sm lg:text-base bg-white-100 bg-primary-50 rounded-xl w-[87%] flex self-end py-5 pl-12"
-                                   href="tel:+4124441124">412 444 1124</Link>
+                                <ContactBox text={'412 444 1124'} link={"tel:+4124441124"}/>
                             </li>
                         </ul>
                     </div>
