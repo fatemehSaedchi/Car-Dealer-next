@@ -1,12 +1,31 @@
-import {IconBox, ImageView, Logo, PhoneButton} from "@/components";
+import {ContactBox, IconBox, ImageView, Logo, PhoneButton} from "@/components";
 import Link from "next/link";
+import {useQuery} from "@tanstack/react-query";
+import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
+import {getMenusApiCall} from "@/api/menu";
+import {MenuItemType} from "@/types/MenuItem";
 
 export function Footer() {
+
+    const {data: menusData} = useQuery<ApiResponseType<MenuType>>({queryKey:[getMenusApiCall.name], queryFn:()=> getMenusApiCall()})
+    let quickMenuItems : PopulateType<MenuItemType> | null = null
+    let supportMenuItems : PopulateType<MenuItemType> | null = null
+    if (menusData){
+        const quickMenu =menusData.data.filter((item)=>item.attributes.title === "Quick Links")
+        if (quickMenu){
+            quickMenuItems = quickMenu[0].attributes.menu_items
+        }
+
+        const supportMenu = menusData.data.filter((item)=>item.attributes.title === "Support")
+        if (supportMenu){
+            supportMenuItems = supportMenu[0].attributes.menu_items
+        }
+    }
+
     return (
         <footer>
             <div className="container m-auto px-4 mt-32 lg:mt-64 relative">
-                <div
-                    className="max-w-6xl m-auto bg-primary-100 max-h-72 rounded-3xl lg:rounded-[40px] relative flex p-4 sm:py-7 md:p-9 lg:p-16">
+                <div className="max-w-6xl m-auto bg-primary-100 max-h-72 rounded-3xl lg:rounded-[40px] relative flex p-4 sm:py-7 md:p-9 lg:p-16">
                     <div className="basis-2/4">
                         <p className="w-full text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white">
                             Have any question</p>
@@ -21,8 +40,7 @@ export function Footer() {
                         </div>
                     </div>
                     <div className="basis-2/4 relative">
-                        <ImageView src={"/assets/images/bradley-dunn-qijkjkJm63c-unsplash11.jpg"} alt={'car'}
-                                   width={300} height={450}
+                        <ImageView src={"/assets/images/bradley-dunn-qijkjkJm63c-unsplash11.jpg"} alt={'car'} width={300} height={450}
                                    classname={"w-full object-cover rounded-2xl lg:rounded-[49px] shadow-4xl absolute -top-14 sm:-top-24 md:-top-28 lg:md:-top-40 xl:md:-top-52 z-50"}/>
                     </div>
                 </div>
@@ -70,60 +88,32 @@ export function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <div
-                        className="mb-12 w-full text-center sm:basis-8/12 md:basis-1/2 xl:basis-2/6 xl:order-4 relative">
+                    <div className="mb-12 w-full text-center sm:basis-8/12 md:basis-1/2 xl:basis-2/6 xl:order-4 relative">
                         <h4 className="font-bold mb-5">
                             Contact
                         </h4>
                         <ul className="flex flex-col gap-3">
                             <li className="flex">
-                                <div
-                                    className="bg-primary-100 flex justify-center items-center w-12 h-12 rounded-full left-6 relative translate-y-1.5 lg:translate-y-2">
-                                    <IconBox icon={'icon-building text-white text-2xl'}></IconBox>
-                                </div>
-                                <p className="text-sm lg:text-base bg-white-100 py-5 pl-12 text-left w-[87%] bg-primary-50 rounded-xl">
-                                    77 Highfield Road London
-                                    N36 7SB
-                                </p>
+                                <ContactBox text={'77 Highfield Road London N36 7SB'}/>
                             </li>
                             <li className="flex">
-                                <div
-                                    className="bg-primary-100 flex justify-center items-center w-12 h-12 rounded-full left-6 relative translate-y-1.5 lg:translate-y-2">
-                                    <IconBox icon={'icon-phone text-white'} size={24}/>
-                                </div>
-                                <Link className="text-sm lg:text-base bg-white-100 bg-primary-50 rounded-xl w-[87%] flex self-end py-5 pl-12"
-                                   href="tel:+4124441124">412 444 1124</Link>
+                                <ContactBox text={'412 444 1124'} link={"tel:+4124441124"}/>
                             </li>
                         </ul>
                     </div>
                     <div className="mb-10 basis-1/2 text-center xl:basis-1/6">
                         <h4 className="font-bold mb-5">Quick Links</h4>
                         <ul className="flex flex-col gap-3 text-secondary-100 text-sm lg:text-base">
-                            <li>
-                                <Link href="#">
-                                About us
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Contact us
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Products
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Login
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Sign Up
-                            </Link>
-                            </li>
+                            {
+                                quickMenuItems &&
+                                quickMenuItems.data.map((item: EntityType<MenuItemType>,index: number)=>{
+                                    return (
+                                        <li>
+                                            <Link className={'hover:text-primary-100 active:text-primary-100'} href="#">{item.attributes.title}</Link>
+                                        </li>
+                                    )
+                                })
+                            }
                         </ul>
                     </div>
                     <div className="mb-20 basis-1/2 text-center xl:basis-1/6">
@@ -131,31 +121,16 @@ export function Footer() {
                             Support
                         </h4>
                         <ul className="flex flex-col gap-3 text-secondary-100 text-sm lg:text-base">
-                            <li>
-                                <Link href="#">
-                                Affiliates
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Sitemap
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Cancelation Policy
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Privacy Policy
-                            </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                Legal Disclaimer
-                            </Link>
-                            </li>
+                            {
+                                supportMenuItems &&
+                                supportMenuItems.data.map((item,index)=>{
+                                    return (
+                                        <li>
+                                            <Link className={'hover:text-primary-100 active:text-primary-100'} href="#">{item.attributes.title}</Link>
+                                        </li>
+                                    )
+                                })
+                            }
                         </ul>
                     </div>
                 </div>
