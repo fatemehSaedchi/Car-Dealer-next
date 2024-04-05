@@ -4,23 +4,12 @@ import {useQuery} from "@tanstack/react-query";
 import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
 import {getMenusApiCall} from "@/api/menu";
 import {MenuItemType} from "@/types/MenuItem";
+import {useMenu} from "@/hooks/use-menu";
 
 export function Footer() {
 
-    const {data: menusData} = useQuery<ApiResponseType<MenuType>>({queryKey:[getMenusApiCall.name], queryFn:()=> getMenusApiCall()})
-    let quickMenuItems : PopulateType<MenuItemType> | null = null
-    let supportMenuItems : PopulateType<MenuItemType> | null = null
-    if (menusData){
-        const quickMenu =menusData.data.filter((item)=>item.attributes.title === "Quick Links")
-        if (quickMenu){
-            quickMenuItems = quickMenu[0].attributes.menu_items
-        }
-
-        const supportMenu = menusData.data.filter((item)=>item.attributes.title === "Support")
-        if (supportMenu){
-            supportMenuItems = supportMenu[0].attributes.menu_items
-        }
-    }
+    const {data: quickMenuItems} = useMenu({title:"Quick Links"})
+    const {data: supportMenuItems} = useMenu({title:"Support"})
 
     return (
         <footer>
