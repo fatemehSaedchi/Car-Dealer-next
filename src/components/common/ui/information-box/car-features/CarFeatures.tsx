@@ -1,7 +1,8 @@
 import {Root} from "@/mock/CarMock";
+import {CarsType, EntityType} from "@/types";
 
 interface Props {
-    data: Root
+    data: EntityType<CarsType>
 }
 
 export function CarFeatures({data}: Props) {
@@ -18,13 +19,13 @@ export function CarFeatures({data}: Props) {
                     Passenger
                 </li>
                 <li>
-                    {data?.attributes?.transmition}
+                    {data?.attributes.transmition}
                 </li>
                 <li>
-                    {data?.attributes?.fuel}
+                    {data?.attributes.fuel}
                 </li>
                 <li>
-                    {data?.attributes?.passenger} Person
+                    {data?.attributes.passenger} Person
                 </li>
             </ul>
         </>
