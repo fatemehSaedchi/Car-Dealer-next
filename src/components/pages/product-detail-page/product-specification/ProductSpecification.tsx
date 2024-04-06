@@ -1,11 +1,13 @@
 import {CarFeatures, PhoneButton} from "@/components"
 import {CarsType, EntityType} from "@/types";
+import {formatNumberWithCommas} from "@/utils/formatNumber";
 
 interface Props {
    data: EntityType<CarsType>
 }
 
 export function ProductSpecification({data}: Props) {
+    const formattedPrice = formatNumberWithCommas({number: data?.attributes?.price})
 
     return (
         <>
@@ -16,7 +18,7 @@ export function ProductSpecification({data}: Props) {
                 <CarFeatures data={data}/>
             </div>
             <div className="mb-5 flex gap-3">
-                <span className="bg-primary-100 text-white font-bold text-xs md:text-sm lg:text-base rounded-md px-5 py-2">$ {data.attributes?.price}</span>
+                <span className="bg-primary-100 text-white font-bold text-xs md:text-sm lg:text-base rounded-md px-5 py-2">$ {formattedPrice}</span>
                 <PhoneButton buttonStyle={"bg-White-200 hover:shadow-lg border border-White-200 hover:border-primary-100"}/>
             </div>
         </>
