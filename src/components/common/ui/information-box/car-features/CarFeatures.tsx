@@ -1,10 +1,13 @@
 import {Root} from "@/mock/CarMock";
-
+import {CarsType, EntityType} from "@/types";
 interface Props {
-    data: Root
+    data: EntityType<CarsType>
 }
 
 export function CarFeatures({data}: Props) {
+
+    //Todo  add transmission and fuel
+
     return (
         <>
             <ul className="grid grid-cols-3 justify-center text-center text-xs gap-y-5 xl:text-sm gap-x-8 xl:gap-x-11 pt-7">
@@ -18,13 +21,13 @@ export function CarFeatures({data}: Props) {
                     Passenger
                 </li>
                 <li>
-                    {data?.attributes?.transmition}
+                    {data?.attributes.transmition}
                 </li>
                 <li>
-                    {data?.attributes?.fuel}
+                    {data?.attributes.fuel}
                 </li>
                 <li>
-                    {data?.attributes?.passenger} Person
+                    {data?.attributes.passenger} Person
                 </li>
             </ul>
         </>

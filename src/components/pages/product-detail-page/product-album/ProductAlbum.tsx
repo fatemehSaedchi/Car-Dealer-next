@@ -1,8 +1,8 @@
 import {ImageView} from "@/components";
-import {Root} from "@/mock/CarMock";
+import {CarsType, EntityType, PopulateType} from "@/types";
 
 interface Props {
-    data: Root
+    data: EntityType<CarsType>
 }
 
 export function ProductAlbum({data}: Props) {
@@ -10,12 +10,12 @@ export function ProductAlbum({data}: Props) {
         <div className="flex flex-wrap justify-center gap-y-3 lg:gap-y-7">
             <div className="w-11/12 mb-3">
                 {
-                    data?.attributes?.thumbnail ? (
+                    data.attributes.thumbnail.data.attributes ? (
                         <ImageView
-                            src={data.attributes.thumbnail.data.attributes.formats.thumbnail.url}
-                            alt={data.attributes.thumbnail.data.attributes.formats.thumbnail.name}
-                            width={data.attributes.thumbnail.data.attributes.formats.thumbnail.width}
-                            height={data.attributes.thumbnail.data.attributes.formats.thumbnail.height}
+                            src={data.attributes.thumbnail.data.attributes.url}
+                            alt={data.attributes.thumbnail.data.attributes.name}
+                            width={data.attributes.thumbnail.data.attributes.width}
+                            height={data.attributes.thumbnail.data.attributes.height}
                             classname={"rounded-xl w-full lg:max-h-[364px] object-cover object-center"}
                         />
                     ) : (
@@ -23,8 +23,9 @@ export function ProductAlbum({data}: Props) {
                     )
                 }
             </div>
-            <div className="w-11/12 grid grid-cols-4 grid-rows-1 overflow-x-scroll gap-3 lg:gap-7 py-4"> {data?.attributes?.gallery &&
-                data.attributes.gallery.data.map((galleryItem, index) =>
+            <div className="w-11/12 grid grid-cols-4 grid-rows-1 overflow-x-scroll gap-3 lg:gap-7 py-4">
+                { data.attributes?.gallery &&
+                    data.attributes.gallery.data.map((galleryItem, index) =>
                     galleryItem ? (
                         <ImageView
                             key={index}

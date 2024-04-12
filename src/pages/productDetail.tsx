@@ -1,5 +1,3 @@
-// todo replace mock data with api
-
 import {
     ProductAlbum,
     Section,
@@ -9,10 +7,18 @@ import {
 import Link from "next/link";
 import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
-import {CarMock} from "@/mock/CarMock";
 import {ProductTexts} from "@/components/pages/product-detail-page/productTexts/productTexts";
+import {useQuery} from "@tanstack/react-query";
+import {getAllCarsApi} from "@/api";
+import {ApiResponseType, CarsType} from "@/types";
 
 export default function ProductDetail() {
+
+    const {data: CarsData} = useQuery<ApiResponseType<CarsType>>({
+        queryKey: [getAllCarsApi.name, 'carsAllData'],
+        queryFn: () => getAllCarsApi({populate: ['*']}),
+    });
+
 
     return (
         <>
@@ -28,20 +34,19 @@ export default function ProductDetail() {
 
             <Section>
                 <div className={"grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10"}>
-                    <ProductAlbum data={CarMock}/>
+                    {CarsData && <ProductAlbum data={CarsData.data[6]}/>}
                     <div>
-                        <ProductSpecification data={CarMock}/>
+                        {CarsData && <ProductSpecification data={CarsData.data[6]}/>}
                         <SocialMediaShare/>
                     </div>
                 </div>
             </Section>
 
             <Section>
-                <div className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
-
-                    <ProductTexts data={CarMock.attributes}/>
-                    <RatingCard rate={CarMock.attributes.rate}/>
-
+                <div
+                    className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
+                    { CarsData && <ProductTexts data={CarsData.data[6]}/>}
+                    { CarsData && <RatingCard rate={CarsData.data[6].attributes.rate}/>}
                 </div>
             </Section>
 

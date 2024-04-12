@@ -1,26 +1,15 @@
-import {ContactBox, IconBox, ImageView, Logo, PhoneButton} from "@/components";
+import {ContactBox, FooterMenu, IconBox, ImageView, Logo, PhoneButton, SocialMedia} from "@/components";
 import Link from "next/link";
 import {useQuery} from "@tanstack/react-query";
 import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
 import {getMenusApiCall} from "@/api/menu";
 import {MenuItemType} from "@/types/MenuItem";
+import {useMenu} from "@/hooks/use-menu";
 
 export function Footer() {
 
-    const {data: menusData} = useQuery<ApiResponseType<MenuType>>({queryKey:[getMenusApiCall.name], queryFn:()=> getMenusApiCall()})
-    let quickMenuItems : PopulateType<MenuItemType> | null = null
-    let supportMenuItems : PopulateType<MenuItemType> | null = null
-    if (menusData){
-        const quickMenu =menusData.data.filter((item)=>item.attributes.title === "Quick Links")
-        if (quickMenu){
-            quickMenuItems = quickMenu[0].attributes.menu_items
-        }
-
-        const supportMenu = menusData.data.filter((item)=>item.attributes.title === "Support")
-        if (supportMenu){
-            supportMenuItems = supportMenu[0].attributes.menu_items
-        }
-    }
+    const {data: quickMenuItems} = useMenu({title:"Quick Links"})
+    const {data: supportMenuItems} = useMenu({title:"Support"})
 
     return (
         <footer>
@@ -60,33 +49,7 @@ export function Footer() {
                             minus
                             nemo quae quia quibusdam voluptatem!
                         </p>
-                        <ul className="flex gap-3">
-                            <li>
-                                <Link href="#">
-                                    <IconBox icon={"icon-youtube text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18} />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                    <IconBox icon={"icon-linkedin text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                    <IconBox icon={"icon-twitterLogo text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                    <IconBox icon={"icon-facebookLogo text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#">
-                                    <IconBox icon={"icon-instagramLogo text-Purple-50 hover:text-primary-100 active:text-primary-100"} size={18}/>
-                                </Link>
-                            </li>
-                        </ul>
+                        <SocialMedia/>
                     </div>
                     <div className="mb-12 w-full text-center sm:basis-8/12 md:basis-1/2 xl:basis-2/6 xl:order-4 relative">
                         <h4 className="font-bold mb-5">
@@ -102,36 +65,10 @@ export function Footer() {
                         </ul>
                     </div>
                     <div className="mb-10 basis-1/2 text-center xl:basis-1/6">
-                        <h4 className="font-bold mb-5">Quick Links</h4>
-                        <ul className="flex flex-col gap-3 text-secondary-100 text-sm lg:text-base">
-                            {
-                                quickMenuItems &&
-                                quickMenuItems.data.map((item: EntityType<MenuItemType>,index: number)=>{
-                                    return (
-                                        <li>
-                                            <Link className={'hover:text-primary-100 active:text-primary-100'} href="#">{item.attributes.title}</Link>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
+                        { quickMenuItems && <FooterMenu menuItems={quickMenuItems} title={"Quick Links"}/>}
                     </div>
                     <div className="mb-20 basis-1/2 text-center xl:basis-1/6">
-                        <h4 className="font-bold mb-5">
-                            Support
-                        </h4>
-                        <ul className="flex flex-col gap-3 text-secondary-100 text-sm lg:text-base">
-                            {
-                                supportMenuItems &&
-                                supportMenuItems.data.map((item,index)=>{
-                                    return (
-                                        <li>
-                                            <Link className={'hover:text-primary-100 active:text-primary-100'} href="#">{item.attributes.title}</Link>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
+                        { supportMenuItems && <FooterMenu menuItems={supportMenuItems} title={"Support"}/>}
                     </div>
                 </div>
                 <p className="text-center text-secondary-50">

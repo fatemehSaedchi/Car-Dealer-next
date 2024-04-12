@@ -1,11 +1,11 @@
 import {ProductDescription} from "@/components";
-import {Attributes} from "@/mock/CarMock";
 import {ProductDiscussion} from "@/components/pages/product-detail-page/productTexts/productDiscussion";
 import {ProductReviews} from "@/components/pages/product-detail-page/productTexts/productReviews";
 import {useState} from "react";
+import {CarsType, EntityType} from "@/types";
 
 interface Props {
-    data: Attributes
+    data: EntityType<CarsType>
 }
 
 export function ProductTexts({data}: Props) {
@@ -35,13 +35,13 @@ export function ProductTexts({data}: Props) {
             <ul className="flex gap-3 text-secondary-10 mb-5 lg:text-xl">
 
                 {
-                    data.description &&
+                    data.attributes.description &&
                     <li className={`${description ? 'font-bold text-secondary-400' : 'font-medium text-secondary-10'}  cursor-pointer`} onClick={()=>setter('Description')}>
                         Description
                     </li>
                 }
                 {
-                    data.discussion &&
+                    data.attributes &&
                     <>
                         <li>|</li>
                         <li className={`${discussion? 'font-bold text-secondary-400' : 'font-medium text-secondary-10'} cursor-pointer`} onClick={()=>setter('Discussion')}>
@@ -51,7 +51,7 @@ export function ProductTexts({data}: Props) {
 
                 }
                 {
-                    data.reviews &&
+                    data.attributes &&
                     <>
                         <li>|</li>
                         <li className={`${reviews? 'font-bold text-secondary-400' : 'font-medium text-secondary-10'} cursor-pointer`} onClick={()=>setter('Reviews')}>
@@ -63,7 +63,7 @@ export function ProductTexts({data}: Props) {
             <div className={'max-h-[250px] mb-10 overflow-y-scroll'}>
                 {
                     description &&
-                    <ProductDescription data={data.description}/>
+                    <ProductDescription data={data.attributes.description}/>
                 }
                 {
                     discussion &&

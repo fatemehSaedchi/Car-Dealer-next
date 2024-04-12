@@ -3,4 +3,5 @@ export interface MenuItemType {
     link: string
     createdAt: string
     updatedAt: string
+    rank: number
 }
