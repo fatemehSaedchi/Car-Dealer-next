@@ -2,7 +2,7 @@ import {
     ProductAlbum,
     Section,
     SocialMediaShare,
-    ProductSpecification, PaginatedSlider, Tabs
+    ProductSpecification, PaginatedSlider, Tabs, Breadcrumb
 } from "@/components";
 import Link from "next/link";
 import {TopDealsCarsMock} from "@/mock";
@@ -20,7 +20,6 @@ export default function ProductDetail() {
         queryFn: () => getAllCarsApi({populate: ['*'], id: 1}),
     });
 
-
     const tabsData = [
         {title: 'Description', content: CarsData?.data.attributes.description},
         {title: 'Discussion', content: CarsData?.data.attributes.discussion},
@@ -29,15 +28,7 @@ export default function ProductDetail() {
 
     return (
         <>
-            <Section className="mb-10 lg:mb-12">
-                <div className="text-secondary-50 text-sm pt-9 lg:pl-9 flex gap-2">
-                    <Link className="text-primary-100 font-bold" href="/">Home</Link>
-                    <span className="font-bold text-secondary-10">/</span>
-                    <Link className="text-primary-100 font-bold" href="#">Car Collections</Link>
-                    <span className="font-bold text-secondary-10">/</span>
-                    {CarsData && <Link href="/">{CarsData.data.attributes.title}</Link>}
-                </div>
-            </Section>
+            <Breadcrumb title={CarsData?.data.attributes.car_model.data.attributes.title}/>
 
             <Section>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10">
