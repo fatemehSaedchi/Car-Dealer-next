@@ -2,6 +2,7 @@ import {EntityType, PopulateType} from "@/types/Response";
 import {ImageType} from "@/types/Image";
 import {ModelBrandClassType} from "@/types/CarModelBrandClass";
 import {SlideType} from "@/types/Slide";
+import {FuelTransitionType} from "@/types/FuelAndTransmission";
 
 export interface CarsType {
     excerpt: string
@@ -13,6 +14,8 @@ export interface CarsType {
     updatedAt: string
     dealCount?: string
     title: string
+    reviews: string
+    discussion: string
     Trending: boolean
     thumbnail: {
         data: EntityType<ImageType>
@@ -26,4 +29,6 @@ export interface CarsType {
     }
     car_brand: EntityType<ModelBrandClassType>
     slides: PopulateType<SlideType>
+    fuels: EntityType<FuelTransitionType>
+    transitions: EntityType<FuelTransitionType>
 }
