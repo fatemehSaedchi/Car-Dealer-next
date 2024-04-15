@@ -1,11 +1,9 @@
 import {useState} from "react";
-import {spans} from "next/dist/build/webpack/plugins/profiling-plugin";
 
 interface Tab {
     title: string;
     content: string;
 }
-
 interface TabsComponentProps {
     tabs: Tab[];
 }
@@ -15,33 +13,28 @@ export function Tabs({ tabs } : TabsComponentProps) {
     const handleTabClick = (index: number) => {
         setActiveTab(index);
     };
+
     return (
         <div className="lg:text-lg">
             <div className="flex">
                 {tabs.map((tab, index) => {
-                    if (index < tabs.length-1){
+                    let Tab = <div key={index}
+                                   className={`text-secondary-10 ${index === activeTab ? 'text-secondary-400 font-bold' : ''}`}
+                                   onClick={() => handleTabClick(index)}>
+                        {tab.title}
+                    </div>
+                    if (index < tabs.length - 1) {
                         return (
                             <>
-                                <div key={index}
-                                     className={`text-secondary-10 ${index === activeTab ? 'text-secondary-400 font-bold' : ''}`}
-                                     onClick={() => handleTabClick(index)}>
-                                    {tab.title}
-                                </div>
+                                {Tab}
                                 <span className={'text-secondary-10 px-2'}>|</span>
-
                             </>
-
                         )
-                    }else {
+                    } else {
                         return (
                             <>
-                                <div key={index}
-                                     className={`pr-3 text-secondary-10 ${index === activeTab ? 'text-secondary-400 font-bold' : ''}`}
-                                     onClick={() => handleTabClick(index)}>
-                                    {tab.title}
-                                </div>
+                                {Tab}
                             </>
-
                         )
                     }
 
