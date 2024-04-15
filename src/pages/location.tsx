@@ -5,24 +5,18 @@ import {getLocationApiCall} from "@/api";
 import {ApiResponseType, LocationType} from "@/types";
 
 export default function Location() {
-
-    const {data: locationData, refetch} = useQuery<ApiResponseType<LocationType>>(
+    const {data: locationData} = useQuery<ApiResponseType<LocationType>>(
         {
             queryKey: [getLocationApiCall.name],
             queryFn: getLocationApiCall,
-            enabled: false
         })
-
-
     return (
+        //Todo fix z-index
         <>
             <HeroSection title={"Dealer Locations"}/>
             <Section className={'pt-14 lg:pt-24'}>
                 <Map/>
-                <InView onChange={(InView)=>{InView ? refetch(): ''}}>
-                    {(locationData && InView) &&
-                        <Branches data={locationData.data}/>}
-                </InView>
+                {locationData && <Branches data={locationData.data}/>}
             </Section>
         </>
     )
