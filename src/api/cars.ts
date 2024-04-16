@@ -12,11 +12,10 @@ interface Interface {
         start?: number
         limit?: number
     }
-    id?: number
 }
 
-export function getAllCarsApi({id, populate, filters = {}, sort = [], pagination = {}}: Interface): Promise<ApiResponseType<CarsType>> {
-    return apiClient.get('/cars' + (id ? `/${id}` : ''),
+export function getAllCarsApi({populate, filters = {}, sort = [], pagination = {}}: Interface): Promise<ApiResponseType<CarsType>> {
+    return apiClient.get('/cars',
         {
             params: {
                 populate: populate?.join(','),

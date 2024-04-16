@@ -4,37 +4,36 @@ import {
     SocialMediaShare,
     ProductSpecification, PaginatedSlider, Tabs, Breadcrumb
 } from "@/components";
-import Link from "next/link";
 import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
 import {useQuery} from "@tanstack/react-query";
-import {getAllCarsApi} from "@/api";
-import {ApiResponseType, CarsType} from "@/types";
+import {ApiSingleResponseType, CarsType} from "@/types";
+import {getOneCarApi} from "@/api/car";
 
 export default function ProductDetail() {
 
-    //Todo create a apiCall function to get 1 car and use it instead of 'getAllCarsApi'
-
-    const {data: CarsData} = useQuery<ApiResponseType<CarsType>>({
-        queryKey: [getAllCarsApi.name, 'carsAllData'],
-        queryFn: () => getAllCarsApi({populate: ['*'], id: 1}),
+    const {data: CarData} = useQuery<ApiSingleResponseType<CarsType>>({
+        queryKey: [getOneCarApi.name, 'carsAllData'],
+        queryFn: () => getOneCarApi({populate: ['*'], id: 6 }),
     });
 
+    console.log('CarData:::', CarData)
+
     const tabsData = [
-        {title: 'Description', content: CarsData?.data.attributes.description},
-        {title: 'Discussion', content: CarsData?.data.attributes.discussion},
-        {title: 'Reviews', content: CarsData?.data.attributes.reviews},
+        {title: 'Description', content: CarData?.data.attributes?.description},
+        {title: 'Discussion', content: CarData?.data.attributes?.discussion},
+        {title: 'Reviews', content: CarData?.data.attributes?.reviews},
     ];
 
     return (
         <>
-            <Breadcrumb title={CarsData?.data.attributes.car_model.data.attributes.title}/>
+            {CarData && <Breadcrumb title={CarData.data.attributes?.car_model.data.attributes.title}/>}
 
             <Section>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10">
-                    {CarsData && <ProductAlbum data={CarsData?.data}/>}
+                    {CarData && <ProductAlbum data={CarData.data}/>}
                     <div>
-                        {CarsData && <ProductSpecification data={CarsData?.data}/>}
+                        {CarData && <ProductSpecification data={CarData.data}/>}
                         <SocialMediaShare/>
                     </div>
                 </div>
@@ -43,8 +42,8 @@ export default function ProductDetail() {
             <Section>
                 <div
                     className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
-                    <Tabs tabs={tabsData}/>
-                    {CarsData && <RatingCard rate={CarsData?.data.attributes.rate}/>}
+                    {CarData && <Tabs tabs={tabsData}/>}
+                    {CarData && <RatingCard rate={CarData?.data.attributes.rate}/>}
                 </div>
             </Section>
 
