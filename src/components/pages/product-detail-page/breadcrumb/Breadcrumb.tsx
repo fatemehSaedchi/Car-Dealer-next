@@ -10,7 +10,7 @@ export function Breadcrumb({data}: Props) {
         <div className={'container mx-auto px-4 py-8'}>
             <ul className={'flex flex-row text-sm lg:text-lg'}>
                 <li>
-                    <Link className={'text-primary-100 font-bold'} href="/public">Home</Link>
+                    <Link className={'text-primary-100 font-bold'} href="/">Home</Link>
                     <span className={'px-3 text-secondary-10'}>/</span>
                 </li>
                 <li>
