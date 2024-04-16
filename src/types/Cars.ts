@@ -27,7 +27,9 @@ export interface CarsType {
     car_class: {
         data: EntityType<ModelBrandClassType>
     }
-    car_brand: EntityType<ModelBrandClassType>
+    car_brand: {
+        data: EntityType<ModelBrandClassType>
+    }
     slides: PopulateType<SlideType>
     fuels: PopulateType<FuelTransitionType>
     transitions: PopulateType<FuelTransitionType>
