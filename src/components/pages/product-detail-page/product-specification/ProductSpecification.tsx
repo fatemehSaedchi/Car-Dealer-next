@@ -7,12 +7,12 @@ interface Props {
 }
 
 export function ProductSpecification({data}: Props) {
-    const formattedPrice = formatNumberWithCommas({number: data?.attributes?.price})
+    const formattedPrice = formatNumberWithCommas({number: data.attributes.price})
 
     return (
         <>
-            <h1 className="font-bold text-xl lg:text-3xl mb-3">{data.attributes?.car_model?.data?.attributes?.title}</h1>
-            <h4 className="text-sm text-secondary-50 mb-3 tracking-[3px] text-secondary-200">{data.attributes?.car_class?.data?.attributes?.title}</h4>
+            <h1 className="font-bold text-xl lg:text-3xl mb-3">{data.attributes.car_model.data.attributes.title}</h1>
+            <h4 className="text-sm text-secondary-50 mb-3 tracking-[3px] text-secondary-200">{data.attributes.car_class?.data?.attributes.title}</h4>
             <p className="w-10/12 max-w-md text-sm text-secondary-100 mb-5">{data.attributes?.excerpt}</p>
             <div className={"flex flex-col mb-5 lg:mb-10"}>
                 <CarFeatures data={data}/>

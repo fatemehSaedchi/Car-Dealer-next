@@ -14,20 +14,20 @@ export default function ProductDetail() {
 
     const {data: CarData} = useQuery<ApiSingleResponseType<CarsType>>({
         queryKey: [getOneCarApi.name, 'carsAllData'],
-        queryFn: () => getOneCarApi({populate: ['*'], id: 6 }),
+        queryFn: () => getOneCarApi({populate: ['*'], id: 2 }),
     });
 
     console.log('CarData:::', CarData)
 
     const tabsData = [
-        {title: 'Description', content: CarData?.data.attributes?.description},
-        {title: 'Discussion', content: CarData?.data.attributes?.discussion},
-        {title: 'Reviews', content: CarData?.data.attributes?.reviews},
+        {title: 'Description', content: CarData?.data.attributes.description},
+        {title: 'Discussion', content: CarData?.data.attributes.discussion},
+        {title: 'Reviews', content: CarData?.data.attributes.reviews},
     ];
 
     return (
         <>
-            {CarData && <Breadcrumb title={CarData.data.attributes?.car_model.data.attributes.title}/>}
+            {CarData && <Breadcrumb title={CarData.data.attributes.car_model.data.attributes.title}/>}
 
             <Section>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10">
@@ -43,7 +43,7 @@ export default function ProductDetail() {
                 <div
                     className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
                     {CarData && <Tabs tabs={tabsData}/>}
-                    {CarData && <RatingCard rate={CarData?.data.attributes.rate}/>}
+                    {CarData && <RatingCard rate={CarData.data.attributes.rate}/>}
                 </div>
             </Section>
 
