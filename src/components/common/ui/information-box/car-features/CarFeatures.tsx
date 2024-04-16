@@ -19,10 +19,10 @@ export function CarFeatures({data, marginBottom = 0}: Props) {
                     Passenger
                 </li>
                 <li className={'font-bold xl:text-lg'}>
-                    {data?.attributes.transitions.data[0].attributes?.type}
+                    {data?.attributes.transitions.data[0].attributes.type}
                 </li>
                 <li className={'font-bold xl:text-lg'}>
-                    {data?.attributes.fuels.data[0].attributes?.type}
+                    {data?.attributes.fuels.data[0].attributes.type}
                 </li>
                 <li className={'font-bold xl:text-lg'}>
                     {data?.attributes.passenger} Person

@@ -27,7 +27,7 @@ export default function ProductDetail() {
 
     return (
         <>
-            {CarData && <Breadcrumb title={CarData.data.attributes.car_model.data.attributes.title}/>}
+            {CarData && <Breadcrumb data={CarData.data}/>}
 
             <Section>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10">
