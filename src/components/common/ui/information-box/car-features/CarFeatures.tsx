@@ -5,8 +5,6 @@ interface Props {
 
 export function CarFeatures({data}: Props) {
 
-    //Todo fix transmission and fuel issue
-
     return (
         <>
             <ul className="grid grid-cols-3 justify-center text-center text-xs gap-y-5 xl:text-sm gap-x-8 xl:gap-x-11 pt-7">
@@ -20,10 +18,10 @@ export function CarFeatures({data}: Props) {
                     Passenger
                 </li>
                 <li>
-                    {data?.attributes.transitions.attributes?.type}
+                    {data?.attributes.transitions.data[0].attributes?.type}
                 </li>
                 <li>
-                    {data?.attributes.fuels.attributes?.type}
+                    {data?.attributes.fuels.data[0].attributes?.type}
                 </li>
                 <li>
                     {data?.attributes.passenger} Person
