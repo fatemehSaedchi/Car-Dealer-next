@@ -7,17 +7,22 @@ import {
 import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
 import {useQuery} from "@tanstack/react-query";
-import {ApiSingleResponseType, CarsType} from "@/types";
+import {ApiResponseType, ApiSingleResponseType, CarsType} from "@/types";
 import {getOneCarApi} from "@/api/car";
+import {getAllCarsApi} from "@/api";
 
 export default function ProductDetail() {
 
     const {data: CarData} = useQuery<ApiSingleResponseType<CarsType>>({
         queryKey: [getOneCarApi.name, 'carsAllData'],
-        queryFn: () => getOneCarApi({populate: ['*'], id: 2 }),
+        queryFn: () => getOneCarApi({populate: ['*'], id: 15 }),
     });
 
-    console.log('CarData:::', CarData)
+    const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>({queryKey:[getAllCarsApi.name], queryFn:()=>getAllCarsApi({
+            populate: ['*'],
+            filters:{dealCount: {$notNull: true}}
+        })})
+
 
     const tabsData = [
         {title: 'Description', content: CarData?.data.attributes.description},
@@ -56,7 +61,7 @@ export default function ProductDetail() {
                     elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <div className="h-fit w-4/5 sm:w-full pt-10 self-center">
-                    <PaginatedSlider sliderData={TopDealsCarsMock}/>
+                    { topDealsProduct && <PaginatedSlider sliderData={topDealsProduct}/>}
                 </div>
             </Section>
         </>
