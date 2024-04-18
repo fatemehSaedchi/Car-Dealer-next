@@ -15,7 +15,7 @@ export default function ProductDetail() {
 
     const {data: CarData} = useQuery<ApiSingleResponseType<CarsType>>({
         queryKey: [getOneCarApi.name, 'carsAllData'],
-        queryFn: () => getOneCarApi({populate: ['*'], id: 15 }),
+        queryFn: () => getOneCarApi({populate: ['*'], id: 16 }),
     });
 
     const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>({queryKey:[getAllCarsApi.name], queryFn:()=>getAllCarsApi({
