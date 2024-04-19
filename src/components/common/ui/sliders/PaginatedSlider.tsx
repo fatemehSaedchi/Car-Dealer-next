@@ -1,12 +1,13 @@
 import {PaginatedSliderCard} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper/modules";
-
+import {CarsType, EntityType} from "@/types";
 
 interface Props {
-    sliderData: Array<any>
+    sliderData: {
+        data: Array<EntityType<CarsType>>
+    }
 }
-
 
 export function PaginatedSlider({sliderData}: Props) {
 
@@ -33,7 +34,7 @@ export function PaginatedSlider({sliderData}: Props) {
                 }}
             >
 
-                {sliderData.map((value, index: number)=>{
+                {sliderData.data.map((value: EntityType<CarsType>, index: number)=>{
                     return(
                         <>
                         <SwiperSlide key={index} className={'relative rounded-[30px] overflow-hidden'}>

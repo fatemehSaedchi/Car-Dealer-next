@@ -2,6 +2,8 @@ import Link from "next/link";
 import {IconBox} from "@/components";
 
 export function SocialMedia() {
+
+    //Todo fix linkedin icon issue . It isn't displayed
     return (
         <ul className="flex gap-3">
             <li>

@@ -1,9 +1,5 @@
-// todo replace mock data with api
-
 import Link from "next/link";
-import {useQuery} from "@tanstack/react-query";
-import {getMenusApiCall} from "@/api/menu";
-import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
+import {EntityType} from "@/types";
 import {MenuItemType} from "@/types/MenuItem";
 import React, {Dispatch, SetStateAction, MouseEvent, useEffect} from "react";
 import {useMenu} from "@/hooks/use-menu";
