@@ -11,7 +11,7 @@ import {
     VerticalSlider,
     PaginatedSlider, ServicesList, PopularBrands
 } from "@/components";
-import {ServicesMock, VerticalSliderMock, TopDealsCarsMock} from "@/mock";
+import {ServicesMock, VerticalSliderMock} from "@/mock";
 import {useQuery} from "@tanstack/react-query";
 import {getAllCarsApi} from "@/api";
 import {getAllBrandsApi} from "@/api/brands";
