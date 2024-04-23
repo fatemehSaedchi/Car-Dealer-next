@@ -50,6 +50,11 @@ export default function Home() {
         }
     )
 
+    const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>({queryKey:[getAllCarsApi.name], queryFn:()=>getAllCarsApi({
+            populate: ['*'],
+            filters:{dealCount: {$notNull: true}}
+        })})
+
     return (
 
         <>
@@ -182,7 +187,7 @@ export default function Home() {
                 </p>
                 <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">
 
-                    <PaginatedSlider sliderData={TopDealsCarsMock}/>
+                    {topDealsProduct && <PaginatedSlider sliderData={topDealsProduct}/>}
 
                 </div>
             </Section>

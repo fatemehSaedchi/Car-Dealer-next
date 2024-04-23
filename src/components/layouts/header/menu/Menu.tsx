@@ -1,26 +1,15 @@
-// todo replace mock data with api
-
 import Link from "next/link";
-import {useQuery} from "@tanstack/react-query";
-import {getMenusApiCall} from "@/api/menu";
-import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
+import {EntityType} from "@/types";
 import {MenuItemType} from "@/types/MenuItem";
 import React, {Dispatch, SetStateAction, MouseEvent, useEffect} from "react";
+import {useMenu} from "@/hooks/use-menu";
 
 interface Props {
     showMobileMenu : boolean,
     setShowMobileMenu : Dispatch<SetStateAction<boolean>>
 }
 export function Menu({showMobileMenu,setShowMobileMenu}: Props) {
-    const {data: menusData} = useQuery<ApiResponseType<MenuType>>({queryKey:[getMenusApiCall.name], queryFn:()=> getMenusApiCall()})
-    let mainMenuItems: PopulateType<MenuItemType> | null = null
-    if (menusData) {
-        const mainMenu = menusData.data.filter((item : EntityType<MenuType>)=> item.attributes.title === 'main menu');
-
-        if(mainMenu){
-            mainMenuItems = mainMenu[0].attributes.menu_items
-        }
-    }
+    const{data: mainMenuItems} = useMenu({title: 'main menu'})
 
     const closeMobileMenuHandler = ()=>{
         setShowMobileMenu(false)
