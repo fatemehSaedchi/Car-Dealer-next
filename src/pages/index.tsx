@@ -91,6 +91,8 @@ export default function Home() {
                         </div>
                         {
                             //todo fix the SearchBox component
+                            //todo mix the serchBox and filter component toghther
+                            //todo use useRouter for pass th data instead of the link
                         }
                         <SearchBox className={'mb-10'}/>
 
