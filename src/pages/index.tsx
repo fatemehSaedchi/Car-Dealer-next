@@ -11,7 +11,7 @@ import {
     VerticalSlider,
     PaginatedSlider, ServicesList, PopularBrands
 } from "@/components";
-import {ServicesMock, VerticalSliderMock, TopDealsCarsMock} from "@/mock";
+import {ServicesMock, VerticalSliderMock} from "@/mock";
 import {useQuery} from "@tanstack/react-query";
 import {getAllCarsApi} from "@/api";
 import {getAllBrandsApi} from "@/api/brands";
@@ -96,8 +96,6 @@ export default function Home() {
                         </div>
                         {
                             //todo fix the SearchBox component
-                            //todo mix the serchBox and filter component toghther
-                            //todo use useRouter for pass th data instead of the link
                         }
                         <SearchBox className={'mb-10'}/>
 
