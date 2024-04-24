@@ -4,7 +4,7 @@ import Link from 'next/link';
 interface Props {
     title?: string;
 }
-
+// Todo resolve the '/' issue. it doesn't displayed on ui
 export function Breadcrumb({ title }: Props) {
     const router = useRouter();
     const pathSegments = router.asPath.split('/').filter(segment => segment.trim() !== '');
