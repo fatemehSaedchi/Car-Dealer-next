@@ -24,7 +24,7 @@ export default function ProductDetail() {
 
     return (
         <>
-            {CarData && <Breadcrumb data={CarData.data}/>}
+            {CarData && <Breadcrumb title={CarData.data.attributes.title}/>}
             <Section>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10">
                     {CarData && <ProductAlbum data={CarData.data}/>}
@@ -37,7 +37,7 @@ export default function ProductDetail() {
             <Section>
                 <div
                     className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
-                    {CarData && <Tabs tabs={tabsData}/>}
+                    {CarData &&  <Tabs tabs={tabsData}/>}
                     {CarData && <RatingCard rate={CarData.data.attributes.rate}/>}
                 </div>
             </Section>

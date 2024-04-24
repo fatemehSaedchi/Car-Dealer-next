@@ -1,29 +1,36 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import {CarsType, EntityType} from "@/types";
 
 interface Props {
-    data: EntityType<CarsType>
+    title?: string;
 }
 
-export function Breadcrumb({data}: Props) {
+export function Breadcrumb({ title }: Props) {
+    const router = useRouter();
+    const pathSegments = router.asPath.split('/').filter(segment => segment.trim() !== '');
+
     return (
-        <div className={'container mx-auto px-4 py-8'}>
-            <ul className={'flex flex-row text-sm lg:text-lg'}>
-                <li>
-                    <Link className={'text-primary-100 font-bold'} href="/">Home</Link>
-                    <span className={'px-3 text-secondary-10'}>/</span>
-                </li>
-                <li>
-                    <Link className={'text-primary-100 font-bold'} href="#">Services</Link>
-                    <span className={'px-3 text-secondary-10'}>/</span>
-                </li>
-                <li className={'text-secondary-200'}>
-                    {data.attributes.car_brand.data.attributes.title}
-                </li>
-                <li className={'text-secondary-200 ml-1'}>
-                    {data.attributes.car_model.data.attributes.title}
-                </li>
-            </ul>
+        <div className="container px-4 mx-auto">
+            <nav aria-label="Breadcrumb">
+                <ol className="flex flex-row gap-5">
+                    <li>
+                        <Link href="/">Home</Link>
+                    </li>
+                    {pathSegments.map((segment, index) => {
+                        const routeTo = `/${pathSegments.slice(0, index + 1).join('/')}`;
+                        const isLast = index === pathSegments.length - 1;
+                        return (
+                            <li key={segment}>
+                                {title ? (
+                                    isLast ? <span>{title}</span> : <Link href={routeTo}><a>{title}</a></Link>
+                                ) : (
+                                    isLast ? <span>{segment}</span> : <Link href={routeTo}><a>{segment}</a></Link>
+                                )}
+                            </li>
+                        );
+                    })}
+                </ol>
+            </nav>
         </div>
     );
 }
