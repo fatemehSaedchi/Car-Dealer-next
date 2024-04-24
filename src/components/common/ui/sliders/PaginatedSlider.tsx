@@ -1,25 +1,26 @@
 import {PaginatedSliderCard} from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination} from "swiper/modules";
-import {CarsType, EntityType} from "@/types";
+import {ApiResponseType, CarsType, EntityType} from "@/types";
+import {useQuery} from "@tanstack/react-query";
+import {getAllCarsApi} from "@/api";
 
-interface Props {
-    sliderData: {
-        data: Array<EntityType<CarsType>>
-    }
-}
+export function PaginatedSlider() {
 
-export function PaginatedSlider({sliderData}: Props) {
+    const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>({queryKey:[getAllCarsApi.name], queryFn:()=>getAllCarsApi({
+            populate: ['*'],
+            filters:{dealCount: {$notNull: true}}
+        })})
 
     return (
         <>
-
             <Swiper
                 modules={[Pagination,Autoplay]}
                 className="mySwiper rounded-[30px]"
                 pagination={{
                     clickable: true
                 }}
+                loop={true}
                 slidesPerView={1}
                 autoplay={true}
                 breakpoints={{
@@ -33,8 +34,9 @@ export function PaginatedSlider({sliderData}: Props) {
                     }
                 }}
             >
-
-                {sliderData.data.map((value: EntityType<CarsType>, index: number)=>{
+                {
+                    topDealsProduct &&
+                    topDealsProduct.data.map((value: EntityType<CarsType>, index: number)=>{
                     return(
                         <>
                         <SwiperSlide key={index} className={'relative rounded-[30px] overflow-hidden'}>

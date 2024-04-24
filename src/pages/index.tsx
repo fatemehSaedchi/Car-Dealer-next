@@ -186,9 +186,7 @@ export default function Home() {
                     elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">
-
-                    {topDealsProduct && <PaginatedSlider sliderData={topDealsProduct}/>}
-
+                    <PaginatedSlider/>
                 </div>
             </Section>
 

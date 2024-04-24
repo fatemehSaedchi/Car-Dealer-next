@@ -4,12 +4,10 @@ import {
     SocialMediaShare,
     ProductSpecification, PaginatedSlider, Tabs, Breadcrumb
 } from "@/components";
-import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
 import {useQuery} from "@tanstack/react-query";
-import {ApiResponseType, ApiSingleResponseType, CarsType} from "@/types";
+import {ApiSingleResponseType, CarsType} from "@/types";
 import {getOneCarApi} from "@/api/car";
-import {getAllCarsApi} from "@/api";
 
 export default function ProductDetail() {
 
@@ -17,12 +15,6 @@ export default function ProductDetail() {
         queryKey: [getOneCarApi.name, 'carsAllData'],
         queryFn: () => getOneCarApi({populate: ['*'], id: 16 }),
     });
-
-    const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>({queryKey:[getAllCarsApi.name], queryFn:()=>getAllCarsApi({
-            populate: ['*'],
-            filters:{dealCount: {$notNull: true}}
-        })})
-
 
     const tabsData = [
         {title: 'Description', content: CarData?.data.attributes.description},
@@ -33,7 +25,6 @@ export default function ProductDetail() {
     return (
         <>
             {CarData && <Breadcrumb data={CarData.data}/>}
-
             <Section>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10">
                     {CarData && <ProductAlbum data={CarData.data}/>}
@@ -43,7 +34,6 @@ export default function ProductDetail() {
                     </div>
                 </div>
             </Section>
-
             <Section>
                 <div
                     className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
@@ -51,7 +41,6 @@ export default function ProductDetail() {
                     {CarData && <RatingCard rate={CarData.data.attributes.rate}/>}
                 </div>
             </Section>
-
             <Section className="flex flex-col 2xl:px-32">
                 <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl pb-3">
                     Top deals of the week
@@ -61,7 +50,7 @@ export default function ProductDetail() {
                     elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <div className="h-fit w-4/5 sm:w-full pt-10 self-center">
-                    { topDealsProduct && <PaginatedSlider sliderData={topDealsProduct}/>}
+                    <PaginatedSlider/>
                 </div>
             </Section>
         </>
