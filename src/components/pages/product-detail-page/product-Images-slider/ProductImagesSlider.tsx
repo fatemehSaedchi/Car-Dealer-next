@@ -1,7 +1,7 @@
 import {ProductImagesCard} from "@/components";
 import {CarsType, EntityType} from "@/types";
 import {Swiper, SwiperSlide} from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import {FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import {useRef,useState} from "react";
 
 
@@ -18,7 +18,7 @@ export function ProductImagesSlider({data}: Props) {
                 <Swiper
                     className="thumbnail-slider mySwiper2"
                     loop={true}
-                    modules={[Navigation, Thumbs]}
+                    modules={[Navigation, Thumbs, FreeMode]}
                     navigation={true}
                     thumbs={{swiper: thumbsSwiper}}
                     slidesPerView={1}
@@ -47,7 +47,7 @@ export function ProductImagesSlider({data}: Props) {
                     loop={true}
                     freeMode={true}
                     watchSlidesProgress={true}
-                    modules={[Navigation, Thumbs]}
+                    modules={[Navigation, Thumbs, FreeMode]}
                     slidesPerView={4}
                     spaceBetween={20}
                     autoplay={true}
