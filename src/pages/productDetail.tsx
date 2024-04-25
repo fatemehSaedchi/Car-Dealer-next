@@ -1,8 +1,5 @@
 import {
-    ProductAlbum,
-    Section,
-    SocialMediaShare,
-    ProductSpecification, PaginatedSlider, Tabs, Breadcrumb
+    Section, SocialMediaShare, ProductSpecification, PaginatedSlider, Tabs, Breadcrumb, ProductImagesSlider
 } from "@/components";
 import {RatingCard} from "@/components";
 import {useQuery} from "@tanstack/react-query";
@@ -27,7 +24,7 @@ export default function ProductDetail() {
             {CarData && <Breadcrumb title={CarData.data.attributes.title}/>}
             <Section>
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-10">
-                    {CarData && <ProductAlbum data={CarData.data}/>}
+                    {CarData && <ProductImagesSlider data={CarData.data}/>}
                     <div>
                         {CarData && <ProductSpecification data={CarData.data}/>}
                         <SocialMediaShare/>
