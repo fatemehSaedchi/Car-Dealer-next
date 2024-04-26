@@ -3,8 +3,11 @@ import '@/styles/icons.css'
 
 import 'swiper/css'
 import "swiper/css/autoplay"
+import 'swiper/css/free-mode';
 import "swiper/css/navigation"
 import 'swiper/css/pagination'
+import 'swiper/css/thumbs'
+
 
 import type { AppProps } from "next/app";
 import {Layout} from "@/components";
