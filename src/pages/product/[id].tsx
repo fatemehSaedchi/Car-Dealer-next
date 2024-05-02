@@ -31,7 +31,7 @@ export default function Id() {
 
     useEffect(
     ()=>{
-        refetch()
+        refetch().then()
     },[{id}])
 
 
