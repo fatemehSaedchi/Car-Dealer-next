@@ -1,13 +1,33 @@
 // todo replace mock data with api
 
 import {HeroSection, OurTeam, Section, Map, ServicesList} from "@/components";
-import {TeamMembersMock, ServicesMock} from "@/mock";
+import {useQuery} from "@tanstack/react-query";
+import {ApiResponseType, ServicesType, TeamMemberType} from "@/types";
+import {getAllServicesApi, getAllTeamMembersApi} from "@/api";
 
 interface Props {
 
 }
 
 export default function About({}: Props) {
+
+    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
+        {
+            queryKey: [getAllServicesApi.name + 'all'],
+            queryFn: () => getAllServicesApi({
+                populate: ['*'],
+            })
+        })
+
+    const {data: TeamData} = useQuery<ApiResponseType<TeamMemberType>>(
+        {
+            queryKey: [getAllTeamMembersApi.name + 'all'],
+            queryFn: () => getAllTeamMembersApi({
+                populate: ['*'],
+            })
+        })
+
+
     return (
         <>
             <HeroSection title={'About Mobhil'}/>
@@ -26,7 +46,10 @@ export default function About({}: Props) {
                     </p>
                 </div>
                 <div className="flex flex-wrap pt-7 md:pt-11">
-                    <ServicesList data={ServicesMock} className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"} cardNumber={4} topBar={true}/>
+                    {
+                        servicesData &&
+                        <ServicesList data={servicesData} className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"} cardNumber={4} topBar={true}/>
+                    }
                 </div>
             </Section>
             <Map className={'mb-10 lg:mb-28'}/>
@@ -41,7 +64,10 @@ export default function About({}: Props) {
                         laboris nisi ut aliquip ex ea.
                     </p>
                 </div>
-                <OurTeam data={TeamMembersMock}/>
+                {
+                    TeamData &&
+                    <OurTeam data={TeamData}/>
+                }
             </Section>
         </>
     )

@@ -1,7 +1,7 @@
 
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Navigation} from "swiper/modules";
-import {NavigatedSliderCard} from "@/components";
+import {TrendingSliderCard} from "@/components";
 import {ApiResponseType, CarsType} from "@/types";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 }
 
-export function NavigatedSlider({sliderData, nextEl, prevEl}: Props) {
+export function TrendingSlider({sliderData, nextEl, prevEl}: Props) {
     return (
 
         <Swiper
@@ -28,7 +28,7 @@ export function NavigatedSlider({sliderData, nextEl, prevEl}: Props) {
                 sliderData.data.map((value, index)=>{
                     return(
                         <SwiperSlide key={index} className={'relative'}>
-                            <NavigatedSliderCard data={value}/>
+                            <TrendingSliderCard data={value}/>
                         </SwiperSlide>
                     )
                 })

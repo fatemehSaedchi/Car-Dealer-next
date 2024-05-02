@@ -19,7 +19,7 @@ export function Tabs({ tabs } : TabsComponentProps) {
             <div className="flex">
                 {tabs.map((tab, index) => {
                     let Tab = <div key={index}
-                                   className={`text-secondary-10 ${index === activeTab ? 'text-secondary-400 font-bold' : ''}`}
+                                   className={`text-secondary-10 ${index === activeTab ? 'text-secondary-400 font-bold' : ''} cursor-pointer`}
                                    onClick={() => handleTabClick(index)}>
                         {tab.title}
                     </div>

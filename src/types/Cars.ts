@@ -1,8 +1,4 @@
-import {EntityType, PopulateType} from "@/types/Response";
-import {ImageType} from "@/types/Image";
-import {ModelBrandClassType} from "@/types/CarModelBrandClass";
-import {SlideType} from "@/types/Slide";
-import {FuelTransitionType} from "@/types/FuelAndTransmission";
+import {EntityType, PopulateType, ImageType, ModelBrandClassType, FuelTransitionType} from "@/types";
 
 export interface CarsType {
     excerpt: string
@@ -30,7 +26,6 @@ export interface CarsType {
     car_brand: {
         data: EntityType<ModelBrandClassType>
     }
-    slides: PopulateType<SlideType>
     fuels: PopulateType<FuelTransitionType>
     transitions: PopulateType<FuelTransitionType>
 }

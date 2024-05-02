@@ -1,19 +1,21 @@
 import {ServicesCard} from "@/components";
 import {twMerge} from "tailwind-merge";
+import {ApiResponseType} from "@/types";
+import {ServicesType} from "@/types/Services";
 
 interface Props {
-    data: Array<any>
+    data: ApiResponseType<ServicesType>
     cardNumber?: number
     start?: number
     className?: string
     topBar?: boolean
 }
 
-export function ServicesList({data, cardNumber = 3, start = 0, className, topBar = false}: Props) {
+export function ServicesList({data, cardNumber = 3, className, topBar = false}: Props) {
     return (
         <>
             {
-                data.slice(start, cardNumber).map((service, index) => {
+                data.data.map((value , index) => {
                     return (
                         <div
                             className={twMerge("basis-1/3 flex flex-col justify-center items-center shadow-Xl rounded-2xl bg-white", className)}>
@@ -27,11 +29,11 @@ export function ServicesList({data, cardNumber = 3, start = 0, className, topBar
                                             <div style={{backgroundColor: `rgba(13,61,229,${(1/cardNumber)*(index+1)})`}}
                                                 className="absolute top-[-5px] right-[-15px] w-[15px] h-[15px] rounded-full"></div>
                                         </div>
-                                        <ServicesCard key={index} data={service}/>
+                                        <ServicesCard key={index} data={value}/>
                                     </>
                                     :
                                     <div className={"w-4/5 py-5 lg:py-8"}>
-                                        <ServicesCard key={index} data={service}/>
+                                        <ServicesCard key={index} data={value}/>
                                     </div>
                             }
 

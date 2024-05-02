@@ -6,9 +6,9 @@ interface Props {
     data: EntityType<CarsType>
 }
 
-export function NavigatedSliderCard({data}: Props) {
+export function TrendingSliderCard({data}: Props) {
     return (
-        <Link href={`/productsDetail/${data.id}`}>
+        <Link href={`/product/${data.id}`}>
                 <ImageView height={data.attributes.thumbnail.data.attributes.height} width={data.attributes.thumbnail.data.attributes.width} classname="rounded-bl-[100px] h-96 lg:h-[700px] w-full"
                      src={data.attributes.thumbnail.data.attributes.url ? data.attributes.thumbnail.data.attributes.url : ''} alt={data.attributes.title}/>
             <div className="w-9/12 absolute mx-auto left-0 right-0 top-9 sm:top-12 ">

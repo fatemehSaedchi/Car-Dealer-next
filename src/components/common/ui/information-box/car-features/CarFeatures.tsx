@@ -1,6 +1,5 @@
-import {CarsType, EntityType} from "@/types";
 interface Props {
-    data: EntityType<CarsType>
+    data: any
     marginBottom?: number
 }
 

@@ -4,18 +4,23 @@ import {
     SocialMediaShare,
     ProductSpecification, PaginatedSlider, Tabs, Breadcrumb
 } from "@/components";
-import {TopDealsCarsMock} from "@/mock";
 import {RatingCard} from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {ApiResponseType, ApiSingleResponseType, CarsType} from "@/types";
 import {getOneCarApi} from "@/api/car";
 import {getAllCarsApi} from "@/api";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
 
-export default function ProductDetail() {
+export default function Id() {
 
-    const {data: CarData} = useQuery<ApiSingleResponseType<CarsType>>({
-        queryKey: [getOneCarApi.name, 'carsAllData'],
-        queryFn: () => getOneCarApi({populate: ['*'], id: 16 }),
+    const router = useRouter()
+
+    const {id} = router.query
+
+    const {data: CarData, refetch } = useQuery<ApiSingleResponseType<CarsType>>({
+        queryKey: [getOneCarApi.name, 'singleData'],
+        queryFn: () => getOneCarApi({populate: ['*'], id: id }),
     });
 
     const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>({queryKey:[getAllCarsApi.name], queryFn:()=>getAllCarsApi({
@@ -24,11 +29,19 @@ export default function ProductDetail() {
         })})
 
 
-    const tabsData = [
-        {title: 'Description', content: CarData?.data.attributes.description},
-        {title: 'Discussion', content: CarData?.data.attributes.discussion},
-        {title: 'Reviews', content: CarData?.data.attributes.reviews},
-    ];
+    useEffect(
+    ()=>{
+        refetch()
+    },[{id}])
+
+
+            const tabsData = [
+                {title: 'Description', content: CarData?.data.attributes.description},
+                {title: 'Discussion', content: CarData?.data.attributes.discussion},
+                {title: 'Reviews', content: CarData?.data.attributes.reviews},
+            ]
+
+
 
     return (
         <>
