@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import {
-    NavigatedSlider,
+    TrendingSlider,
     SearchBox,
     Section,
     ImageView,
@@ -11,11 +11,9 @@ import {
     VerticalSlider,
     PaginatedSlider, ServicesList, PopularBrands
 } from "@/components";
-import {ServicesMock, VerticalSliderMock} from "@/mock";
 import {useQuery} from "@tanstack/react-query";
-import {getAllCarsApi} from "@/api";
-import {getAllBrandsApi} from "@/api/brands";
-import {ApiResponseType, CarsType} from "@/types";
+import {getAllCarsApi, getAllBrandsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
+import {ApiResponseType, CarsType, AlbumType, ServicesType} from "@/types";
 
 export default function Home() {
 
@@ -29,6 +27,7 @@ export default function Home() {
             })
         }
     )
+
     const {data: trendingCarData} = useQuery<ApiResponseType<CarsType>>(
         {
             queryKey: [getAllCarsApi.name + ' trendingCarData'],
@@ -50,10 +49,38 @@ export default function Home() {
         }
     )
 
-    const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>({queryKey:[getAllCarsApi.name], queryFn:()=>getAllCarsApi({
-            populate: ['*'],
-            filters:{dealCount: {$notNull: true}}
-        })})
+    const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>(
+        {
+            queryKey: [getAllCarsApi.name + " topDealsCars"],
+            queryFn: () => getAllCarsApi({
+                populate: ['*'],
+                filters: {dealCount: {$notNull: true}}
+            })
+        })
+
+    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
+        {
+            queryKey: [getAllServicesApi.name + '3 of'],
+            queryFn: () => getAllServicesApi({
+                populate: ['*'],
+                pagination: {
+                    pageSize: 3
+                }
+            })
+        })
+
+    const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
+        {
+            queryKey: [getAllAlbumsApi.name],
+            queryFn: () => getAllAlbumsApi({
+                populate: ['*'],
+                filters: {
+                    title: {$eq: 'classicCars'}
+                }
+            })
+        })
+
+
 
     return (
 
@@ -65,8 +92,8 @@ export default function Home() {
                     <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
                         {
                             trendingCarData &&
-                            <NavigatedSlider sliderData={trendingCarData} nextEl={".swiper-button-next"}
-                                             prevEl={".swiper-button-prev"}/>
+                            <TrendingSlider sliderData={trendingCarData} nextEl={".swiper-button-next"}
+                                            prevEl={".swiper-button-prev"}/>
                         }
                         <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div>
@@ -80,7 +107,7 @@ export default function Home() {
                             </button>
                             {
                                 trendingCarData &&
-                                <Link href={`/productsDetails/${trendingCarData.data[0].id}`}
+                                <Link href={`/product/${trendingCarData.data[0].id}`}
                                       className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-lg font-bold hover:bg-yellow-100 rounded-full">
                                     {trendingCarData.data[0].attributes.title}
                                 </Link>
@@ -96,7 +123,6 @@ export default function Home() {
                         </div>
                         {
                             //todo fix the SearchBox component
-                            //todo mix the serchBox and filter component toghther
                             //todo use useRouter for pass th data instead of the link
                         }
                         <SearchBox className={'mb-10'}/>
@@ -126,8 +152,11 @@ export default function Home() {
                 <div className="flex flex-col lg:items-end gap-9 2xl:gap-16">
                     <div
                         className="sm:w-11/12 lg:w-[70%] order-1 lg:order-2 flex flex-row pt-80 lg:pt-0 gap-2.5 sm:gap-5 justify-between self-end 2xl:pr-24">
+                        {
+                            servicesData &&
 
-                        <ServicesList data={ServicesMock}/>
+                            <ServicesList data={servicesData}/>
+                        }
 
                     </div>
                     <div className="w-full lg:w-3/5 order-2 lg:order-1 lg:pl-16">
@@ -171,8 +200,11 @@ export default function Home() {
                         </Link>
                     </div>
                     <div className="w-full lg:basis-1/2 order-1 lg:order-2 h-72 lg:h-96 2xl:pr-12">
-                        <VerticalSlider sliderData={VerticalSliderMock}
-                                        sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                        {
+                            AlbumData &&
+                            <VerticalSlider data={AlbumData}
+                                         sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                        }
                     </div>
                 </div>
             </Section>
@@ -196,8 +228,11 @@ export default function Home() {
                                classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
                     <div className="w-full lg:basis-1/2 h-72 lg:h-96">
 
-                        <VerticalSlider sliderData={VerticalSliderMock}
-                                        sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                        {
+                            AlbumData &&
+                            <VerticalSlider data={AlbumData}
+                                         sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                        }
 
                     </div>
                     <div className="w-full lg:basis-1/2 pt-9">

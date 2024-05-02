@@ -1,14 +1,21 @@
 import {ImageView} from "@/components";
+import {EntityType, ImageType} from "@/types";
 
 interface Props {
-    data: any
+    data: EntityType<ImageType>
 }
 
 export function VerticalSliderCard({data}: Props) {
+
+    console.log(data)
+
     return (
         <>
-            <ImageView height={1920} width={1280} classname="object-cover object-center h-full"
-                       src={data} alt=""/>
+            {
+                data &&
+                <ImageView height={1920} width={1080} classname="object-cover object-center h-full"
+                           src={data.attributes.url} alt={""}/>
+            }
         </>
     )
 }

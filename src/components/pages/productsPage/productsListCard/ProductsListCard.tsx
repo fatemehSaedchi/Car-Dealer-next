@@ -30,7 +30,7 @@ export function ProductsListCard({data, className}: Props) {
                         className="px-4 py-2 bg-primary-100 rounded-[30px] text-base font-semibold text-white absolute top-[45%] right-5 z-50">
                         $ {data.attributes.price}
                     </span>
-                    <CarFeatures item={data.attributes}/>
+                    <CarFeatures data={data.attributes}/>
                 </div>
             </div>
         </>

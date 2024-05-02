@@ -1,6 +1,6 @@
 import {IconBox, Logo, Menu, PhoneButton} from "@/components";
 import {useState, MouseEvent} from "react";
-import {useOverlay} from "@/hooks/use-overlay";
+import {useOverlay} from "@/hooks";
 
 export function Header() {
     const [showMobileMenu,setShowMobileMenu] = useState(false)

@@ -1,2 +1,2 @@
-export * from './NavigatedSlider'
+export * from './TrendingSlider'
 export * from './VerticalSlider'

@@ -1,6 +1,7 @@
 import {CarFeatures, ImageView} from "@/components";
 import {CarsType, EntityType} from "@/types";
 import {formatNumberWithCommas} from "@/utils/formatNumber";
+import Link from "next/link";
 
 interface Props {
     data: EntityType<CarsType>,
@@ -9,8 +10,8 @@ interface Props {
 export function PaginatedSliderCard({data}: Props) {
     const formattedPrice = formatNumberWithCommas({number: data.attributes.price})
     return (
-        <>
-                <ImageView height={1920} width={2880}
+        <Link href={`product/${data.id}`}>
+                <ImageView height={1920} width={1080}
                            classname="rounded-[30px] h-[435px] xl:h-[495px] "
                            src={data.attributes.thumbnail.data.attributes.url} alt={data.attributes.thumbnail.data.attributes.name}/>
                 <div className="absolute top-8 md:top-9 xl:top-11 left-6 xl:left-10 text-white flex flex-col items-start">
@@ -26,6 +27,6 @@ export function PaginatedSliderCard({data}: Props) {
                     </button>
                     <CarFeatures data={data}/>
                 </div>
-        </>
+        </Link>
     )
 }

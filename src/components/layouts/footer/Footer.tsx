@@ -1,10 +1,5 @@
-import {ContactBox, FooterMenu, IconBox, ImageView, Logo, PhoneButton, SocialMedia} from "@/components";
-import Link from "next/link";
-import {useQuery} from "@tanstack/react-query";
-import {ApiResponseType, EntityType, MenuType, PopulateType} from "@/types";
-import {getMenusApiCall} from "@/api/menu";
-import {MenuItemType} from "@/types/MenuItem";
-import {useMenu} from "@/hooks/use-menu";
+import {ContactBox, FooterMenu, ImageView, Logo, PhoneButton, SocialMedia} from "@/components";
+import {useMenu} from "@/hooks";
 
 export function Footer() {
 

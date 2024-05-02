@@ -1,5 +1,4 @@
-import {CarsType} from "@/types/Cars";
-import {PopulateType} from "@/types/Response";
+import {CarsType, PopulateType} from "@/types";
 
 export interface FuelTransitionType {
     type: string

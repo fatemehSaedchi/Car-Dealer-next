@@ -1,8 +1,7 @@
 import Link from "next/link";
-import {EntityType} from "@/types";
-import {MenuItemType} from "@/types/MenuItem";
+import {EntityType, MenuItemType} from "@/types";
 import React, {Dispatch, SetStateAction, MouseEvent, useEffect} from "react";
-import {useMenu} from "@/hooks/use-menu";
+import {useMenu} from "@/hooks";
 
 interface Props {
     showMobileMenu : boolean,
