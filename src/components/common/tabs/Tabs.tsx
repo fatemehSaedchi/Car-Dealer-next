@@ -1,8 +1,8 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 interface Tabs {
     title: string;
-    content: string | undefined
+    content: React.ReactNode
 }
 
 interface TabsComponentProps {
