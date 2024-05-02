@@ -1,5 +1,5 @@
 import {
-    Section, SocialMediaShare, ProductSpecification, PaginatedSlider, Tabs, Breadcrumb, ProductImagesSlider
+    Section, SocialMediaShare, ProductSpecification, PaginatedSlider, Breadcrumb, ProductImagesSlider, Tabs,
 } from "@/components";
 import {RatingCard} from "@/components";
 import {useQuery} from "@tanstack/react-query";
@@ -35,6 +35,7 @@ export default function ProductDetail() {
                 <div
                     className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
                     {CarData &&  <Tabs tabs={tabsData}/>}
+                    {/*{CarData &&  <Tabs tabs={tabsData}/>}*/}
                     {CarData && <RatingCard rate={CarData.data.attributes.rate}/>}
                 </div>
             </Section>

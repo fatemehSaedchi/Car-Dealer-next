@@ -1,12 +1,12 @@
 import {useState} from "react";
 
-interface Tab {
-    title: string | undefined;
-    content: string | undefined;
+interface Tabs {
+    title: string;
+    content: string | undefined
 }
 
 interface TabsComponentProps {
-    tabs: Tab[];
+    tabs: Tabs[];
 }
 
 export function Tabs({tabs}: TabsComponentProps) {
@@ -43,3 +43,4 @@ export function Tabs({tabs}: TabsComponentProps) {
         </div>
     );
 }
+
