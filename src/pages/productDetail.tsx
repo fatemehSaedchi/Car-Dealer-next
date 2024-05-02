@@ -1,5 +1,14 @@
 import {
-    Section, SocialMediaShare, ProductSpecification, PaginatedSlider, Breadcrumb, ProductImagesSlider, Tabs,
+    Section,
+    SocialMediaShare,
+    ProductSpecification,
+    PaginatedSlider,
+    Breadcrumb,
+    ProductImagesSlider,
+    Tabs,
+    ProductDescription,
+    ProductDiscussion,
+    ProductReviews
 } from "@/components";
 import {RatingCard} from "@/components";
 import {useQuery} from "@tanstack/react-query";
@@ -14,9 +23,9 @@ export default function ProductDetail() {
     });
 
     const tabsData = [
-        {title: 'Description', content: CarData?.data.attributes.description},
-        {title: 'Discussion', content: CarData?.data.attributes.discussion},
-        {title: 'Reviews', content: CarData?.data.attributes.reviews},
+        {title: 'Description', content: <ProductDescription data={CarData?.data.attributes.description}/>},
+        {title: 'Discussion', content: <ProductDiscussion data={CarData?.data.attributes.discussion}/>},
+        {title: 'Reviews', content: <ProductReviews data={CarData?.data.attributes.reviews}/>},
     ];
 
     return (
@@ -32,10 +41,8 @@ export default function ProductDetail() {
                 </div>
             </Section>
             <Section>
-                <div
-                    className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
+                <div className="grid grid-cols-1 justify-items-stretch lg:grid-cols-2 lg:gap-11 mt-20 border-b-2 pb-10 relative h-fit">
                     {CarData &&  <Tabs tabs={tabsData}/>}
-                    {/*{CarData &&  <Tabs tabs={tabsData}/>}*/}
                     {CarData && <RatingCard rate={CarData.data.attributes.rate}/>}
                 </div>
             </Section>
