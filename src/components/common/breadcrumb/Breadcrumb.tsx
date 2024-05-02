@@ -10,7 +10,7 @@ export function Breadcrumb({ title }: Props) {
     const pathSegments = router.asPath.split('/').filter(segment => segment.trim() !== '');
 
     return (
-        <div className="container px-4 mx-auto">
+        <div className="container pl-11 mx-auto py-5">
             <nav aria-label="Breadcrumb">
                 <ol className="flex flex-row gap-5">
                     <li>
@@ -22,9 +22,9 @@ export function Breadcrumb({ title }: Props) {
                         return (
                             <li key={segment}>
                                 {title ? (
-                                    isLast ? <span>{title}</span> : <Link href={routeTo}><a>{title}</a></Link>
+                                    isLast ? <span className={'text-secondary-50'}>{title}</span> : <Link href={routeTo}>{title}</Link>
                                 ) : (
-                                    isLast ? <span>{segment}</span> : <Link href={routeTo}><a>{segment}</a></Link>
+                                    isLast ? <span className={'text-secondary-50'}>{segment}</span> : <Link href={routeTo}>{segment}</Link>
                                 )}
                             </li>
                         );

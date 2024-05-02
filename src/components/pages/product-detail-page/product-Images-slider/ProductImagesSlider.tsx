@@ -12,11 +12,12 @@ export function ProductImagesSlider({data}: Props) {
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
+    // @ts-ignore
     return (
         <div className="flex flex-wrap justify-center gap-y-3 lg:gap-y-7">
             <div className="w-11/12 mb-3">
                 <Swiper
-                    className="thumbnail-slider mySwiper2"
+                    className="thumbnail-slider"
                     loop={true}
                     modules={[Navigation, Thumbs, FreeMode]}
                     navigation={true}
@@ -36,14 +37,10 @@ export function ProductImagesSlider({data}: Props) {
                     ))}
                 </Swiper>
             </div>
-            <div className="w-11/12 h-40 overflow-x-scroll gap-3 lg:gap-7 py-4">
+            <div className="w-11/12 h-fit overflow-x-scroll gap-3 lg:gap-7 py-4">
                 <Swiper
-                    onSwiper={(swiper) => {
-                        if (swiper instanceof Swiper) {
-                            setThumbsSwiper(swiper);
-                        }
-                    }}
-                    className="main-slider mySwiper"
+                    // onSwiper={setThumbsSwiper}
+                    className="main-slider"
                     loop={true}
                     freeMode={true}
                     watchSlidesProgress={true}
