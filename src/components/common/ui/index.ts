@@ -9,4 +9,6 @@ export * from './information-box'
 export * from './map'
 export * from './contact-box'
 export * from './form'
+export * from './portal'
+export * from './modal'
 

@@ -1,10 +1,6 @@
-import {ContactBox, ContactForm, HeroSection, ImageView, Section} from "@/components";
+import {ContactBox, HeroSection, ImageView, RegisterForm, Section} from "@/components";
 
-interface Props {
-
-}
-
-export default function Contact({}: Props) {
+export default function Contact() {
     return (
         <>
             <HeroSection title={'Contact'}/>
@@ -17,12 +13,10 @@ export default function Contact({}: Props) {
                 <div className="flex flex-wrap container mx-auto px-4 justify-between pt-10 lg:pt-28 gap-y-10 relative">
                     <ImageView src={"/assets/images/circleElement.svg"} alt={"circleElement"} width={66} height={55} classname={"absolute w-16 top-1/2 left-0 lg:w-24 lg:top-1/4 lg:left-[46%] -z-10"}/>
                     <div className="mb-10 w-full lg:w-[45%]">
-                        <ImageView src={"/assets/images/Vector.png"} alt={"Vector"} width={64} height={70}
-                                   classname={"bg-primary-100 p-4 rounded-2xl aspect-square w-[80px] mb-5 shadow-Xl"}/>
+                        <ImageView src={"/assets/images/Vector.png"} alt={"Vector"} width={64} height={70} classname={"bg-primary-100 p-4 rounded-2xl aspect-square w-[80px] mb-5 shadow-Xl"}/>
                         <h3 className="font-bold mb-4 text-2xl lg:text-4xl pt-4 lg:pt-10">Let's Talk</h3>
                         <p className="mb-5 text-sm lg:text-base lg:pt-3">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque, commodi cumque itaque
-                            nemo nesciunt nulla placeat quasi quisquam quos.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque, commodi cumque itaque nemo nesciunt nulla placeat quasi quisquam quos.
                         </p>
                         <ul className="flex flex-col max-w-md gap-3 mt-10">
                             <li className="flex">
@@ -33,7 +27,7 @@ export default function Contact({}: Props) {
                             </li>
                         </ul>
                     </div>
-                    <ContactForm/>
+                    <RegisterForm/>
                 </div>
             </Section>
         </>
