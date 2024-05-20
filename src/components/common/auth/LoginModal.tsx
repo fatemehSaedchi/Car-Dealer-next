@@ -1,23 +1,19 @@
 import {useForm} from "react-hook-form";
 import {Input, Modal} from "@/components";
 
-interface Props {
-    onClose: () => void
-}
-
 interface LoginData {
     username: string,
     password: string
 
 }
 
-export function LoginModal({onClose}: Props) {
-    const {register, handleSubmit, formState: {errors}} = useForm()
+export function LoginModal() {
+    const {register, handleSubmit, formState: {errors}} = useForm<LoginData>()
     const submitHandler = (data: LoginData) => {
         console.log(data)
     }
     return (
-        <Modal title={'Login'} closeModal={onClose}>
+        <Modal title={'Login'}>
             <form onSubmit={handleSubmit(submitHandler)} className=" p-12 rounded-2xl bg-white text-sm lg:text-base">
                 <Input register={register('username', {required: true})} type={'text'} label={'Username'}
                        errors={errors} {...{placeholder: 'Enter Username'}}/>
