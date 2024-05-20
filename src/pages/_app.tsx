@@ -48,18 +48,18 @@ export default function App({Component, pageProps}: AppProps) {
                         <div id={'portal'}></div>
                         <Layout>
                             <Component {...pageProps} />
+                            <ToastContainer
+                                position="top-right"
+                                autoClose={false}
+                                newestOnTop
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss={false}
+                                draggable={false}
+                                theme="dark"
+                            />
                         </Layout>
                         <ReactQueryDevtools initialIsOpen={false}/>
-                        <ToastContainer
-                            position="top-right"
-                            autoClose={false}
-                            newestOnTop
-                            closeOnClick
-                            rtl={false}
-                            pauseOnFocusLoss={false}
-                            draggable={false}
-                            theme="light"
-                        />
                     </ModalContextProvider>
                 </AuthContextProvider>
             </QueryClientProvider>
