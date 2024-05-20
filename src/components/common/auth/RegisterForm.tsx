@@ -19,7 +19,7 @@ export function RegisterForm() {
     const {register, handleSubmit, formState: {errors}} = useForm<FormData>()
     const {currentModal, openModal} = useModal()
     const mutate = useMutation({mutationFn: registerApiCall})
-    const {onLogin, isLogin} = useUser()
+    const {onLogin, isLogin,onLogout} = useUser()
     const onSubmit = (data: FormData) => {
         console.log(data)
         mutate.mutate(data, {onSuccess: (response)=> {
@@ -62,9 +62,9 @@ export function RegisterForm() {
                         className="text-primary-100 font-bold">terms & conditions</span></label>
                 </div>
                 <div className={'flex text-secondary-100 mb-6 text-sm'}>
-                    <p>have an account?</p>
                     <span className={'hover:text-primary-100 cursor-pointer pl-1 font-medium'}
                           onClick={() => openModal('login')}>Login</span>
+                    <span className={'hover:text-primary-100 cursor-pointer pl-1 font-medium'} onClick={onLogout}>/ Logout</span>
                 </div>
                 <button className="w-full text-center bg-primary-100 p-4 rounded-2xl text-white font-bold"
                         type="submit">Register
