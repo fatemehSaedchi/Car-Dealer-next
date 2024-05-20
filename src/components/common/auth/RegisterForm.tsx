@@ -19,12 +19,12 @@ export function RegisterForm() {
     const {register, handleSubmit, formState: {errors}} = useForm<FormData>()
     const {currentModal, openModal} = useModal()
     const mutate = useMutation({mutationFn: registerApiCall})
-    const {onLogin} = useUser()
+    const {onLogin, isLogin} = useUser()
     const onSubmit = (data: FormData) => {
         console.log(data)
         mutate.mutate(data, {onSuccess: (response)=> {
-                console.log(response)
                 onLogin(response.jwt, response.user)
+                console.log("isLogin", isLogin)
                 toast.success('register successfully')
             }
         })
