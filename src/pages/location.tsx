@@ -1,6 +1,5 @@
 import {Branches, HeroSection, Map, Section} from "@/components";
 import {useQuery} from "@tanstack/react-query";
-import {InView} from "react-intersection-observer";
 import {getLocationApiCall} from "@/api";
 import {ApiResponseType, LocationType} from "@/types";
 
