@@ -21,6 +21,6 @@ export function Portal({children, onClose}: Props) {
                 {children}
             </div>
         </div>,
-        document.getElementById('portal')
+        document.getElementById('portal')!
     );
 }
