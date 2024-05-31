@@ -1,5 +1,5 @@
 export * from './Album'
-export * from './CarModelBrandClass'
+export * from './carSpecifics'
 export * from './Cars'
 export * from './FuelAndTransmission'
 export * from './Image'

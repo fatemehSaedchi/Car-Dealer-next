@@ -27,7 +27,6 @@ export function VerticalSlider({data, sliderClass}: Props) {
                 {
                     data.data[0].attributes.Images.data.map((value, index) => {
 
-                        console.log(value.attributes.url)
 
                         return (
                             <SwiperSlide key={index} className={'relative'}>
