@@ -1,13 +1,60 @@
-// todo replace mock data with api
 
 import {IconBox} from "@/components";
-import {CarBrandsMock, CarClassesMock, CarModelsMock} from "@/mock";
+import {useQuery} from "@tanstack/react-query";
+import {ApiResponseType, fuelType, ModelBrandClassType} from "@/types";
+import {getAllBrandsApi, getAllClassesApi} from "@/api";
+import {useForm} from "react-hook-form";
+import {getAllFuelsApi} from "@/api/fuels";
+import {getAllTransitionsApi} from "@/api/transitions";
+import {useRouter} from "next/router";
 
 interface Props {
 
 }
 
 export function Filter({}: Props) {
+
+    const router = useRouter()
+
+    const {data: brandsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+        queryFn: () => getAllBrandsApi({}),
+        queryKey: [getAllBrandsApi.name]
+    })
+
+    const {data: classesData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+        queryFn: () => getAllClassesApi({}),
+        queryKey: [getAllClassesApi.name]
+    })
+
+    // const {data: modelsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    //     queryFn: () => getAllModelsApi({}),
+    //     queryKey: [getAllModelsApi.name]
+    // })
+
+    const {data: fuelsData} = useQuery<ApiResponseType<fuelType>>({
+        queryFn: () => getAllFuelsApi({}),
+        queryKey: [getAllFuelsApi.name]
+    })
+
+    const {data: transitionsData} = useQuery<ApiResponseType<fuelType>>({
+        queryFn: () => getAllTransitionsApi({}),
+        queryKey: [getAllTransitionsApi.name]
+    })
+
+    const {register, handleSubmit} = useForm()
+
+    const submitHandler = (data: any) => {
+        let filter = {
+            carSearch: data.carSearch,
+            carBrand: data.carBrand,
+            carClass: data.carClass,
+            carFuel: data.carFuel,
+            carTransmission: data.carTransmission
+        }
+        router.replace({pathname: '/products', query: filter},undefined, {scroll: false})
+    }
+
+
     return (
         <>
             <aside>
@@ -32,133 +79,137 @@ export function Filter({}: Props) {
                             <h3 className="text-secondary-50 pt-1">
                                 Search your car
                             </h3>
-                            <div
-                                className="h-12 relative mt-10 bg-White-50 rounded-lg hover:border border-secondary-50 px-5">
-                                <input className="h-full w-full outline-none  bg-transparent font-normal"
-                                       type="text" placeholder="Search here..."/>
-                                <IconBox icon={'icon-search text-xl text-secondary-10 absolute right-5 top-2'}/>
-                            </div>
-                            <div>
-                                <select
-                                    className="h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium">
-                                    <option disabled={true} selected={true} className="text-secondary-50">
-                                        Choose Brand
-                                    </option>
 
-                                    {
-                                        CarBrandsMock &&
-                                        CarBrandsMock.data.map((item)=>{
-                                            return (
-                                                <option value={item.attributes.title} className="text-secondary-50">
-                                                    {item.attributes.title}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
-                            <div>
-                                <select
-                                    className="h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium">
-                                    <option disabled={true} selected={true} className="text-secondary-50">
-                                        Choose Class
-                                    </option>
+                            <form action="" onSubmit={handleSubmit(submitHandler)}>
 
-                                    {
-                                        CarClassesMock &&
-                                        CarClassesMock.map((item)=>{
-                                            return (
-                                                <option value={item} className="text-secondary-50">
-                                                    {item}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
-                            <div className="flex w-full justify-between text-secondary-50 mt-4">
-                                <h4>
-                                    Model
-                                </h4>
-                                <label className={"flex gap-2"}>
-                                    <input type="checkbox"/>
-                                    Select All
-                                    </label>
-                            </div>
-                            <div className="grid grid-cols-2 w-4/5 mt-8 gap-3">
-                                <label
-                                    className={`border md:border-2 border-primary-100 md:border-White-200 rounded-lg hover:bg-White-200 text-primary-100 p-3 text-center text-sm active:bg-primary-100 active:text-white md:active:bg-White-200`}>
-                                    Select All
-                                    <input className={'hidden'} type={"checkbox"}/>
-                                </label>
+                                <div
+                                    className="h-12 relative mt-10 bg-White-50 rounded-lg hover:border border-secondary-50 px-5">
+                                    <input className="h-full w-full outline-none  bg-transparent font-normal"
+                                           type="text" placeholder="Search here..." {...register('carSearch')}/>
+                                    <IconBox icon={'icon-search text-xl text-secondary-10 absolute right-5 top-2'}/>
+                                </div>
+                                <div>
+                                    <select
+                                        className="h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                        {...register('carBrand')}>
+                                        <option value={''} className="text-secondary-50">
+                                            Choose Brand
+                                        </option>
 
+                                        {
+                                            brandsData &&
+                                            brandsData.data.map((item) => {
+                                                return (
+                                                    item.attributes.title == router.query.carBrand ?
 
-                                {
-                                    CarModelsMock &&
-                                    CarModelsMock.map((item) => {
-                                        return (
-                                            <label
-                                                className="border md:border-2 border-primary-100 md:border-White-200 rounded-lg hover:bg-White-200 text-primary-100 p-3 text-center text-sm active:bg-primary-100 active:text-white md:active:bg-White-200">
-                                                {item}
-                                                <input className={'hidden'} type={"checkbox"}/>
-                                            </label>
-                                        )
-                                    })
-                                }
-                            </div>
-                            <div>
-                                <h4 className="text-secondary-50 mt-8 block">
-                                    Price range
-                                </h4>
+                                                        <option value={item.attributes.title} selected={true}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.title}
+                                                        </option>
+                                                        :
+                                                        <option value={item.attributes.title}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.title}
+                                                        </option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <select
+                                        className="h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                        {...register('carClass')}>
+                                        <option value={''} className="text-secondary-50">
+                                            Choose Class
+                                        </option>
 
-                                {
-                                    // todo replace the range input with a library
-                                    // todo add min and max value with cheapest and most expensive car price
-                                }
-                                <label>
-                                    min
-                                    <input type={"range"} dir={'rtl'}
-                                           className="w-full h-1.5 bg-White-50 mt-4 mx-auto bg-primary-100 relative"/>
-                                </label>
-                                <label>
-                                    max
-                                    <input type={"range"}
-                                           className="w-full h-1.5 bg-White-50 mt-4 mx-auto bg-primary-100 relative"/>
-                                </label>
-                            </div>
-                            <div>
-                                <select
-                                    className="h-12 w-full relative mt-12 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium">
-                                    <option selected={true} className="text-secondary-50">
-                                        Any fuel
-                                    </option>
-                                    <option  className="text-secondary-50">
-                                        Electric
-                                    </option>
-                                    <option className="text-secondary-50">
-                                        gas
-                                    </option>
-                                </select>
-                            </div>
-                            <div>
-                                <select
-                                    className="h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium">
-                                    <option disabled={true} selected={true} className="text-secondary-50">
-                                        Transmission
-                                    </option>
-                                    <option className="text-secondary-50">
-                                        Automatic
-                                    </option>
-                                    <option className="text-secondary-50">
-                                        manual
-                                    </option>
-                                </select>
-                            </div>
+                                        {
+                                            classesData &&
+                                            classesData.data.map((item) => {
+                                                return (
+                                                    item.attributes.title == router.query.carClass ?
 
-                            <button type="submit"
-                                    className=" h-12 w-full px-5 mt-7 bg-primary-100 rounded-lg flex justify-between items-center text-white shadow-6xl">
-                                <IconBox icon={'icon-angleRight'} title={'FIND CARS'} titleClassName={'order-first'}/>
-                            </button>
+                                                        <option value={item.attributes.title} selected={true}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.title}
+                                                        </option>
+                                                        :
+                                                        <option value={item.attributes.title}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.title}
+                                                        </option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <select
+                                        className="h-12 w-full relative mt-12 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                        {...register('carFuel')}>
+                                        <option value={''} className="text-secondary-50">
+                                            Any fuel
+                                        </option>
+
+                                        {
+                                            fuelsData &&
+                                            fuelsData.data.map((item) => {
+                                                return (
+                                                    item.attributes.type == router.query.carFuel ?
+
+                                                        <option value={item.attributes.type} selected={true}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.type}
+                                                        </option>
+                                                        :
+                                                        <option value={item.attributes.type}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.type}
+                                                        </option>
+                                                )
+                                            })
+                                        }
+
+                                    </select>
+                                </div>
+                                <div>
+                                    <select
+                                        className="h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                        {...register('carTransmission')}>
+                                        <option value={''} className="text-secondary-50">
+                                            Any Transmission
+                                        </option>
+
+                                        {
+                                            transitionsData &&
+                                            transitionsData.data.map((item) => {
+                                                return (
+                                                    item.attributes.type == router.query.carFuel ?
+
+                                                        <option value={item.attributes.type} selected={true}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.type}
+                                                        </option>
+                                                        :
+                                                        <option value={item.attributes.type}
+                                                                className="text-secondary-50">
+                                                            {item.attributes.type}
+                                                        </option>
+                                                )
+                                            })
+                                        }
+
+                                    </select>
+                                </div>
+
+                                <button type="submit"
+                                        className=" h-12 w-full px-5 mt-7 bg-primary-100 rounded-lg flex justify-between items-center text-white shadow-6xl">
+                                    <IconBox icon={'icon-angleRight'} title={'FIND CARS'}
+                                             titleClassName={'order-first'}/>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </nav>

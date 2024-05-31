@@ -1,36 +1,24 @@
-// todo replace mockData whit api response
 
 import Link from "next/link";
 
 import {
     TrendingSlider,
-    SearchBox,
+    MiniFilter,
     Section,
     ImageView,
-    IconBox,
     VerticalSlider,
-    PaginatedSlider, ServicesList, PopularBrands
+    PaginatedSlider, ServicesList,
 } from "@/components";
 import {useQuery} from "@tanstack/react-query";
-import {getAllCarsApi, getAllBrandsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
+import {getAllCarsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
 import {ApiResponseType, CarsType, AlbumType, ServicesType} from "@/types";
 
 export default function Home() {
 
-    const {data: popularBrandsData} = useQuery(
-        {
-            queryKey: [getAllBrandsApi.name + ' popularBrandsData'],
-            queryFn: () => getAllBrandsApi({
-                pagination: {
-                    pageSize: 3
-                }
-            })
-        }
-    )
 
     const {data: trendingCarData} = useQuery<ApiResponseType<CarsType>>(
         {
-            queryKey: [getAllCarsApi.name + ' trendingCarData'],
+            queryKey: [getAllCarsApi.name , 'trendingCarData'],
             queryFn: () => getAllCarsApi({
                 populate: [
                     'thumbnail',
@@ -49,18 +37,9 @@ export default function Home() {
         }
     )
 
-    const {data: topDealsProduct} = useQuery<ApiResponseType<CarsType>>(
-        {
-            queryKey: [getAllCarsApi.name + " topDealsCars"],
-            queryFn: () => getAllCarsApi({
-                populate: ['*'],
-                filters: {dealCount: {$notNull: true}}
-            })
-        })
-
     const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
         {
-            queryKey: [getAllServicesApi.name + '3 of'],
+            queryKey: [getAllServicesApi.name , '3 of'],
             queryFn: () => getAllServicesApi({
                 populate: ['*'],
                 pagination: {
@@ -121,26 +100,8 @@ export default function Home() {
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                             </p>
                         </div>
-                        {
-                            //todo fix the SearchBox component
-                            //todo use useRouter for pass th data instead of the link
-                        }
-                        <SearchBox className={'mb-10'}/>
+                        <MiniFilter className={'mb-10'}/>
 
-                        <Link href={'/products'}
-                              className="text-primary-100 text-sm sm:text-base md:text-lg pt-7">
-                            Try advanced search
-                            <IconBox icon={"icon-rightArrow pl-6"}/>
-                        </Link>
-                        <div>
-                            <h3 className="text-xs md:text-base text-secondary-100 pt-8 2xl:pt-14">
-                                Popular Brands
-                            </h3>
-                            {
-                                popularBrandsData &&
-                                <PopularBrands data={popularBrandsData}/>
-                            }
-                        </div>
                     </div>
                 </div>
             </Section>

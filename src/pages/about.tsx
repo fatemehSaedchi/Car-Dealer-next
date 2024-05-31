@@ -1,4 +1,3 @@
-// todo replace mock data with api
 
 import {HeroSection, OurTeam, Section, Map, ServicesList} from "@/components";
 import {useQuery} from "@tanstack/react-query";

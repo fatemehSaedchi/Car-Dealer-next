@@ -1,14 +1,13 @@
-import {Paginate, ProductsListCard} from "@/components";
-import {Root} from "@/mock";
+import { ProductsListCard} from "@/components";
+import {ApiResponseType, CarsType} from "@/types";
 
 interface Props {
-    data : Root
+    data : ApiResponseType<CarsType>
 }
 
 export function ProductsList({data}: Props) {
     return (
-        <>
-            <div className="grid gap-x-4 gap-y-9 mt-10 2xl:grid-cols-3 justify-center items-center">
+            <div className="grid gap-x-4 gap-y-9 mt-10 2xl:grid-cols-3 justify-center items-center" >
 
                 {
                     data && 
@@ -19,8 +18,6 @@ export function ProductsList({data}: Props) {
                     })
                 }
 
-                <Paginate data={data.meta}/>
             </div>
-        </>
     )
 }
