@@ -16,7 +16,10 @@ interface FormData {
 }
 
 export function RegisterForm() {
-    const {register, handleSubmit, formState: {errors}} = useForm<FormData>()
+    const {register, handleSubmit, formState: {errors}} = useForm<FormData>({
+        mode: "onTouched"
+    })
+
     const {currentModal, openModal} = useModal()
     const mutate = useMutation({mutationFn: registerApiCall})
     const {onLogin, isLogin,onLogout} = useUser()

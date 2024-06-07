@@ -6,6 +6,7 @@ interface Props {
     onClose: () => void
 }
 
+
 export function Portal({children, onClose}: Props) {
 
     useEffect(() => {
