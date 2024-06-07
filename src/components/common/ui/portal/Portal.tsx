@@ -6,6 +6,7 @@ interface Props {
     onClose: () => void
 }
 
+
 export function Portal({children, onClose}: Props) {
 
     useEffect(() => {
@@ -21,6 +22,6 @@ export function Portal({children, onClose}: Props) {
                 {children}
             </div>
         </div>,
-        document.getElementById('portal')
+        document.getElementById('portal')!
     );
 }

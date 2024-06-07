@@ -16,15 +16,18 @@ interface FormData {
 }
 
 export function RegisterForm() {
-    const {register, handleSubmit, formState: {errors}} = useForm<FormData>()
+    const {register, handleSubmit, formState: {errors}} = useForm<FormData>({
+        mode: "onTouched"
+    })
+
     const {currentModal, openModal} = useModal()
     const mutate = useMutation({mutationFn: registerApiCall})
     const {onLogin, isLogin,onLogout} = useUser()
     const onSubmit = (data: FormData) => {
         console.log(data)
-        mutate.mutate(data, {onSuccess: (response)=> {
+        mutate.mutate(data, {
+            onSuccess: (response)=> {
                 onLogin(response.jwt, response.user)
-                console.log("isLogin", isLogin)
                 toast.success('register successfully')
             }
         })
@@ -67,7 +70,7 @@ export function RegisterForm() {
                     <span className={'hover:text-primary-100 cursor-pointer pl-1 font-medium'} onClick={onLogout}>/ Logout</span>
                 </div>
                 <button className="w-full text-center bg-primary-100 p-4 rounded-2xl text-white font-bold"
-                        type="submit">Register
+                        type="submit">Sign Up
                 </button>
             </form>
         </>

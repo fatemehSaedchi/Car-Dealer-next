@@ -6,6 +6,7 @@ import 'swiper/css/free-mode';
 import "swiper/css/navigation"
 import 'swiper/css/pagination'
 import 'swiper/css/thumbs'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 import type {AppProps} from "next/app";
