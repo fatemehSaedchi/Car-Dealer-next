@@ -40,7 +40,7 @@ export function PaginatedSlider() {
                     return(
                         <>
                         <SwiperSlide key={index} className={'relative rounded-[30px] overflow-hidden'}>
-                        <PaginatedSliderCard key={index} data={value}/>
+                            <PaginatedSliderCard key={index} data={value}/>
                         </SwiperSlide>
                         </>
                     )

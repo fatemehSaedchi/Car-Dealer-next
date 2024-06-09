@@ -17,6 +17,14 @@ interface FormData {
 
 export function RegisterForm() {
     const {register, handleSubmit, formState: {errors}} = useForm<FormData>({
+        defaultValues: {
+            firstname: '',
+            lastname: '',
+            username: '',
+            email: '',
+            phoneNumber: '',
+            password: ''
+        },
         mode: "onTouched"
     })
 
