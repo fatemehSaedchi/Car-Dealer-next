@@ -5,10 +5,6 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {ParsedUrlQueryInput} from "node:querystring";
 
-interface Props {
-
-}
-
 interface ObjFilter {
     title?: object,
     car_class?: object,
@@ -16,7 +12,7 @@ interface ObjFilter {
     transitions?: object
 }
 
-export default function Products({}: Props) {
+export default function Products() {
 
     // const {data: carsData} = useQuery<ApiResponseType<CarsType>>(
     //     {
@@ -68,7 +64,6 @@ export default function Products({}: Props) {
                 }
             }
 
-
             return getAllCarsApi({
                 populate: [
                     'thumbnail',
@@ -98,50 +93,47 @@ export default function Products({}: Props) {
     return (
         <>
             <HeroSection title={'Car Collections'}/>
-            <Section className="grid grid-cols-1 md:grid md:grid-cols-2 xl:grid-cols-3">
-
-
+            {/*<Section className="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">*/}
+                <Section className="flex justify-between">
                 <Filter/>
-
-                <div className="xl:col-span-2">
-
-                    <div className="flex flex-col lg:flex-row gap-5 pt-5 lg:pt-28 justify-between lg:items-center">
-                        <h3 className="text-secondary-50">
-                            Showing
-                            <span className="font-bold mx-2">
-    {
-        mutation.data &&
-        <>
-            {mutation.data?.meta.pagination.pageSize} product
-            from {mutation.data.meta.pagination.total}
-        </>
-    }
+                    {/*<div className="lg:col-span-2 xl:col-span-3">*/}
+                        <div className="basis-4/5">
+                            <div
+                                className="flex flex-col lg:flex-row gap-5 pt-5 lg:pt-28 justify-between lg:items-center">
+                                <h3 className="text-secondary-50">
+                                    Showing
+                                    <span className="font-bold mx-2">
+                                {
+                                    mutation.data &&
+                                    <>
+                                        {mutation.data?.meta.pagination.pageSize} product
+                                        from {mutation.data.meta.pagination.total}
+                                    </>
+                                }
                         </span>
-                        </h3>
-                        <div>
-                            <label className="text-secondary-50 flex gap-10 items-center">
-                                Sort by
-                                <select
-                                    className="text-primary-100 bg-white border border-Purple-50 rounded-lg text-sm font-bold p-3">
-                                    <option value="Newest">
-                                        Newest
-                                    </option>
-                                </select>
-                            </label>
+                                </h3>
+                                <div>
+                                    <label className="text-secondary-50 flex gap-10 items-center">
+                                        Sort by
+                                        <select
+                                            className="text-primary-100 bg-white border border-Purple-50 rounded-lg text-sm font-bold p-3">
+                                            <option value="Newest">
+                                                Newest
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            {
+                                mutation.data &&
+                                <ProductsList data={mutation.data}/>
+                            }
+                            {
+                                mutation.data &&
+                                <Paginate data={mutation.data.meta} pageSetter={setPageState}/>
+                            }
                         </div>
-                    </div>
-
-                    {
-                        mutation.data &&
-                        <ProductsList data={mutation.data}/>
-
-                    }
-                    {
-                        mutation.data &&
-                        <Paginate data={mutation.data.meta} pageSetter={setPageState}/>
-                    }
-                </div>
-            </Section>
+                </Section>
         </>
-    )
+)
 }

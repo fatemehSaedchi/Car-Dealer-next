@@ -15,9 +15,9 @@ export function SearchList({searchData, defaultValue}: Props) {
             {
                 searchData &&
                 searchData.data.map(
-                    (value) => {
+                    (value,index) => {
                         return (
-                            <option value={value.id}>
+                            <option value={value.id} key={index}>
                                 {value.attributes.title}
                             </option>
                         )
