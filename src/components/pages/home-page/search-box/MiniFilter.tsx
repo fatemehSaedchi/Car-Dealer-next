@@ -62,7 +62,7 @@ export function MiniFilter({className}: Props) {
 
                         <select {...register("carBrand")}
                                 className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
-                            <option selected={true} value={''}>
+                            <option value={''}>
                                 {"Brands"}
                             </option>
                             {
@@ -81,7 +81,7 @@ export function MiniFilter({className}: Props) {
 
                         <select {...register("carClass")}
                                 className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
-                            <option selected={true} value={''}>
+                            <option value={''}>
                                 {"Classes"}
                             </option>
                             {
