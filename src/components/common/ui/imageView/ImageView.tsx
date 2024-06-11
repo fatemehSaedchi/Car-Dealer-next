@@ -15,6 +15,6 @@ export function ImageView({src, alt, width, height, classname=''}: Props) {
 
 
     return (
-        <Image src={imageSrc} alt={alt} width={width} height={height} className={classname}/>
+        <Image src={imageSrc} alt={alt} width={width} height={height} className={classname} priority/>
     );
 }

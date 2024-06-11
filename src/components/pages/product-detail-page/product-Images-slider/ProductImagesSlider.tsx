@@ -18,13 +18,11 @@ export function ProductImagesSlider({data}: Props) {
             <div className="w-11/12 mb-3">
                 <Swiper
                     className="thumbnail-slider"
-                    loop={true}
                     modules={[Navigation, Thumbs, FreeMode]}
                     navigation={true}
                     thumbs={{swiper: thumbsSwiper}}
                     slidesPerView={1}
                     spaceBetween={20}
-                    autoplay={true}
                 >
                     {data.attributes.gallery.data.map((item, index) => (
                         <SwiperSlide key={index}>
@@ -41,13 +39,11 @@ export function ProductImagesSlider({data}: Props) {
                 <Swiper
                     // onSwiper={setThumbsSwiper}
                     className="main-slider"
-                    loop={true}
                     freeMode={true}
                     watchSlidesProgress={true}
                     modules={[Navigation, Thumbs, FreeMode]}
                     slidesPerView={4}
                     spaceBetween={20}
-                    autoplay={true}
                 >
                     {data.attributes.gallery.data.map((item, index) => (
                         <SwiperSlide key={index} className="opacity-70 active:opacity-100">

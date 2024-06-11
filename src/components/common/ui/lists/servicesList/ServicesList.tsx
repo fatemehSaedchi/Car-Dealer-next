@@ -17,16 +17,15 @@ export function ServicesList({data, cardNumber = 3, className, topBar = false}: 
             {
                 data.data.map((value , index) => {
                     return (
-                        <div
-                            className={twMerge("basis-1/3 flex flex-col justify-center items-center shadow-Xl rounded-2xl bg-white", className)}>
-
+                        <div className={twMerge("basis-1/3 flex flex-col justify-center items-center shadow-Xl rounded-2xl bg-white", className)} key={index}>
                             {
                                 topBar ?
                                     <>
                                         <div
-                                            style={{background: `linear-gradient(90deg, rgba(13,61,229,${(1/cardNumber)*index}), rgba(13,61,229,${(1/cardNumber)*(index+1)}))`}}
+                                            style={{background: `linear-gradient(90deg, rgba(13,61,229,${(1 / cardNumber) * index}), rgba(13,61,229,${(1 / cardNumber) * (index + 1)}))`}}
                                             className="w-[90%] h-[4px] mb-[30px] md:mb-[50px] xl:mb-[70px] relative">
-                                            <div style={{backgroundColor: `rgba(13,61,229,${(1/cardNumber)*(index+1)})`}}
+                                            <div
+                                                style={{backgroundColor: `rgba(13,61,229,${(1 / cardNumber) * (index + 1)})`}}
                                                 className="absolute top-[-5px] right-[-15px] w-[15px] h-[15px] rounded-full"></div>
                                         </div>
                                         <ServicesCard key={index} data={value}/>
@@ -36,12 +35,10 @@ export function ServicesList({data, cardNumber = 3, className, topBar = false}: 
                                         <ServicesCard key={index} data={value}/>
                                     </div>
                             }
-
                         </div>
                     )
                 })
             }
-
         </>
     )
 }

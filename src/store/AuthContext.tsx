@@ -1,5 +1,6 @@
 import {createContext, ReactNode, useContext, useEffect, useState} from "react";
 import {UserType} from "@/types/AuthResponse";
+import {toast} from "react-toastify";
 
 interface Props {
     children: ReactNode
@@ -38,6 +39,7 @@ export function AuthContextProvider({children}: Props) {
         window.localStorage.removeItem('user')
         setIsLogin(false)
         console.log('is logout')
+        toast.success('you are logged out')
     }
 
     return(

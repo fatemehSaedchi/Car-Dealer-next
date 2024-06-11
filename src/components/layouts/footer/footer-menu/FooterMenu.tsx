@@ -17,9 +17,9 @@ export function FooterMenu({menuItems, title}: Props) {
                 {
                     menuItems.data.map((item, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                                 <Link className={'hover:text-primary-100 active:text-primary-100'}
-                                      href="#">{item.attributes.title}</Link>
+                                      href={item.attributes.link}>{item.attributes.title}</Link>
                             </li>
                         )
                     })
