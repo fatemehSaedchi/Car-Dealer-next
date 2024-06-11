@@ -62,15 +62,15 @@ export function MiniFilter({className}: Props) {
 
                         <select {...register("carBrand")}
                                 className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
-                            <option selected={true} defaultValue={'Brands'} value={''}>
+                            <option value={''}>
                                 {"Brands"}
                             </option>
                             {
                                 brandsData &&
                                 brandsData.data.map(
-                                    (value,index) => {
+                                    (value) => {
                                         return (
-                                            <option value={value.attributes.title} key={index}>
+                                            <option value={value.attributes.title}>
                                                 {value.attributes.title}
                                             </option>
                                         )
@@ -81,15 +81,15 @@ export function MiniFilter({className}: Props) {
 
                         <select {...register("carClass")}
                                 className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
-                            <option selected={true} value={''}>
+                            <option value={''}>
                                 {"Classes"}
                             </option>
                             {
                                 classesData &&
                                 classesData.data.map(
-                                    (value,index) => {
+                                    (value) => {
                                         return (
-                                            <option value={value.attributes.title} key={index}>
+                                            <option value={value.attributes.title}>
                                                 {value.attributes.title}
                                             </option>
                                         )
