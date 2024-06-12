@@ -1,22 +1,42 @@
 import {IconBox, ImageView} from "@/components";
-import {useQuery} from "@tanstack/react-query";
-import {ApiResponseType, fuelType, ModelBrandClassType} from "@/types";
-import {getAllBrandsApi, getAllClassesApi} from "@/api";
+import {useMutation, useQuery} from "@tanstack/react-query";
+import {ApiResponseType,CarsType, EntityType, fuelType, ModelBrandClassType} from "@/types";
+import {getAllBrandsApi,getAllCarsApi, getAllClassesApi} from "@/api";
 import {useForm} from "react-hook-form";
 import {getAllFuelsApi} from "@/api/fuels";
 import {getAllTransitionsApi} from "@/api/transitions";
 import {useRouter} from "next/router";
-import {useEffect, MouseEvent, Dispatch, SetStateAction} from "react";
+import {useEffect, MouseEvent, Dispatch, SetStateAction,useState} from "react";
+import useDebounce from "@/hooks/use-debounce";
 import {useOverlay} from "@/hooks";
+import Link from "next/link";
 
 interface Props {
     mobileFilter: boolean
     setMobileFilter: Dispatch<SetStateAction<boolean>>
 }
 
+interface FormInput {
+    carSearch: string
+}
+
+interface FilterData {
+    title: {
+        $containsi: string
+    }
+}
+
 export function Filter({mobileFilter, setMobileFilter}: Props) {
 
+    const [searchData, setSearchData] = useState<Array<EntityType<CarsType>>>()
+
     const router = useRouter()
+
+    const {mutate} = useMutation({
+        mutationFn: (data: FilterData) => getAllCarsApi({
+            filters: data
+        })
+    })
 
     const {data: brandsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
         queryFn: () => getAllBrandsApi({}),
@@ -43,18 +63,46 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
         queryKey: [getAllTransitionsApi.name]
     })
 
-    const {register, handleSubmit} = useForm()
+    const searchForm = useForm<FormInput>()
 
-    const submitHandler = (data: any) => {
+    const filterForm = useForm()
+
+    const submitHandler = (filterData: any) => {
         let filter = {
-            carSearch: data.carSearch,
-            carBrand: data.carBrand,
-            carClass: data.carClass,
-            carFuel: data.carFuel,
-            carTransmission: data.carTransmission
+            carBrand: filterData.carBrand,
+            carClass: filterData.carClass,
+            carFuel: filterData.carFuel,
+            carTransmission: filterData.carTransmission
         }
         router.replace({pathname: '/products', query: filter}, undefined, {scroll: false})
     }
+
+    const onsubmit = (searchData: FormInput) => {
+
+        if (searchData.carSearch.length <= 1)
+            return
+
+        mutate({
+            title: {
+                '$containsi': searchData.carSearch
+            }
+        }, {
+            'onSuccess': (response) => setSearchData(response.data)
+        })
+    }
+
+    const carSearch = searchForm.watch('carSearch')
+
+    useEffect(() => {
+        if (carSearch) {
+            delay()
+        } else {
+            setSearchData([])
+        }
+
+    }, [carSearch])
+
+    const delay = useDebounce(searchForm.handleSubmit(onsubmit), 1000)
 
     const closeFilterHandler = () =>{
         setMobileFilter(false)
@@ -99,16 +147,44 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                         <h3 className="text-secondary-50 pt-1">
                             Search your car
                         </h3>
-                        <form action="" onSubmit={handleSubmit(submitHandler)}>
-                            <div
-                                className="h-12 relative mt-10 bg-White-50 rounded-lg hover:border border-secondary-50 px-5">
-                                <input className="h-full w-full outline-none  bg-transparent font-normal"
-                                       type="text" placeholder="Search here..." {...register('carSearch')}/>
-                                <IconBox icon={'icon-search text-xl text-secondary-10 absolute right-5 top-2'}/>
-                            </div>
+
+                        <div className={'relative'}>
+                            <form action="" /* onSubmit={searchForm.handleSubmit(onsubmit)} */
+                                  className={'className="flex items-center'}>
+                                <div
+                                    className="h-12 relative mt-10 bg-White-50 rounded-lg hover:border border-secondary-50 px-5">
+                                    <input className="h-full w-full outline-none  bg-transparent font-normal"
+                                           type="text"
+                                           placeholder="Search here..." {...searchForm.register('carSearch')}/>
+                                    <IconBox icon={'icon-search text-xl text-secondary-10 absolute right-5 top-2'}/>
+                                </div>
+                            </form>
+
+                            {
+                                searchData &&
+                                <div
+                                    className={'absolute rounded-lg bg-gray-500 w-max z-50 left-full ml-1 top-0 text-center'}>
+                                    <ul>
+                                        {
+                                            searchData.map((item: EntityType<CarsType>) => {
+                                                return <li
+                                                    className={'p-4 m-2 bg-gray-200 rounded-2xl hover:bg-green-200 hover:text-white hover:cursor-pointer'}>
+                                                    <Link href={`/product/${item.id}`}>
+                                                        {item.attributes.title}
+                                                    </Link>
+                                                </li>
+                                            })
+                                        }
+                                    </ul>
+                                </div>
+                            }
+
+                        </div>
+                        <form action="" onSubmit={filterForm.handleSubmit(submitHandler)}>
                             <div className={'relative'}>
                                 <select
-                                    className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"{...register('carBrand')}>
+                                    className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                    {...filterForm.register('carBrand')}>
                                     <option value={''} className="text-secondary-50 relative">
                                         Choose Brand
                                     </option>
@@ -131,11 +207,13 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         })
                                     }
                                 </select>
-                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox icon={'icon-angleDown text-secondary-400'} size={8}/></div>
+                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox
+                                    icon={'icon-angleDown text-secondary-400'} size={8}/></div>
                             </div>
                             <div className={'relative'}>
-                                <select className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
-                                    {...register('carClass')}>
+                                <select
+                                    className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                    {...filterForm.register('carClass')}>
                                     <option value={''} className="text-secondary-50">
                                         Choose Class
                                     </option>
@@ -159,11 +237,13 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         })
                                     }
                                 </select>
-                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox icon={'icon-angleDown text-secondary-400'} size={8}/></div>
+                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox
+                                    icon={'icon-angleDown text-secondary-400'} size={8}/></div>
                             </div>
                             <div className={'relative'}>
-                                <select className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
-                                    {...register('carFuel')}>
+                                <select
+                                    className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                    {...filterForm.register('carFuel')}>
                                     <option value={''} className="text-secondary-50">
                                         Any fuel
                                     </option>
@@ -186,12 +266,13 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         })
                                     }
                                 </select>
-                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox icon={'icon-angleDown text-secondary-400'} size={8}/></div>
+                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox
+                                    icon={'icon-angleDown text-secondary-400'} size={8}/></div>
                             </div>
                             <div className={'relative'}>
                                 <select
                                     className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
-                                    {...register('carTransmission')}>
+                                    {...filterForm.register('carTransmission')}>
                                     <option value={''} className="text-secondary-50">
                                         Any Transmission
                                     </option>
@@ -214,7 +295,8 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         })
                                     }
                                 </select>
-                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox icon={'icon-angleDown text-secondary-400'} size={8}/></div>
+                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox
+                                    icon={'icon-angleDown text-secondary-400'} size={8}/></div>
                             </div>
                             <button type="submit"
                                     className=" h-12 w-full px-5 mt-7 bg-primary-100 rounded-lg flex justify-between items-center text-white shadow-6xl">
