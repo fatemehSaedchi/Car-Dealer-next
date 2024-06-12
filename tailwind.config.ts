@@ -21,6 +21,7 @@ const config: Config = {
                 },
                 secondary: {
                     10: "rgba(159, 167, 171, 1)",
+                    20: "#C4C4C4",
                     50: "rgba(89, 89, 89, 1)",
                     100: "#575757",
                     200: "#595959",
@@ -46,12 +47,14 @@ const config: Config = {
             },
 
             backgroundImage: {
-                'searchBg': 'linear-gradient(0deg, rgba(255,255,255,0.4375) 0%, rgba(0,0,0,0.12097338935574231) 100%)'
-                // "hero": "url('../img/slider1-1.jpg')",
-                // "about-baner": "url('../img/about/martin-katler-cQEz1B0LPFs-unsplash22.jpg')",
-                // "location-baner": "url('../img/alec-jones-WDsmqzxy8Ig-unsplash.jpg')",
-                // "products.tsx-baner": "url('../img/serjan-midili-8iZdhhP5bwg-unsplash.jpg')",
-                // "contact-baner": "url('../img/serjan-midili--tMDG1xRhnQ-unsplash.jpg')",
+                'searchBg': 'linear-gradient(0deg, rgba(255,255,255,0.4375) 0%, rgba(0,0,0,0.12097338935574231) 100%)',
+                // 'linear-line': 'linear-gradient(90deg, rgba(249,249,249,1) 0%, rgba(61,59,59,0.4010854341736695) 0%, rgba(241,241,241,1) 93%)',
+                // 'linear-line': 'linear-gradient(90deg, rgba(61,59,59,1) 0%, rgba(223,223,223,0.6559873949579832) 100%)',
+                'linear-line': ' linear-gradient(90deg, rgba(61,59,59,1) 0%, rgba(196,196,196,0.6307773109243697) 100%)',
+                'about-banner': "url('/assets/images/bgBanners/aboutBanner.jpg')",
+                'collection-banner' : "url('/assets/images/bgBanners/collectionBg.jpg')",
+                "location-banner": "url('/assets/images/bgBanners/locationBg.jpg')",
+                "contact-banner": "url('/assets/images/bgBanners/contactBg.jpg')",
             },
 
             boxShadow: {
@@ -65,7 +68,7 @@ const config: Config = {
             },
 
             screens: {
-                'xs': '420px'
+                'xs': '400px'
             }
         },
     },

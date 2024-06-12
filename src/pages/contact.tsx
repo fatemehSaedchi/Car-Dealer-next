@@ -3,7 +3,7 @@ import {ContactBox, HeroSection, ImageView, RegisterForm, Section} from "@/compo
 export default function Contact() {
     return (
         <>
-            <HeroSection title={'Contact'}/>
+            <HeroSection title={'Contact'} backGround={'bg-contact-banner'}/>
             <div className={'relative'}>
                 <div className="bg-White-400 h-fit w-full absolute left-0 right-0 top-0 -z-50">
                     <ImageView src={"/assets/images/mapBackground.png"} alt={'map'} width={1600} height={940} classname={"w-4/5 max-w-6xl mx-auto mt-10"}/>
@@ -18,7 +18,7 @@ export default function Contact() {
                         <p className="mb-5 text-sm lg:text-base lg:pt-3">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque, commodi cumque itaque nemo nesciunt nulla placeat quasi quisquam quos.
                         </p>
-                        <ul className="flex flex-col max-w-md gap-3 mt-10">
+                        <ul className="flex flex-col max-w-md gap-3 mt-10 -translate-x-3.5">
                             <li className="flex">
                                 <ContactBox text={'77 Highfield Road London N36 7SB'}/>
                             </li>

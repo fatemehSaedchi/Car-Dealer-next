@@ -26,11 +26,9 @@ export default function About({}: Props) {
             })
         })
 
-
     return (
         <>
-            <HeroSection title={'About Mobhil'}/>
-
+            <HeroSection title={'About Mobhil'} backGround={'bg-about-banner'}/>
             <Section>
                 <div className="pt-7 sm:pt-14 md:pt-20 sm:flex sm:gap-10 lg:gap-14">
                     <div className="flex flex-col gap-1 sm:gap-3 md:gap-5 lg:gap-6 sm:basis-[40%]">

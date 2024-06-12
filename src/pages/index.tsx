@@ -1,6 +1,4 @@
-
 import Link from "next/link";
-
 import {
     TrendingSlider,
     MiniFilter,
@@ -15,10 +13,9 @@ import {ApiResponseType, CarsType, AlbumType, ServicesType} from "@/types";
 
 export default function Home() {
 
-
     const {data: trendingCarData} = useQuery<ApiResponseType<CarsType>>(
         {
-            queryKey: [getAllCarsApi.name , 'trendingCarData'],
+            queryKey: [getAllCarsApi.name, 'trendingCarData'],
             queryFn: () => getAllCarsApi({
                 populate: [
                     'thumbnail',
@@ -39,7 +36,7 @@ export default function Home() {
 
     const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
         {
-            queryKey: [getAllServicesApi.name , '3 of'],
+            queryKey: [getAllServicesApi.name, '3 of'],
             queryFn: () => getAllServicesApi({
                 populate: ['*'],
                 pagination: {
@@ -59,15 +56,11 @@ export default function Home() {
             })
         })
 
-
-
     return (
-
         <>
             <Section>
                 <div className="flex flex-col lg:flex-row container mx-auto px-4">
-                    <ImageView src="/assets/images/circleElement.svg" alt=""
-                               classname="absolute w-14 top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
+                    <ImageView src="/assets/images/circleElement.svg" alt="" classname="absolute w-14 top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
                     <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
                         {
                             trendingCarData &&
@@ -76,18 +69,16 @@ export default function Home() {
                         }
                         <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div>
-
                     </div>
                     <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">
                         <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
-                            <button
-                                className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">
+                            <button className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">
                                 TRENDING
                             </button>
                             {
                                 trendingCarData &&
                                 <Link href={`/product/${trendingCarData.data[0].id}`}
-                                      className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-lg font-bold hover:bg-yellow-100 rounded-full">
+                                      className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-nowrap sm:text-lg font-bold hover:bg-yellow-100 rounded-full">
                                     {trendingCarData.data[0].attributes.title}
                                 </Link>
                             }
@@ -101,11 +92,9 @@ export default function Home() {
                             </p>
                         </div>
                         <MiniFilter className={'mb-10'}/>
-
                     </div>
                 </div>
             </Section>
-
             <Section>
                 <ImageView height={2134} width={1600}
                            classname={"w-10/12 lg:w-2/5 h-[400px] lg:h-[790px] absolute left-0 -z-10 rounded-br-[100px] rounded-tr-[100px] object-cover object-center"}
@@ -118,7 +107,6 @@ export default function Home() {
 
                             <ServicesList data={servicesData}/>
                         }
-
                     </div>
                     <div className="w-full lg:w-3/5 order-2 lg:order-1 lg:pl-16">
                         <h2 className="text-base md:text-lg text-primary-100 font-semibold tracking-[9px] md:pt-8 lg:pt-16">
@@ -136,12 +124,9 @@ export default function Home() {
                     </div>
                 </div>
             </Section>
-
             <Section>
                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">
-                    <ImageView src="/assets/images/circleElement.svg" alt="" width={66} height={50}
-                               classname="w-[50px] absolute left-0 md:left-16 lg:left-2/4 xl:left-[51%] 2xl:left-[53%] lg:top-80 top-40 z-50"/>
-
+                    <ImageView src="/assets/images/circleElement.svg" alt="" width={66} height={50} classname="w-[50px] absolute left-0 md:left-16 lg:left-2/4 xl:left-[51%] 2xl:left-[53%] lg:top-80 top-40 z-50"/>
                     <div className="w-full lg:basis-1/2 order-2 lg:order-1 pt-9">
                         <h3 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">
                             We Bring You to The Future
@@ -164,12 +149,11 @@ export default function Home() {
                         {
                             AlbumData &&
                             <VerticalSlider data={AlbumData}
-                                         sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                                            sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
                         }
                     </div>
                 </div>
             </Section>
-
             <Section className={"flex flex-col items-center"}>
                 <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-center">
                     Top deals of the week
@@ -182,19 +166,15 @@ export default function Home() {
                     <PaginatedSlider/>
                 </div>
             </Section>
-
             <Section>
                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">
-                    <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt=""
-                               classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
+                    <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt="" classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
                     <div className="w-full lg:basis-1/2 h-72 lg:h-96">
-
                         {
                             AlbumData &&
                             <VerticalSlider data={AlbumData}
-                                         sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                                            sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
                         }
-
                     </div>
                     <div className="w-full lg:basis-1/2 pt-9">
                         <h2 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">

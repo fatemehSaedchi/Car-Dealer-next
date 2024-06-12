@@ -11,14 +11,13 @@ export function Footer() {
             <div className="container m-auto px-4 mt-32 lg:mt-64 relative">
                 <div className="max-w-6xl m-auto bg-primary-100 max-h-72 rounded-3xl lg:rounded-[40px] relative flex p-4 sm:py-7 md:p-9 lg:p-16">
                     <div className="basis-2/4">
-                        <p className="w-full text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white">
-                            Have any question</p>
-                        <p className="w-full text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white lg:pt-2">
-                            about us?</p>
+                        <div className="w-full text-xs xs:text-[15px] sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white">
+                            Have any question</div>
+                        <div className="w-full text-xs xs:text-[15px] sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white lg:pt-2">
+                            about us?</div>
                         <div className="flex pt-5 sm:pt-9 lg:pt-14 gap-2 lg:gap-4">
                             <PhoneButton buttonStyle={"bg-white"}/>
-                            <button
-                                className="text-[8px] sm:text-xs lg:text-base py-1 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg border border-White-200 text-White-200 font-medium">
+                            <button className="hidden sm:inline-block text-[8px] sm:text-xs lg:text-base py-1 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg border border-White-200 text-White-200 font-medium">
                                 Contact Us
                             </button>
                         </div>
@@ -32,7 +31,7 @@ export function Footer() {
                 <div className="w-16 h-16 sm:w-28 sm:h-28 lg:w-44 lg:h-44 bg-orange-100 rounded-full absolute left-[45%] top-[82%] sm:top-[84%] md:top-[94%] lg:top-[79%] xl:top-[93%]"></div>
             </div>
             <div className="container mx-auto px-4 border-t-2 pt-14 mt-32 sm:mt-48 lg:mt-64">
-                <div className="px-4 flex flex-wrap justify-around">
+                <div className="px-4 flex flex-wrap justify-around mx-auto">
                     <div className="mb-10 w-full sm:basis-8/12 md:basis-1/2 xl:basis-2/6">
                         <Logo/>
                         <h3 className="font-bold my-3">
@@ -50,7 +49,7 @@ export function Footer() {
                         <h4 className="font-bold mb-5">
                             Contact
                         </h4>
-                        <ul className="flex flex-col gap-3">
+                        <ul className="flex flex-col gap-3 -translate-x-3.5">
                             <li className="flex">
                                 <ContactBox text={'77 Highfield Road London N36 7SB'}/>
                             </li>
