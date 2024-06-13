@@ -5,7 +5,7 @@ import {
     Section,
     ImageView,
     VerticalSlider,
-    PaginatedSlider, ServicesList,
+    PaginatedSlider, ServicesList, IconBox,
 } from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {getAllCarsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
@@ -56,23 +56,37 @@ export default function Home() {
             })
         })
 
+    const {data: SportAlbumData} = useQuery<ApiResponseType<AlbumType>>(
+        {
+            queryKey: [getAllAlbumsApi.name],
+            queryFn: () => getAllAlbumsApi({
+                populate: ['*'],
+                filters: {
+                    title: {$eq: 'sportCars'}
+                }
+            })
+        })
+
+    console.log('SportAlbumData:', SportAlbumData)
+
     return (
         <>
+            <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
+                {
+                    trendingCarData &&
+                    <TrendingSlider sliderData={trendingCarData} nextEl={".swiper-button-next"}
+                                    prevEl={".swiper-button-prev"}/>
+                }
+                <div className="swiper-button-next"></div>
+                <div className="swiper-button-prev"></div>
+            </div>
             <Section>
                 <div className="flex flex-col lg:flex-row container mx-auto px-4">
                     <ImageView src="/assets/images/circleElement.svg" alt="" classname="absolute w-14 top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
-                    <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
-                        {
-                            trendingCarData &&
-                            <TrendingSlider sliderData={trendingCarData} nextEl={".swiper-button-next"}
-                                            prevEl={".swiper-button-prev"}/>
-                        }
-                        <div className="swiper-button-next"></div>
-                        <div className="swiper-button-prev"></div>
-                    </div>
                     <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">
                         <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
-                            <button className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">
+                            <button
+                                className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">
                                 TRENDING
                             </button>
                             {
@@ -95,10 +109,11 @@ export default function Home() {
                     </div>
                 </div>
             </Section>
+
+            <ImageView height={2134} width={1600}
+                       classname={"w-10/12 lg:w-2/5 h-[400px] lg:h-[790px] absolute left-0 -z-10 rounded-br-[100px] rounded-tr-[100px] object-cover object-center"}
+                       src="/assets/images/robin-vet-q6LFMQ6wVZ0-unsplash1.jpg" alt="classNameic car"/>
             <Section>
-                <ImageView height={2134} width={1600}
-                           classname={"w-10/12 lg:w-2/5 h-[400px] lg:h-[790px] absolute left-0 -z-10 rounded-br-[100px] rounded-tr-[100px] object-cover object-center"}
-                           src="/assets/images/robin-vet-q6LFMQ6wVZ0-unsplash1.jpg" alt="classNameic car"/>
                 <div className="flex flex-col lg:items-end gap-9 2xl:gap-16">
                     <div
                         className="sm:w-11/12 lg:w-[70%] order-1 lg:order-2 flex flex-row pt-80 lg:pt-0 gap-2.5 sm:gap-5 justify-between self-end 2xl:pr-24">
@@ -126,7 +141,8 @@ export default function Home() {
             </Section>
             <Section>
                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">
-                    <ImageView src="/assets/images/circleElement.svg" alt="" width={66} height={50} classname="w-[50px] absolute left-0 md:left-16 lg:left-2/4 xl:left-[51%] 2xl:left-[53%] lg:top-80 top-40 z-50"/>
+                    <ImageView src="/assets/images/circleElement.svg" alt="" width={66} height={50}
+                               classname="w-[50px] absolute left-0 md:left-16 lg:left-2/4 xl:left-[51%] 2xl:left-[53%] lg:top-80 top-40 z-50"/>
                     <div className="w-full lg:basis-1/2 order-2 lg:order-1 pt-9">
                         <h3 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">
                             We Bring You to The Future
@@ -168,21 +184,22 @@ export default function Home() {
             </Section>
             <Section>
                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">
-                    <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt="" classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
+                    <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt=""
+                               classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
                     <div className="w-full lg:basis-1/2 h-72 lg:h-96">
                         {
-                            AlbumData &&
-                            <VerticalSlider data={AlbumData}
+                            SportAlbumData &&
+                            <VerticalSlider data={SportAlbumData}
                                             sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
                         }
                     </div>
                     <div className="w-full lg:basis-1/2 pt-9">
                         <h2 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">
-                            We Bring You to The Future
+                            Best Car in The World
                         </h2>
                         <h3 className="font-bold text-[30px] lg:text-[40px] xl:text-[45px] 2xl:text-[48px] mt-3 md:mt-[14px]">
-                            Don’t worries, <br/>
-                            we check all of unit
+                            We serve you with<br/>
+                            best car in the world
                         </h3>
                         <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -190,10 +207,16 @@ export default function Home() {
                             nostrud
                             exercitation ullamco laboris nisi ut aliquip ex ea.
                         </p>
-                        <Link href={""}
-                              className="inline-block px-4 xl:px-9 py-[12px] xl:py-[18px] text-sm md:text-base xl:text-lg font-medium rounded-[7px] bg-primary-100 text-white mt-6 lg:mt-9">
-                            Discover More
-                        </Link>
+                        <div className={'flex items-center mt-4 gap-3'}>
+                            <div
+                                className={'w-[70px] h-[70px] border border-secondary-20 rounded-full flex justify-center items-center'}>
+                                <div
+                                    className={'w-[46px] h-[46px] bg-primary-100 rounded-full flex justify-center items-center'}>
+                                    <IconBox icon={'icon-play text-white'} size={22}/>
+                                </div>
+                            </div>
+                            <Link href={'#'} className={'text-secondary-300 underline'}>Learn more</Link>
+                        </div>
                     </div>
                 </div>
             </Section>

@@ -6,7 +6,7 @@ interface Prop {
 export function Map({className = ''}:Prop) {
     return (
         <div className={className}>
-            <h3 className="font-bold text-2xl md:text-4xl xl:text-5xl text-center">Our dealer shops</h3>
+            <h1 className="font-bold text-2xl md:text-4xl xl:text-5xl text-center">Our dealer shops</h1>
             <p className="sm:w-3/5 max-w-3xl mx-auto py-3 lg:py-5 text-center text-xs md:text-sm xl:text-base leading-5">
                 Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

@@ -102,7 +102,7 @@ export default function Products() {
             <Section className="flex justify-between">
                 <Filter mobileFilter={mobileFilter} setMobileFilter={setMobileFilter}/>
                 <div className="w-full md:basis-4/5">
-                    <div className={'flex gap-2 mt-4 items-center cursor-pointer'} onClick={showFilterHandler}>
+                    <div className={'flex gap-2 mt-4 items-center cursor-pointer md:hidden'} onClick={showFilterHandler}>
                         <button className="flex flex-col gap-1 lg:hidden text-center  hover:shadow-lg">
                             <span className="w-[18px] h-[1px] bg-secondary-50 inline-block rounded"></span>
                             <span className="w-[18px] h-[1px] bg-secondary-50 inline-block rounded"></span>
@@ -110,8 +110,7 @@ export default function Products() {
                         </button>
                         <span className={'text-secondary-50 font-bold'}>FILTER</span>
                     </div>
-                    <div
-                        className="w-full flex flex-col lg:flex-row gap-5 pt-5 lg:pt-28 justify-between lg:items-center">
+                    <div className="w-full flex flex-col lg:flex-row gap-5 pt-5 lg:pt-28 justify-between lg:items-center md:ml-5">
                         <h3 className="text-secondary-50">
                             Showing
                             <span className="font-bold mx-2">

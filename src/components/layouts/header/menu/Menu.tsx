@@ -49,7 +49,7 @@ export function Menu({showMobileMenu, setShowMobileMenu}: Props) {
                                 mainMenuItems?.data.map((item: EntityType<MenuItemType>, index: number) => {
                                     return (
                                         <div key={index}>
-                                            <li className={`border-b-4 border-transparent lg:text-sm 2xl:text-base lg:hover:border-primary-100 pt-10 lg:pt-9 lg:pb-7 hover:text-primary-100`}>
+                                            <li className={`border-b-4 border-transparent lg:text-sm 2xl:text-base lg:hover:border-primary-100 pt-10 lg:pt-9 lg:pb-7 hover:text-primary-100`} onClick={closeMobileMenuHandler}>
                                                 <Link href={item.attributes.link}>{item.attributes.title}</Link>
                                             </li>
                                             <div className={'w-1/3 h-[1px] bg-linear-line'}></div>
