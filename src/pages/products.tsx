@@ -124,10 +124,9 @@ export default function Products() {
                         </span>
                         </h3>
                         <div>
-                            <label className="text-secondary-50 flex gap-10 items-center">
+                            <label className="text-secondary-50 flex gap-3 items-center">
                                 Sort by
-                                <select
-                                    className="text-primary-100 bg-white border border-Purple-50 rounded-lg text-sm font-bold p-3">
+                                <select className="text-primary-100 bg-white border border-Purple-50 rounded-lg text-sm font-bold p-3">
                                     <option value="Newest">
                                         Newest
                                     </option>
