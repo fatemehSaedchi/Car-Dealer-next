@@ -16,12 +16,13 @@ export function PaginatedSlider() {
         <>
             <Swiper
                 modules={[Pagination,Autoplay]}
-                className="mySwiper rounded-[30px]"
+                className="paginatedSlider rounded-[30px] h-[425px] sm:h-[453px] xl:h-[533px]"
                 pagination={{
                     clickable: true
                 }}
                 loop={true}
                 slidesPerView={1}
+                spaceBetween={10}
                 autoplay={true}
                 breakpoints={{
                     640: {

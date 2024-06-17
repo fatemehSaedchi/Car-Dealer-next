@@ -1,4 +1,3 @@
-
 import {IconBox, PopularBrands} from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {getAllBrandsApi, getAllClassesApi} from "@/api";
@@ -24,7 +23,6 @@ export function MiniFilter({className}: Props) {
             })
         }
     )
-
 
     const {data: brandsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
         queryFn: () => getAllBrandsApi({}),
@@ -58,45 +56,53 @@ export function MiniFilter({className}: Props) {
             <form onSubmit={handleSubmit(submitHandler)} className={className}>
                 <div
                     className="rounded-xl shadow-3xl sm:w-[600px] xl:w-[700px] 2xl:w-[850px] relative z-50 bg-white mt-7">
-                    <div className="flex items-center justify-between h-24 xl:h-28 py-4 px-4 lg:px-6">
+                    <div className="flex gap-2 items-center justify-between h-24 xl:h-28 py-4 px-4 lg:px-6">
 
-                        <select {...register("carBrand")}
-                                className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
-                            <option value={''}>
-                                {"Brands"}
-                            </option>
-                            {
-                                brandsData &&
-                                brandsData.data.map(
-                                    (value) => {
-                                        return (
-                                            <option value={value.attributes.title}>
-                                                {value.attributes.title}
-                                            </option>
-                                        )
-                                    }
-                                )
-                            }
-                        </select>
+                        <div className={'relative h-full w-full'}>
+                            <select {...register("carBrand")}
+                                    className="appearance-none rounded-lg font-bold text-White-100 text-[10px] sm:text-base xl:text-lg pl-1 sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
+                                <option value={''}>
+                                    {"Brands"}
+                                </option>
+                                {
+                                    brandsData &&
+                                    brandsData.data.map(
+                                        (value) => {
+                                            return (
+                                                <option value={value.attributes.title}>
+                                                    {value.attributes.title}
+                                                </option>
+                                            )
+                                        }
+                                    )
+                                }
+                            </select>
+                            <div className={'absolute right-2 top-5 md:right-6 xl:top-7 pointer-events-none'}><IconBox
+                                icon={'icon-angleDown text-White-100'} size={8}/></div>
+                        </div>
 
-                        <select {...register("carClass")}
-                                className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
-                            <option value={''}>
-                                {"Classes"}
-                            </option>
-                            {
-                                classesData &&
-                                classesData.data.map(
-                                    (value) => {
-                                        return (
-                                            <option value={value.attributes.title}>
-                                                {value.attributes.title}
-                                            </option>
-                                        )
-                                    }
-                                )
-                            }
-                        </select>
+                        <div className={'relative h-full w-full'}>
+                            <select {...register("carClass")}
+                                    className="appearance-none font-bold rounded-lg text-White-100 text-[10px] sm:text-base xl:text-lg pl-1 sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">
+                                <option value={''}>
+                                    {"Classes"}
+                                </option>
+                                {
+                                    classesData &&
+                                    classesData.data.map(
+                                        (value) => {
+                                            return (
+                                                <option value={value.attributes.title}>
+                                                    {value.attributes.title}
+                                                </option>
+                                            )
+                                        }
+                                    )
+                                }
+                            </select>
+                            <div className={'absolute right-2 top-5 md:right-6 xl:top-7 pointer-events-none'}><IconBox
+                                icon={'icon-angleDown text-White-100'} size={8}/></div>
+                        </div>
 
                         {/*<select {...register("CarModel")}*/}
                         {/*        className="font-bold text-White-100 text-[10px] sm:text-base xl:text-lg sm:pl-6 2xl:px-12 cursor-pointer relative w-full h-full hover:text-blue-600">*/}

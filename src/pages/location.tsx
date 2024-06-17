@@ -12,7 +12,7 @@ export default function Location() {
     return (
         //Todo fix z-index
         <>
-            <HeroSection title={"Dealer Locations"}/>
+            <HeroSection title={"Dealer Locations"} backGround={'bg-location-banner'}/>
             <Section className={'pt-14 lg:pt-24'}>
                 <Map/>
                 {locationData && <Branches data={locationData.data}/>}

@@ -35,7 +35,7 @@ export function Tabs({tabs}: TabsComponentProps) {
                     }
                 })}
             </div>
-            <div className="pt-10">
+            <div className=" pt-2 lg:pt-10 mb-7">
                 {tabs[activeTab] && (
                     <p>{tabs[activeTab].content}</p>
                 )}

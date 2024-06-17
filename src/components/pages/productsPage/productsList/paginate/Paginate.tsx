@@ -36,15 +36,14 @@ export function Paginate({data, pageSetter}: Props) {
                 pages[0] != 1 &&
 
                 <li onClick={decreament}>
-                        <IconBox
-                            icon={'icon-angleLeft hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-2 px-7 rounded-lg  font-bold active:bg-primary-100 active:text-white'}/>
+                        <IconBox icon={'icon-angleLeft hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg  font-bold active:bg-primary-100 active:text-white'}/>
                 </li>
             }
 
             {
                 pageNum != 1 &&
                 <li onClick={()=>pageSetter(1)}
-                    className={`hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100  py-2 px-7 rounded-lg  font-bold active:bg-primary-100 active:text-white`}>
+                    className={`hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100  py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
                         1
                 </li>
             }
@@ -79,7 +78,7 @@ export function Paginate({data, pageSetter}: Props) {
             {
                 !pages.includes(totalPage) &&
                 <li onClick={()=> pageSetter(totalPage)}
-                    className={`hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100  py-2 px-7 rounded-lg  font-bold active:bg-primary-100 active:text-white`}>
+                    className={`hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
                     {totalPage}
                 </li>
             }
@@ -88,8 +87,7 @@ export function Paginate({data, pageSetter}: Props) {
             {
                 pageNum != totalPage &&
                 <li onClick={increament}>
-                        <IconBox
-                            icon={'icon-angleRight hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-2 px-7 rounded-lg  font-bold active:bg-primary-100 active:text-white'}/>
+                        <IconBox icon={'icon-angleRight hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white'}/>
                 </li>
             }
         </ul>

@@ -33,6 +33,7 @@ i {
 }
 .icon-angleDown:before {
     content: "\e900";
+    font-size: 8px;
 }
 .icon-angleRight:before {
     content: "\e901";

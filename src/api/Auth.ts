@@ -2,11 +2,10 @@ import {apiClient} from "@/api/config";
 import {AuthResponseType} from "@/types/AuthResponse";
 
 interface RegisterData {
-    firstname: string,
-    lastname: string,
-    username: string,
+    fullName: string,
     email: string,
     phoneNumber: string,
+    username: string,
     password: string
 }
 
