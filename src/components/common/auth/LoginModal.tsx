@@ -29,7 +29,7 @@ export function LoginModal() {
 
     return (
         <Modal title={'Login'}>
-            <form onSubmit={handleSubmit(submitHandler)} className=" p-12 rounded-2xl bg-white text-sm lg:text-base flex flex-col gap-3">
+            <form onSubmit={handleSubmit(submitHandler)} className="p-12 rounded-2xl bg-white text-sm lg:text-base flex flex-col gap-3">
                 <Input register={register('identifier', {required: true})} type={'text'} label={'Username'}
                        errors={errors} {...{placeholder: 'Enter Username'}}/>
                 <Input register={register('password', {required: 'Password is incorrect'})} type={'password'}
