@@ -298,7 +298,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                 <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox
                                     icon={'icon-angleDown text-secondary-400'} size={8}/></div>
                             </div>
-                            <button type="submit"
+                            <button type="submit" onClick={closeFilterHandler}
                                     className=" h-12 w-full px-5 mt-7 bg-primary-100 rounded-lg flex justify-between items-center text-white shadow-6xl">
                                 <IconBox icon={'icon-angleRight'} title={'FIND CARS'} titleClassName={'order-first'}/>
                             </button>
