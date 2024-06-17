@@ -9,9 +9,9 @@ export function Breadcrumb({ title }: Props) {
     const pathSegments = router.asPath.split('/').filter(segment => segment.trim() !== '');
 
     return (
-        <div className="container pl-11 mx-auto pt-5 pb-10">
+        <div className="container pl-8 md:pl-11 mx-auto pt-5 pb-10">
             <nav aria-label="Breadcrumb">
-                <ol className="flex flex-row text-xs md:text-sm">
+                <ol className="flex flex-row text-[11px] md:text-sm">
                     <li>
                         <Link href="/">Home <span className={'px-2'}>/</span></Link>
                     </li>

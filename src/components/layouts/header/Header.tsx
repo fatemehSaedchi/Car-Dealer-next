@@ -33,7 +33,7 @@ export function Header() {
                         <PhoneButton buttonStyle={"hidden lg:flex bg-White-200 hover:shadow-lg border border-White-200 hover:border-primary-100"}/>
                         <button className="text-secondary-400 border border-White-200 p-3 rounded-lg hover:border-primary-100 hover:shadow-lg font-semibold">
                             EN
-                            <IconBox icon={'icon-angleDown text-sm ml-1'}/>
+                            <IconBox icon={'icon-angleDown text-sm ml-1'} size={10}/>
                         </button>
                     </div>
                 </div>

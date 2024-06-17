@@ -15,7 +15,7 @@ export function TrendingSlider({sliderData, nextEl, prevEl}: Props) {
     return (
 
         <Swiper
-            className={'rounded-bl-[100px]'}
+            className={'rounded-bl-[100px] trendingSlider'}
             slidesPerView={1}
             modules={[Navigation,Autoplay]}
             navigation={{
