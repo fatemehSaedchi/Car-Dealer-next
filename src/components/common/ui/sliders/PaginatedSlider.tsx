@@ -20,7 +20,6 @@ export function PaginatedSlider() {
                 pagination={{
                     clickable: true
                 }}
-                loop={true}
                 slidesPerView={1}
                 spaceBetween={10}
                 autoplay={true}
@@ -41,7 +40,7 @@ export function PaginatedSlider() {
                     return(
                         <>
                         <SwiperSlide key={index} className={'relative rounded-[30px] overflow-hidden'}>
-                            <PaginatedSliderCard key={index} data={value}/>
+                            <PaginatedSliderCard data={value}/>
                         </SwiperSlide>
                         </>
                     )
