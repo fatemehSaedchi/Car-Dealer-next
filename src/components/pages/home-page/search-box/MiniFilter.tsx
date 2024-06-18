@@ -67,9 +67,9 @@ export function MiniFilter({className}: Props) {
                                 {
                                     brandsData &&
                                     brandsData.data.map(
-                                        (value) => {
+                                        (value, index) => {
                                             return (
-                                                <option value={value.attributes.title}>
+                                                <option key={index} value={value.attributes.title}>
                                                     {value.attributes.title}
                                                 </option>
                                             )
@@ -90,9 +90,9 @@ export function MiniFilter({className}: Props) {
                                 {
                                     classesData &&
                                     classesData.data.map(
-                                        (value) => {
+                                        (value,index) => {
                                             return (
-                                                <option value={value.attributes.title}>
+                                                <option key={index} value={value.attributes.title}>
                                                     {value.attributes.title}
                                                 </option>
                                             )

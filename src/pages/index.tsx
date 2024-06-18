@@ -82,7 +82,7 @@ export default function Home() {
             </div>
             <Section>
                 <div className="flex flex-col lg:flex-row container mx-auto px-4">
-                    <ImageView src="/assets/images/circleElement.svg" alt="" classname="absolute w-14 top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
+                    <ImageView src="/assets/images/circleElement.svg" alt="" classname="absolute w-auto h-auto top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
                     <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">
                         <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
                             <button
