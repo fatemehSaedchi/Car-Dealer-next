@@ -13,9 +13,9 @@ if (error.response){
     if (error.response.status === 404){
         toast.error('requested source not found')
     }else if (error.response.status === 400){
-        toast.error('sending parameters are wrong')
+        toast.error(error.response.data.error.message)
     }else if (error.response.status === 401){
-        toast.error('please login')
+        toast.error(error.response.data.error.message)
     }else if (error.response.status === 403){
         toast.error('you dont have required access to this source')
     } else {

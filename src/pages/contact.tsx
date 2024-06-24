@@ -1,4 +1,4 @@
-import {ContactBox, HeroSection, ImageView, RegisterForm, Section} from "@/components";
+import {ContactBox, HeroSection, ImageView, RegisterForm, Section, SendMessageForm} from "@/components";
 
 export default function Contact() {
     return (
@@ -27,7 +27,8 @@ export default function Contact() {
                             </li>
                         </ul>
                     </div>
-                    <RegisterForm/>
+                    {/*<RegisterForm/>*/}
+                    <SendMessageForm/>
                 </div>
             </Section>
         </>

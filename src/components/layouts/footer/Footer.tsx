@@ -1,13 +1,28 @@
-import {ContactBox, FooterMenu, ImageView, Logo, PhoneButton, SocialMedia} from "@/components";
+import {
+    ContactBox,
+    FooterMenu,
+    ImageView,
+    LoginModal,
+    Logo,
+    PhoneButton,
+    RegisterModal,
+    SocialMedia
+} from "@/components";
 import {useMenu} from "@/hooks";
+import Link from "next/link";
+import {useModal} from "@/store/ModalContext";
 
 export function Footer() {
 
-    const {data: quickMenuItems} = useMenu({title:"Quick Links"})
+    // const {data: quickMenuItems} = useMenu({title:"Quick Links"})
     const {data: supportMenuItems} = useMenu({title:"Support"})
+
+    const{openModal, currentModal} = useModal()
 
     return (
         <footer>
+            {currentModal === 'login' && <LoginModal/>}
+            {currentModal === 'register' && <RegisterModal/>}
             <div className="container m-auto px-4 mt-32 lg:mt-64 relative">
                 <div className="max-w-6xl m-auto bg-primary-100 max-h-72 rounded-3xl lg:rounded-[40px] relative flex p-4 sm:py-7 md:p-9 lg:p-16">
                     <div className="basis-2/4">
@@ -45,7 +60,8 @@ export function Footer() {
                         </p>
                         <SocialMedia/>
                     </div>
-                    <div className="mb-12 w-full text-center sm:basis-8/12 md:basis-1/2 xl:basis-2/6 xl:order-4 relative">
+                    <div
+                        className="mb-12 w-full text-center sm:basis-8/12 md:basis-1/2 xl:basis-2/6 xl:order-4 relative">
                         <h4 className="font-bold mb-5">
                             Contact
                         </h4>
@@ -58,11 +74,27 @@ export function Footer() {
                             </li>
                         </ul>
                     </div>
+                    {/*<div className="mb-10 basis-1/2 text-center xl:basis-1/6">*/}
+                    {/*    { quickMenuItems && <FooterMenu menuItems={quickMenuItems} title={"Quick Links"}/>}*/}
+                    {/*</div>*/}
                     <div className="mb-10 basis-1/2 text-center xl:basis-1/6">
-                        { quickMenuItems && <FooterMenu menuItems={quickMenuItems} title={"Quick Links"}/>}
+                        <h4 className="font-bold mb-5">Quick Links</h4>
+                        <ul className="flex flex-col gap-3 text-secondary-100 text-sm lg:text-base">
+                            <li>
+                                <Link className={'hover:text-primary-100 active:text-primary-100'} href={'/about'}>About us</Link>
+                            </li>
+                            <li>
+                                <Link className={'hover:text-primary-100 active:text-primary-100'} href={'/contact'}>Contact us</Link>
+                            </li>
+                            <li>
+                                <Link className={'hover:text-primary-100 active:text-primary-100'} href={'/products'}>Products</Link>
+                            </li>
+                            <li className={'hover:text-primary-100 active:text-primary-100 cursor-pointer'} onClick={()=>{openModal('login')}}>Login</li>
+                            <li onClick={()=>{openModal('register')}} className={'hover:text-primary-100 active:text-primary-100 cursor-pointer'}>Register</li>
+                        </ul>
                     </div>
                     <div className="mb-20 basis-1/2 text-center xl:basis-1/6">
-                        { supportMenuItems && <FooterMenu menuItems={supportMenuItems} title={"Support"}/>}
+                        {supportMenuItems && <FooterMenu menuItems={supportMenuItems} title={"Support"}/>}
                     </div>
                 </div>
                 <p className="text-center text-secondary-50">

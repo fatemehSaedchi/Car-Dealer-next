@@ -13,8 +13,8 @@ export function Modal({title, children}: Props) {
 
     return (
         <Portal onClose={closeModal}>
-            <div className={'min-w-[100vw] md:min-w-[50vw] min-h-[100vh] md:min-h-[50vh] bg-white overflow-auto rounded-xl'}>
-                <div className={'flex flex-row justify-between bg-primary-100 text-white font-bold px-5 pt-14 pb-3'}>
+            <div className={'min-w-[100vw] md:min-w-[50vw] min-h-[100vh] md:min-h-[50vh] bg-white overflow-auto md:rounded-xl'}>
+                <div className={'flex flex-row justify-between bg-primary-100 text-white font-bold p-5'}>
                     {title}
                     <span className={'cursor-pointer'} onClick={closeModal}>X</span>
                 </div>

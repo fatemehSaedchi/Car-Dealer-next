@@ -4,7 +4,7 @@ interface Props {
     children: ReactNode
 }
 
-type modalType = null | 'login'
+type modalType = null | 'login' | 'register'
 
 interface ModalContextType {
     currentModal: modalType
