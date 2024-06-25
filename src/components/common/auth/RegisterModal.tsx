@@ -50,7 +50,7 @@ export function RegisterModal() {
                     <input type="checkbox" name="termsCheck" id="termsCheck" className={'cursor-pointer'}/>
                     <label htmlFor="termsCheck" className="text-secondary-100">Accept <Link href={'#'} className="text-primary-100 font-bold">terms & conditions</Link></label>
                 </div>
-                <button className="w-full text-center bg-primary-100 p-4 rounded-2xl text-white font-bold" type="submit">Sign Up</button>
+                <button className="w-full text-center bg-primary-100 p-4 rounded-2xl text-white text-lg font-bold" type="submit">Register</button>
             </form>
         </Modal>
     );

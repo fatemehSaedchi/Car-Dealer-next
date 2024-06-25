@@ -1,4 +1,3 @@
-
 import {HeroSection, OurTeam, Section, Map, ServicesList} from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {ApiResponseType, ServicesType, TeamMemberType} from "@/types";
@@ -45,7 +44,9 @@ export default function About({}: Props) {
                 <div className="flex flex-wrap pt-7 md:pt-11">
                     {
                         servicesData &&
-                        <ServicesList data={servicesData} className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"} cardNumber={4} topBar={true}/>
+                        <ServicesList data={servicesData}
+                                      className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"}
+                                      cardNumber={4} topBar={true}/>
                     }
                 </div>
             </Section>
@@ -56,9 +57,10 @@ export default function About({}: Props) {
                         Our teams
                     </h3>
                     <p className="text-xs md:text-sm xl:text-base leading-5 sm:basis-3/5 lg:basis-1/2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea.
+                        Our team members bring diverse expertise and passion to every aspect of our service. With a
+                        dedication to excellence, we collaborate closely to ensure seamless operations and exceptional
+                        customer satisfaction. Together, we strive to innovate and deliver the best automotive solutions
+                        for our clients.
                     </p>
                 </div>
                 {

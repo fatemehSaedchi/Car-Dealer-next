@@ -16,6 +16,7 @@ import {ApiSingleResponseType, CarsType} from "@/types";
 import {getOneCarApi} from "@/api/car";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
+import {id} from "postcss-selector-parser";
 
 export default function ProductDetail() {
 
@@ -25,18 +26,21 @@ export default function ProductDetail() {
     const {data: CarData, refetch} = useQuery<ApiSingleResponseType<CarsType>>({
         queryKey: [getOneCarApi.name, 'carsAllData'],
         queryFn: () => getOneCarApi({populate: ['*'], id: Id}),
-        retry: true
+        retry: true,
+        enabled: !!Id
     });
+
+    useEffect(() => {
+        if (Id){
+            refetch()
+        }
+    }, [Id])
 
     const tabsData = [
         {title: 'Description', content: <ProductDescription data={CarData?.data.attributes.description}/>},
         {title: 'Discussion', content: <ProductDiscussion data={CarData?.data.attributes.discussion}/>},
         {title: 'Reviews', content: <ProductReviews data={CarData?.data.attributes.reviews}/>},
     ];
-
-    useEffect(() => {
-        refetch()
-    }, [Id])
 
     return (
         <>

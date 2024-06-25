@@ -40,7 +40,7 @@ export function LoginModal() {
                            label={'Password'} errors={errors} {...{placeholder: 'Enter Password'}}/>
                     <div className={'text-sm text-secondary-100 font-medium mb-3'}>Don't have an account? <span
                         onClick={() => openModal('register')} className={'cursor-pointer hover:text-secondary-400'}>register</span></div>
-                    <button className="w-full text-center bg-primary-100 p-4 rounded-2xl text-white font-bold mt-2"
+                    <button className="w-full text-center bg-primary-100 p-4 rounded-2xl text-white text-lg font-bold mt-2"
                             type="submit">Login
                     </button>
                 </form>
