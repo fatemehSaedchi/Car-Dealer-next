@@ -14,7 +14,7 @@ export function SocialMedia() {
             </li>
             <li>
                 <Link href="#">
-                    <IconBox icon={"icon-linkedin text-Purple-50 hover:text-primary-100 active:text-primary-100"}
+                    <IconBox icon={"icon-linkedInLogo text-Purple-50 hover:text-primary-100 active:text-primary-100"}
                              size={18}/>
                 </Link>
             </li>

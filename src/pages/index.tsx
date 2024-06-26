@@ -82,7 +82,9 @@ export default function Home() {
             </div>
             <Section>
                 <div className="flex flex-col lg:flex-row container mx-auto px-4">
-                    <ImageView src="/assets/images/circleElement.svg" alt="" classname="absolute w-auto h-auto top-[60px] right-[85%] lg:right-[52%]" height={66} width={50}/>
+                    <ImageView src="/assets/images/circleElement.svg" alt=""
+                               classname="absolute w-auto h-auto top-[60px] right-[85%] lg:right-[52%]" height={66}
+                               width={50}/>
                     <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">
                         <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
                             <button
@@ -101,8 +103,9 @@ export default function Home() {
                             <h1 className="text-4xl sm:text-5xl xl:text-6xl pr-2 sm:w-[500px] xl:w-[620px] font-bold sm:leading-[58px] xl:leading-[70px] pt-7 lg:pt-11">
                                 Say hello to best car dealer platform</h1>
                             <p className="text-sm md:w-10/12 leading-6 sm:leading-7 mt-3">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                Experience unparalleled car buying and selling with a wide variety and reliable services
+                                at <span className={'font-semibold text-md'}>Mobhil Car Dealer</span>. Discover the best
+                                car deals and benefit from professional services with Us.
                             </p>
                         </div>
                         <MiniFilter className={'mb-10'}/>
@@ -130,12 +133,11 @@ export default function Home() {
                         <h3 className="text-3xl md:text-5xl font-bold pt-3 md:pt-5">
                             About the Mobhil
                         </h3>
-                        <p className="text-xs md:text-base xl:text-lg pr-5 leading-[21px] xl:leading-8 pt-6 md:pt-8 xl:pt-10 lg:w-4/5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea.</p>
+                        <p className="text-xs md:text-sm xl:text-lg pr-5 leading-[21px] xl:leading-8 pt-6 md:pt-8 xl:pt-10 lg:w-4/5">
+                            We have implemented this platform to provide better and more convenient services for both
+                            buyers and sellers. Here, you can easily find car buyers and sellers at any location. With a
+                            wide variety of cars and the provision of high-quality, reliable services, we ensure your
+                            experience here is exceptional.</p>
                     </div>
                 </div>
             </Section>
@@ -152,9 +154,8 @@ export default function Home() {
                             we check all of unit
                         </h3>
                         <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.
+                            In Mobhil Car Dealer, we are dedicated to innovation and progress. Without any concerns, we
+                            meticulously inspect every unit to ensure quality and reliability for you.
                         </p>
                         <Link href={'#'}
                               className="inline-block px-4 xl:px-9 py-[12px] xl:py-[18px] text-sm md:text-base xl:text-lg font-medium rounded-[7px] bg-primary-100 text-white mt-6 lg:mt-9">
@@ -174,9 +175,9 @@ export default function Home() {
                 <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-center">
                     Top deals of the week
                 </h2>
-                <p className="max-w-xl lg:max-w-2xl text-sm lg:text-lg leading-6 xl:leading-8 text-center pt-2 md:pt-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                <p className="max-w-xl lg:max-w-3xl text-sm lg:text-lg leading-6 xl:leading-8 text-center pt-2 md:pt-5">
+                    Discover exclusive offers and unbeatable prices on our top vehicles this week. Don't miss out on
+                    these exceptional opportunities to find your dream car.
                 </p>
                 <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">
                     <PaginatedSlider/>
@@ -202,10 +203,10 @@ export default function Home() {
                             best car in the world
                         </h3>
                         <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea.
+                            We are committed to providing you with the highest level of automotive excellence. Through
+                            careful selection and meticulous quality inspection, we ensure that each vehicle meets our
+                            high standards. With our unparalleled experience, our outstanding cars exceed your
+                            expectations.
                         </p>
                         <div className={'flex items-center mt-4 gap-3'}>
                             <div

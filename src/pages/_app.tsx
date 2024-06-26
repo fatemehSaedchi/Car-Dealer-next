@@ -58,6 +58,7 @@ export default function App({Component, pageProps}: AppProps) {
                                 pauseOnFocusLoss={false}
                                 draggable={false}
                                 theme="dark"
+                                className={'custom-toast-container'}
                             />
                         </Layout>
                         <ReactQueryDevtools initialIsOpen={false}/>
