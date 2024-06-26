@@ -1,10 +1,5 @@
-export interface ModelBrandClassType {
+export interface CarSpecificsType {
     title: string
-    createdAt: string
-    updatedAt: string
-}
-export interface fuelType {
-    type: string
     createdAt: string
     updatedAt: string
 }
