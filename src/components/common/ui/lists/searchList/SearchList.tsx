@@ -1,7 +1,7 @@
-import {ApiResponseType, ModelBrandClassType} from "@/types";
+import {ApiResponseType, CarSpecificsType} from "@/types";
 
 interface Props {
-    searchData: ApiResponseType<ModelBrandClassType>
+    searchData: ApiResponseType<CarSpecificsType>
     defaultValue: string
 }
 

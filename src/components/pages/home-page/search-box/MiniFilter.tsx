@@ -1,7 +1,7 @@
 import {IconBox, PopularBrands} from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {getAllBrandsApi, getAllClassesApi} from "@/api";
-import {ApiResponseType, ModelBrandClassType} from "@/types";
+import {ApiResponseType, CarSpecificsType} from "@/types";
 import Link from "next/link";
 import {useForm} from "react-hook-form";
 import {useRouter} from "next/router";
@@ -24,17 +24,17 @@ export function MiniFilter({className}: Props) {
         }
     )
 
-    const {data: brandsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    const {data: brandsData} = useQuery<ApiResponseType<CarSpecificsType>>({
         queryFn: () => getAllBrandsApi({}),
         queryKey: [getAllBrandsApi.name]
     })
 
-    const {data: classesData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    const {data: classesData} = useQuery<ApiResponseType<CarSpecificsType>>({
         queryFn: () => getAllClassesApi({}),
         queryKey: [getAllClassesApi.name]
     })
 
-    // const {data: modelsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    // const {data: modelsData} = useQuery<ApiResponseType<CarSpecificsType>>({
     //     queryFn: () => getAllModelsApi({}),
     //     queryKey: [getAllModelsApi.name]
     // })

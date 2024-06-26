@@ -51,7 +51,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
         queryKey: [getAllClassesApi.name]
     })
 
-    // const {data: modelsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    // const {data: modelsData} = useQuery<ApiResponseType<CarSpecificsType>>({
     //     queryFn: () => getAllModelsApi({}),
     //     queryKey: [getAllModelsApi.name]
     // })
