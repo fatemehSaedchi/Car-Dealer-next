@@ -1,9 +1,10 @@
-import {Filter, HeroSection, IconBox, Paginate, ProductsList, Section} from "@/components";
+import {Filter, HeroSection, Paginate, ProductsList, Section} from "@/components";
 import {useMutation} from "@tanstack/react-query";
 import {getAllCarsApi} from "@/api";
 import {MouseEvent, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {ParsedUrlQueryInput} from "node:querystring";
+import {Loading} from "@/components/common/ui/loading/Loading";
 
 interface ObjFilter {
     title?: object,
@@ -13,6 +14,7 @@ interface ObjFilter {
 }
 
 export default function Products() {
+
 
     const [mobileFilter, setMobileFilter] = useState(false)
 
@@ -79,9 +81,10 @@ export default function Products() {
                     pageSize: 9,
                     page: pageState
                 }
-            })
+            },)
         }
     })
+
 
     const [pageState, setPageState] = useState(1)
 
@@ -135,6 +138,9 @@ export default function Products() {
                         </div>
                     </div>
                     {
+                        mutation.isPending ?
+                        <Loading/>
+                            :
                         mutation.data &&
                         <ProductsList data={mutation.data}/>
                     }
