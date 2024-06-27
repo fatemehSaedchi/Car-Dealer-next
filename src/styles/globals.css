@@ -96,6 +96,10 @@
     z-index: 99999999 !important;
 }
 
+.main-slider .swiper-slide-thumb-active{
+    opacity: 100;
+}
+
 
 
 

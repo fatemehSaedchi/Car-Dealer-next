@@ -1,1 +1,1 @@
-export * from './ProductReviews'
+export * from './ProductFeatures'

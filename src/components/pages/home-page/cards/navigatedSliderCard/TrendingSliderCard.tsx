@@ -1,12 +1,15 @@
 import {CarsType, EntityType} from "@/types";
 import {ImageView} from "@/components";
 import Link from "next/link";
+import {formatNumberWithCommas} from "@/utils/formatNumber";
 
 interface Props {
     data: EntityType<CarsType>
 }
 
 export function TrendingSliderCard({data}: Props) {
+    const price = formatNumberWithCommas({number: data.attributes.price})
+
     return (
         <Link href={`/product/${data.id}`}>
                 <ImageView height={data.attributes.thumbnail.data.attributes.height} width={data.attributes.thumbnail.data.attributes.width} classname="rounded-bl-[100px] h-96 lg:h-[700px] w-full"
@@ -19,8 +22,8 @@ export function TrendingSliderCard({data}: Props) {
                 <div className="flex w-full justify-between mt-2.5">
                     <p className="text-white text-base sm:text-xl md:text-3xl xl:text-4xl font-light">
                         {data.attributes.car_model.data.attributes.title ? data.attributes.car_model.data.attributes.title : ''}</p>
-                    <p className="text-white text-base sm:text-xl md:text-3xl xl:text-4xl font-bold">$
-                        {data.attributes.price ? data.attributes.price : data.attributes.price}</p>
+                    <p className="text-white text-base sm:text-xl md:text-3xl xl:text-4xl font-semibold">$
+                        {price}</p>
                 </div>
             </div>
         </Link>

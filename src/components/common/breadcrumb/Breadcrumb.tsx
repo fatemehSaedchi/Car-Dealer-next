@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-interface Props {
+interface BreadcrumbProps {
     title?: string;
 }
-export function Breadcrumb({ title }: Props) {
+
+export function Breadcrumb({ title }: BreadcrumbProps) {
     const router = useRouter();
+
     const pathSegments = router.asPath.split('/').filter(segment => segment.trim() !== '');
 
     return (
@@ -13,27 +15,39 @@ export function Breadcrumb({ title }: Props) {
             <nav aria-label="Breadcrumb">
                 <ol className="flex flex-row text-[11px] md:text-sm">
                     <li>
-                        <Link href="/">Home <span className={'px-2'}>/</span></Link>
+                        <Link href="/">Home <span className="px-2">/</span></Link>
                     </li>
-                    {pathSegments.map((segment, index) => {
-                        const routeTo =` ${pathSegments.slice(0, index + 1).join('/')}`;
-                        const isLast = index === pathSegments.length - 1;
-                        return (
-                            <>
+                    <li>
+                        <Link href="/products">Car Collection <span className="px-2">/</span></Link>
+                    </li>
+                    {title ? (
+                        <li>
+                            <span className="text-secondary-50">{title}</span>
+                        </li>
+                    ) : (
+                        pathSegments.map((segment, index) => {
+                            const routeTo = `/${pathSegments.slice(0, index + 1).join('/')}`;
+                            const isLast = index === pathSegments.length - 1;
+                            return (
                                 <li key={segment}>
-                                    {title ? (
-                                        isLast ? <span className={'text-secondary-50'}>{title}</span> :
-                                            <Link href={routeTo}>{title}<span className={'px-2'}>/</span></Link>
+                                    {isLast ? (
+                                        <span className="text-secondary-50">{segment}</span>
                                     ) : (
-                                        isLast ? <span className={'text-secondary-50'}>{segment}</span> :
-                                            <Link href={routeTo}>{segment}</Link>
+                                        <Link href={routeTo}>
+                                            {segment} <span className="px-2">/</span>
+                                        </Link>
                                     )}
                                 </li>
-                            </>
-                        );
-                    })}
+                            );
+                        })
+                    )}
                 </ol>
             </nav>
         </div>
     );
 }
+
+
+
+
+
