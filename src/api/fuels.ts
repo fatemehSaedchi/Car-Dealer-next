@@ -1,5 +1,5 @@
 import {apiClient} from "@/api/config";
-import {ApiResponseType, fuelType} from "@/types";
+import {ApiResponseType, CarSpecificsType} from "@/types";
 
 interface Interface {
     populate?: Array<'thumbnail' | '*'>
@@ -14,7 +14,7 @@ interface Interface {
     }
 }
 
-export function getAllFuelsApi({populate, filters = {}, sort = [], pagination = {}}: Interface): Promise<ApiResponseType<fuelType>> {
+export function getAllFuelsApi({populate, filters = {}, sort = [], pagination = {}}: Interface): Promise<ApiResponseType<CarSpecificsType>> {
     return apiClient.get('/fuels', {
         params: {
             populate: populate?.join(','),

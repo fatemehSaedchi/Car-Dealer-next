@@ -1,6 +1,6 @@
-import {IconBox, ImageView} from "@/components";
+import {FilterSelect, IconBox, ImageView} from "@/components";
 import {useMutation, useQuery} from "@tanstack/react-query";
-import {ApiResponseType,CarsType, EntityType, fuelType, ModelBrandClassType} from "@/types";
+import {ApiResponseType, CarSpecificsType, CarsType, EntityType} from "@/types";
 import {getAllBrandsApi,getAllCarsApi, getAllClassesApi} from "@/api";
 import {useForm} from "react-hook-form";
 import {getAllFuelsApi} from "@/api/fuels";
@@ -10,6 +10,9 @@ import {useEffect, MouseEvent, Dispatch, SetStateAction,useState} from "react";
 import useDebounce from "@/hooks/use-debounce";
 import {useOverlay} from "@/hooks";
 import Link from "next/link";
+import Select from 'react-select';
+import {filter} from "minimatch";
+
 
 interface Props {
     mobileFilter: boolean
@@ -38,27 +41,27 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
         })
     })
 
-    const {data: brandsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    const {data: brandsData} = useQuery<ApiResponseType<CarSpecificsType>>({
         queryFn: () => getAllBrandsApi({}),
         queryKey: [getAllBrandsApi.name]
     })
 
-    const {data: classesData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    const {data: classesData} = useQuery<ApiResponseType<CarSpecificsType>>({
         queryFn: () => getAllClassesApi({}),
         queryKey: [getAllClassesApi.name]
     })
 
-    // const {data: modelsData} = useQuery<ApiResponseType<ModelBrandClassType>>({
+    // const {data: modelsData} = useQuery<ApiResponseType<CarSpecificsType>>({
     //     queryFn: () => getAllModelsApi({}),
     //     queryKey: [getAllModelsApi.name]
     // })
 
-    const {data: fuelsData} = useQuery<ApiResponseType<fuelType>>({
+    const {data: fuelsData} = useQuery<ApiResponseType<CarSpecificsType>>({
         queryFn: () => getAllFuelsApi({}),
         queryKey: [getAllFuelsApi.name]
     })
 
-    const {data: transitionsData} = useQuery<ApiResponseType<fuelType>>({
+    const {data: transitionsData} = useQuery<ApiResponseType<CarSpecificsType>>({
         queryFn: () => getAllTransitionsApi({}),
         queryKey: [getAllTransitionsApi.name]
     })
@@ -130,6 +133,20 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
         }
     })
 
+    /////REACT-SELECT/////
+    const options = brandsData ? brandsData.data.map(item => ({
+        value: item.attributes.title,
+        label: item.attributes.title
+    })) : [];
+    const initialSelectedOption = options.find(option => option.value === router.query.carBrand) || null;
+    const [selectedOption, setSelectedOption] = useState(initialSelectedOption);
+
+    const handleChange = (option: any) => {
+        setSelectedOption(option);
+        filterForm.setValue('carBrand', option ? option.value : '');
+    };
+
+
     return (
         <aside>
             <nav className="pt-5 lg:pt-20">
@@ -149,8 +166,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                         </h3>
 
                         <div className={'relative'}>
-                            <form action="" /* onSubmit={searchForm.handleSubmit(onsubmit)} */
-                                  className={'className="flex items-center'}>
+                            <form action="" /* onSubmit={searchForm.handleSubmit(onsubmit)} */ className={'className="flex items-center'}>
                                 <div
                                     className="h-12 relative mt-10 bg-White-50 rounded-lg hover:border border-secondary-50 px-5">
                                     <input className="h-full w-full outline-none  bg-transparent font-normal"
@@ -162,8 +178,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
 
                             {
                                 searchData &&
-                                <div
-                                    className={'absolute rounded-lg bg-gray-500 w-max z-50 left-full ml-1 top-0 text-center'}>
+                                <div className={'absolute rounded-lg bg-gray-500 w-max z-50 left-full ml-1 top-0 text-center'}>
                                     <ul>
                                         {
                                             searchData.map((item: EntityType<CarsType>) => {
@@ -181,43 +196,50 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
 
                         </div>
                         <form action="" onSubmit={filterForm.handleSubmit(submitHandler)}>
-                            <div className={'relative'}>
-                                <select
-                                    className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
-                                    {...filterForm.register('carBrand')}>
-                                    <option value={''} className="text-secondary-50 relative">
-                                        Choose Brand
-                                    </option>
-                                    {
-                                        brandsData &&
-                                        brandsData.data.map((item, index) => {
-                                            return (
-                                                item.attributes.title == router.query.carBrand ?
+                            {/*<div className={'relative'}>*/}
+                            {/*    <select className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"*/}
+                            {/*        {...filterForm.register('carBrand')}>*/}
+                            {/*        <option value={''} className="text-secondary-50 relative">*/}
+                            {/*            Choose Brand*/}
+                            {/*        </option>*/}
+                            {/*        {*/}
+                            {/*            brandsData &&*/}
+                            {/*            brandsData.data.map((item, index) => {*/}
+                            {/*                return (*/}
+                            {/*                    item.attributes.title == router.query.carBrand ?*/}
 
-                                                    <option value={item.attributes.title} selected={true}
-                                                            className="text-secondary-50" key={index}>
-                                                        {item.attributes.title}
-                                                    </option>
-                                                    :
-                                                    <option value={item.attributes.title}
-                                                            className="text-secondary-50">
-                                                        {item.attributes.title}
-                                                    </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                                <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox
-                                    icon={'icon-angleDown text-secondary-400'} size={8}/></div>
-                            </div>
+                            {/*                        <option value={item.attributes.title} selected={true}*/}
+                            {/*                                className="text-secondary-50" key={index}>*/}
+                            {/*                            {item.attributes.title}*/}
+                            {/*                        </option>*/}
+                            {/*                        :*/}
+                            {/*                        <option value={item.attributes.title}*/}
+                            {/*                                className="text-secondary-50">*/}
+                            {/*                            {item.attributes.title}*/}
+                            {/*                        </option>*/}
+                            {/*                )*/}
+                            {/*            })*/}
+                            {/*        }*/}
+                            {/*    </select>*/}
+                            {/*    <div className={'absolute right-4 top-7 pointer-events-none'}><IconBox*/}
+                            {/*        icon={'icon-angleDown text-secondary-400'} size={8}/></div>*/}
+                            {/*</div>*/}
+
+                            <Select
+                                value={selectedOption}
+                                onChange={handleChange}
+                                options={options}
+                                className="mt-4"
+                                placeholder="Choose Brand"/>
+
+                            { classesData && <FilterSelect data={classesData} queryKey={'carClass'} placeholder={'Choose Class'}/>}
+
                             <div className={'relative'}>
-                                <select
-                                    className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
+                                <select className="appearance-none h-12 w-full relative mt-4 bg-White-50 rounded-lg hover:border border-secondary-50 px-5 text-secondary-50 font-medium"
                                     {...filterForm.register('carClass')}>
                                     <option value={''} className="text-secondary-50">
                                         Choose Class
                                     </option>
-
                                     {
                                         classesData &&
                                         classesData.data.map((item, index) => {
@@ -251,16 +273,16 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         fuelsData &&
                                         fuelsData.data.map((item, index) => {
                                             return (
-                                                item.attributes.type == router.query.carFuel ?
+                                                item.attributes.title == router.query.carFuel ?
 
-                                                    <option value={item.attributes.type} selected={true}
+                                                    <option value={item.attributes.title} selected={true}
                                                             className="text-secondary-50" key={index}>
-                                                        {item.attributes.type}
+                                                        {item.attributes.title}
                                                     </option>
                                                     :
-                                                    <option value={item.attributes.type}
+                                                    <option value={item.attributes.title}
                                                             className="text-secondary-50">
-                                                        {item.attributes.type}
+                                                        {item.attributes.title}
                                                     </option>
                                             )
                                         })
@@ -280,16 +302,16 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         transitionsData &&
                                         transitionsData.data.map((item, index) => {
                                             return (
-                                                item.attributes.type == router.query.carFuel ?
+                                                item.attributes.title == router.query.carFuel ?
 
-                                                    <option value={item.attributes.type} selected={true}
+                                                    <option value={item.attributes.title} selected={true}
                                                             className="text-secondary-50" key={index}>
-                                                        {item.attributes.type}
+                                                        {item.attributes.title}
                                                     </option>
                                                     :
-                                                    <option value={item.attributes.type}
+                                                    <option value={item.attributes.title}
                                                             className="text-secondary-50">
-                                                        {item.attributes.type}
+                                                        {item.attributes.title}
                                                     </option>
                                             )
                                         })
