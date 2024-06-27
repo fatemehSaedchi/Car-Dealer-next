@@ -51,7 +51,7 @@ export default function App({Component, pageProps}: AppProps) {
                             <Component {...pageProps} />
                             <ToastContainer
                                 position="top-right"
-                                autoClose={false}
+                                autoClose={5000}
                                 newestOnTop
                                 closeOnClick
                                 rtl={false}

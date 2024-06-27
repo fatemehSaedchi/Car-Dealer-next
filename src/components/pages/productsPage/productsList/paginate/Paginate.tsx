@@ -12,6 +12,7 @@ export function Paginate({data, pageSetter}: Props) {
     let pages = []
     let pageNum = data.pagination.page
     let totalPage = Math.ceil(data.pagination.total / data.pagination.pageSize)
+    let paginateLength = 5
 
     for (let i = pageNum; i <=  totalPage ; i++) {
         pages.push(i)
@@ -27,7 +28,9 @@ export function Paginate({data, pageSetter}: Props) {
             pageSetter(pageNum+1)
         }
     }
-    pages = pages.splice(0,3)
+
+
+    pages = pages.splice(0,paginateLength)
 
     return (
         <ul className="flex gap-3 justify-center items-center mt-10 col-span-2 2xl:col-span-3">
@@ -46,10 +49,11 @@ export function Paginate({data, pageSetter}: Props) {
                     className={`hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100  py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
                         1
                 </li>
+
             }
 
             {
-                pages[0] != 1 &&
+                pages[0] > 2  &&
                 <li className={`text-primary-100  py-2 px-7 rounded-lg font-bold`}>
                     ...
                 </li>
@@ -69,7 +73,7 @@ export function Paginate({data, pageSetter}: Props) {
             }
 
             {
-                pages[pages.length-1] != totalPage &&
+                pages[pages.length-1] != totalPage && pages[0] < totalPage - paginateLength &&
                 <li className={`text-primary-100  py-2 px-7 rounded-lg font-bold`}>
                     ...
                 </li>
