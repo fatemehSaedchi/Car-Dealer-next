@@ -1,4 +1,5 @@
 import {EntityType, PopulateType, ImageType, CarSpecificsType, FuelTransitionType} from "@/types";
+import {FeaturesType} from "@/types/Features";
 
 export interface CarsType {
     excerpt: string
@@ -10,8 +11,7 @@ export interface CarsType {
     updatedAt: string
     dealCount?: string
     title: string
-    reviews: string
-    discussion: string
+    features: FeaturesType[]
     Trending: boolean
     thumbnail: {
         data: EntityType<ImageType>

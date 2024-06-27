@@ -1,26 +1,29 @@
+"use client"
 import {ProductImagesCard} from "@/components";
 import {CarsType, EntityType} from "@/types";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import {useRef,useState} from "react";
-
+import { Swiper as SwiperInstance } from "swiper/types";
+import {useState} from "react";
 
 interface Props {
     data: EntityType<CarsType>
 }
 export function ProductImagesSlider({data}: Props) {
 
-    const [thumbsSwiper, setThumbsSwiper] = useState(null)
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperInstance | null>(null)
 
-    // @ts-ignore
     return (
         <div className="flex flex-wrap justify-center gap-y-3 lg:gap-y-7">
             <div className="w-11/12 mb-3">
                 <Swiper
                     className="thumbnail-slider"
                     modules={[Navigation, Thumbs, FreeMode]}
+                    loop={true}
                     navigation={true}
-                    thumbs={{swiper: thumbsSwiper}}
+                    thumbs={{
+                        swiper:
+                        thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
                     slidesPerView={1}
                     spaceBetween={20}
                 >
@@ -37,16 +40,17 @@ export function ProductImagesSlider({data}: Props) {
             </div>
             <div className="w-11/12 h-fit overflow-x-scroll gap-3 lg:gap-7 py-4">
                 <Swiper
-                    // onSwiper={setThumbsSwiper}
+                    onSwiper={setThumbsSwiper}
                     className="main-slider"
                     freeMode={true}
                     watchSlidesProgress={true}
                     modules={[Navigation, Thumbs, FreeMode]}
+                    loop={true}
                     slidesPerView={4}
                     spaceBetween={20}
                 >
                     {data.attributes.gallery.data.map((item, index) => (
-                        <SwiperSlide key={index} className="opacity-70 active:opacity-100">
+                        <SwiperSlide key={index} className="opacity-70">
                             <ProductImagesCard
                                 data={item}
                                 index={index}
@@ -57,8 +61,5 @@ export function ProductImagesSlider({data}: Props) {
                 </Swiper>
             </div>
         </div>
-
     );
 }
-
-
