@@ -10,7 +10,11 @@ interface Props {
 }
 
 export function ImageView({src, alt, width, height, classname=''}: Props) {
+
+    const imageSrc = src ? (src?.startsWith('/uploads') ? 'https://cwebgostar.navaxcollege.com' + src : src) : '';
+
+
     return (
-        <Image src={src} alt={alt} width={width} height={height} className={classname}/>
+        <Image src={imageSrc} alt={alt} width={width} height={height} className={classname} priority/>
     );
 }

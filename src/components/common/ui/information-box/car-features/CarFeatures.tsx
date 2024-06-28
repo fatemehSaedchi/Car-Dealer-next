@@ -1,13 +1,13 @@
-import {Root} from "@/mock/CarMock";
-
 interface Props {
-    data: Root
+    data: any
+    marginBottom?: number
 }
 
-export function CarFeatures({data}: Props) {
+export function CarFeatures({data, marginBottom = 0}: Props) {
+
     return (
         <>
-            <ul className="grid grid-cols-3 justify-center text-center text-xs gap-y-5 xl:text-sm gap-x-8 xl:gap-x-11 pt-7">
+            <ul style={{marginBottom: `${marginBottom}px`}} className="grid grid-cols-3 justify-start text-left text-xs gap-y-2 xl:text-sm gap-x-5 md:gap-x-8 pt-7 max-w-md">
                 <li>
                     Transition <br/>
                 </li>
@@ -17,14 +17,14 @@ export function CarFeatures({data}: Props) {
                 <li>
                     Passenger
                 </li>
-                <li>
-                    {data?.attributes?.transmition}
+                <li className={'font-semibold xl:text-base'}>
+                    {data?.attributes.transitions.data[0].attributes.title}
                 </li>
-                <li>
-                    {data?.attributes?.fuel}
+                <li className={'font-semibold xl:text-base'}>
+                    {data?.attributes.fuels.data[0].attributes.title}
                 </li>
-                <li>
-                    {data?.attributes?.passenger} Person
+                <li className={'font-semibold xl:text-base'}>
+                    {data?.attributes.passenger} Person
                 </li>
             </ul>
         </>

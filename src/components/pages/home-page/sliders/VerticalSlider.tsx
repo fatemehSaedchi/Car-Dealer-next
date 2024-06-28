@@ -2,20 +2,21 @@ import {Autoplay, Pagination} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {twMerge} from "tailwind-merge";
 import {VerticalSliderCard} from "@/components";
+import {ApiResponseType, AlbumType} from "@/types";
 
 interface Props {
-    sliderData: Array<string>
+    data: ApiResponseType<AlbumType>
     sliderClass?: string
 }
 
-export function VerticalSlider({sliderData, sliderClass}: Props) {
+export function VerticalSlider({data, sliderClass}: Props) {
 
 
     return (
         <>
             <Swiper
                 direction={'vertical'}
-                className={twMerge('swiper mySwiper rounded-bl-[100px]', sliderClass) }
+                className={twMerge('swiper mySwiper rounded-bl-[100px]', sliderClass)}
                 slidesPerView={1}
                 modules={[Autoplay, Pagination]}
                 autoplay={true}
@@ -24,8 +25,10 @@ export function VerticalSlider({sliderData, sliderClass}: Props) {
                 }}
             >
                 {
-                    sliderData.map((value, index)=>{
-                        return(
+                    data.data[0].attributes.Images.data.map((value, index) => {
+
+
+                        return (
                             <SwiperSlide key={index} className={'relative'}>
                                 <VerticalSliderCard data={value}/>
                             </SwiperSlide>

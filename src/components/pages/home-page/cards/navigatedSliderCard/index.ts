@@ -1,1 +1,1 @@
-export * from './NavigatedSliderCard'
+export * from './TrendingSliderCard'

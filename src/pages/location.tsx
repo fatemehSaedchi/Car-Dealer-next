@@ -1,15 +1,26 @@
 import {Branches, HeroSection, Map, Section} from "@/components";
-import {LocationMock} from "@/mock";
+import {useQuery} from "@tanstack/react-query";
+import {getLocationApiCall} from "@/api";
+import {ApiResponseType, LocationType} from "@/types";
 
 export default function Location() {
-
-    return(
+    const {data: locationData} = useQuery<ApiResponseType<LocationType>>(
+        {
+            queryKey: [getLocationApiCall.name],
+            queryFn: getLocationApiCall,
+        })
+    return (
+        //Todo fix z-index
         <>
-            <HeroSection title={"Dealer Locations"}/>
+            <HeroSection title={"Dealer Locations"} backGround={'bg-location-banner'}/>
             <Section className={'pt-14 lg:pt-24'}>
-                    <Map/>
-                    <Branches data={LocationMock}/>
+                <Map/>
+                {locationData && <Branches data={locationData.data}/>}
             </Section>
         </>
     )
 }
+
+import {getServerSideProps} from '@/utils/serverProps'
+
+export {getServerSideProps}

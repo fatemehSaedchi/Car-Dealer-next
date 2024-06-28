@@ -21,7 +21,6 @@ export function Rating({rate}: Props) {
 
     if (rate - Number.parseInt(rate.toString())) {
         let halfRate = Number((rate - Number.parseInt(rate.toString())) * 100)
-        console.log(halfRate)
         halfStar.push(
             <li className="flex" style={{background: `linear-gradient(270deg, rgb(209 213 219) 0%,rgb(209 213 219) ${100-halfRate}%,rgb(253 224 71) ${100-halfRate}%, rgb(253 224 71))`, backgroundClip: 'text', color: 'transparent'}}>
                 <IconBox icon={"icon-star-full w-full h-full"} size={12}/>

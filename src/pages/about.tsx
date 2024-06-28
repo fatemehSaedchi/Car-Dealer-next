@@ -1,17 +1,33 @@
-// todo replace mock data with api
-
 import {HeroSection, OurTeam, Section, Map, ServicesList} from "@/components";
-import {TeamMembersMock, ServicesMock} from "@/mock";
+import {useQuery} from "@tanstack/react-query";
+import {ApiResponseType, ServicesType, TeamMemberType} from "@/types";
+import {getAllServicesApi, getAllTeamMembersApi} from "@/api";
 
 interface Props {
 
 }
 
 export default function About({}: Props) {
+
+    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
+        {
+            queryKey: [getAllServicesApi.name + 'all'],
+            queryFn: () => getAllServicesApi({
+                populate: ['*'],
+            })
+        })
+
+    const {data: TeamData} = useQuery<ApiResponseType<TeamMemberType>>(
+        {
+            queryKey: [getAllTeamMembersApi.name + 'all'],
+            queryFn: () => getAllTeamMembersApi({
+                populate: ['*'],
+            })
+        })
+
     return (
         <>
-            <HeroSection title={'About Mobhil'}/>
-
+            <HeroSection title={'About Mobhil'} backGround={'bg-about-banner'}/>
             <Section>
                 <div className="pt-7 sm:pt-14 md:pt-20 sm:flex sm:gap-10 lg:gap-14">
                     <div className="flex flex-col gap-1 sm:gap-3 md:gap-5 lg:gap-6 sm:basis-[40%]">
@@ -26,7 +42,12 @@ export default function About({}: Props) {
                     </p>
                 </div>
                 <div className="flex flex-wrap pt-7 md:pt-11">
-                    <ServicesList data={ServicesMock} className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"} cardNumber={4} topBar={true}/>
+                    {
+                        servicesData &&
+                        <ServicesList data={servicesData}
+                                      className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"}
+                                      cardNumber={4} topBar={true}/>
+                    }
                 </div>
             </Section>
             <Map className={'mb-10 lg:mb-28'}/>
@@ -36,13 +57,21 @@ export default function About({}: Props) {
                         Our teams
                     </h3>
                     <p className="text-xs md:text-sm xl:text-base leading-5 sm:basis-3/5 lg:basis-1/2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea.
+                        Our team members bring diverse expertise and passion to every aspect of our service. With a
+                        dedication to excellence, we collaborate closely to ensure seamless operations and exceptional
+                        customer satisfaction. Together, we strive to innovate and deliver the best automotive solutions
+                        for our clients.
                     </p>
                 </div>
-                <OurTeam data={TeamMembersMock}/>
+                {
+                    TeamData &&
+                    <OurTeam data={TeamData}/>
+                }
             </Section>
         </>
     )
 }
+
+import {getServerSideProps} from '@/utils/serverProps'
+
+export {getServerSideProps}
