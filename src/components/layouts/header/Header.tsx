@@ -1,9 +1,8 @@
-import {IconBox, ImageView, LoginModal, Logo, Menu, PhoneButton, RegisterModal} from "@/components";
+import {IconBox, ImageView, LoginModal, Logo, Menu, RegisterModal} from "@/components";
 import {useState, MouseEvent} from "react";
 import {useOverlay} from "@/hooks";
 import {useUser} from "@/store/AuthContext";
 import {useModal} from "@/store/ModalContext";
-import {isSSR} from "@/utils/isSSR";
 
 export function Header() {
     const [showMobileMenu,setShowMobileMenu] = useState(false)
