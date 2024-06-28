@@ -14,7 +14,6 @@ interface Props {
 
 export function FilterSelect  ({ data, queryKey, placeholder, className, styles }: Props) {
 
-
     const filterForm = useForm();
     const router = useRouter();
 
