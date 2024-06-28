@@ -7,8 +7,8 @@ import {
     VerticalSlider,
     PaginatedSlider, ServicesList, IconBox,
 } from "@/components";
-import {useQuery} from "@tanstack/react-query";
-import {getAllCarsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
+import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
+import {getAllCarsApi, getAllServicesApi, getAllAlbumsApi, getMenusApiCall} from "@/api";
 import {ApiResponseType, CarsType, AlbumType, ServicesType} from "@/types";
 
 export default function Home() {
@@ -223,4 +223,16 @@ export default function Home() {
             </Section>
         </>
     );
+}
+
+export async function getServerSideProps() {
+
+    const queryClient = new QueryClient()
+
+    await queryClient.prefetchQuery({
+        queryKey: [getMenusApiCall.name],
+        queryFn: getMenusApiCall
+    })
+
+    return {props: {dehydratedState: dehydrate(queryClient),}}
 }

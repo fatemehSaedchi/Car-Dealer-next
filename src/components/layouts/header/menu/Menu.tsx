@@ -1,9 +1,8 @@
 import Link from "next/link";
-import {EntityType, MenuItemType} from "@/types";
-import React, {Dispatch, SetStateAction, MouseEvent, useEffect, useState} from "react";
+import { EntityType, MenuItemType} from "@/types";
+import React, {Dispatch, SetStateAction, MouseEvent, useEffect} from "react";
 import {useMenu} from "@/hooks";
 import {ImageView} from "@/components";
-import Image from "next/image";
 import {useUser} from "@/store/AuthContext";
 import {useModal} from "@/store/ModalContext";
 
@@ -12,11 +11,13 @@ interface Props {
     setShowMobileMenu: Dispatch<SetStateAction<boolean>>
 }
 
-export function Menu({showMobileMenu, setShowMobileMenu}: Props) {
+export function Menu(props: Props) {
+
+
     const {data: mainMenuItems} = useMenu({title: 'main menu'})
 
     const closeMobileMenuHandler = () => {
-        setShowMobileMenu(false)
+        props.setShowMobileMenu(false)
     }
 
     const menuBodyClickHandler = (e: MouseEvent) => {
@@ -25,10 +26,10 @@ export function Menu({showMobileMenu, setShowMobileMenu}: Props) {
 
     const {isLogin,onLogout} = useUser()
 
-    const {openModal, currentModal} = useModal()
+    const {openModal} = useModal()
 
     useEffect(() => {
-        if (showMobileMenu) {
+        if (props.showMobileMenu) {
             document.body.style.overflowY = 'hidden'
         } else {
             document.body.style.overflowY = 'auto'
@@ -36,7 +37,7 @@ export function Menu({showMobileMenu, setShowMobileMenu}: Props) {
         return () => {
             document.body.style.overflowY = 'auto'
         }
-    }, [showMobileMenu])
+    }, [props.showMobileMenu])
 
     const accountHandler = ()=>{
         if (isLogin){
@@ -49,10 +50,10 @@ export function Menu({showMobileMenu, setShowMobileMenu}: Props) {
     return (
         <>
             {
-                showMobileMenu ? (
-                    <div className={`${showMobileMenu ? '? absolute top-0 right-0 left-0 bottom-0 w-full h-screen bg-black bg-opacity-40 z-[900]' : 'lg:hidden'}`}>
+                props.showMobileMenu ? (
+                    <div className={`${props.showMobileMenu ? '? absolute top-0 right-0 left-0 bottom-0 w-full h-screen bg-black bg-opacity-40 z-[900]' : 'lg:hidden'}`}>
                         <ul onClick={menuBodyClickHandler}
-                            className={`${showMobileMenu ? 'translate-x-0 fixed overflow-y-scroll' : '-translate-x-full absolute'} bg-[#fff] text-secondary-400 font-semibold z-[9999] left-0 top-0 w-full h-screen py-5 px-4 sm:w-8/12 lg:translate-x-0 lg:relative lg:flex lg:bg-transparent lg:w-fit lg:gap-4 lg:p-0 lg:h-fit 2xl:gap-7`}>
+                            className={`${props.showMobileMenu ? 'translate-x-0 fixed overflow-y-scroll' : '-translate-x-full absolute'} bg-[#fff] text-secondary-400 font-semibold z-[9999] left-0 top-0 w-full h-screen py-5 px-4 sm:w-8/12 lg:translate-x-0 lg:relative lg:flex lg:bg-transparent lg:w-fit lg:gap-4 lg:p-0 lg:h-fit 2xl:gap-7`}>
                             <li className="lg:hidden mb-28">
                                 <ImageView src={"/assets/images/wave3.png"} alt={'wavebg'} width={1800} height={612}
                                            classname={'absolute top-0 right-0 left-0 max-h-52 min-h-40'}/>

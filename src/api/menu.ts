@@ -8,11 +8,3 @@ export async function getMenusApiCall() : Promise<ApiResponseType<MenuType>> {
         }
     })
 }
-
-export async function fetchMenuData(): Promise<ApiResponseType<MenuType>> {
-    const response = await fetch('https://cwebgostar.navaxcollege.com/api/menus');
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json();
-}
