@@ -1,4 +1,4 @@
-import {ContactBox, HeroSection, ImageView, RegisterForm, Section, SendMessageForm} from "@/components";
+import {ContactBox, HeroSection, ImageView, Section, SendMessageForm} from "@/components";
 
 export default function Contact() {
     return (
@@ -38,3 +38,7 @@ export default function Contact() {
         </>
     );
 }
+
+import getServerSideProps from '../utils/serverProps';
+
+export { getServerSideProps };

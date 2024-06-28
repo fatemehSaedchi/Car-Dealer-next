@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EntityType, MenuItemType} from "@/types";
+import {EntityType, MenuItemType} from "@/types";
 import React, {Dispatch, SetStateAction, MouseEvent, useEffect} from "react";
 import {useMenu} from "@/hooks";
 import {ImageView} from "@/components";

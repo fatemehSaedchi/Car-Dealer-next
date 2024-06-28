@@ -12,8 +12,9 @@ export function useMenu(props: Prop) {
 
     const {data: menusData} = useQuery<ApiResponseType<MenuType>>({
         queryKey: [getMenusApiCall.name],
-        queryFn: () => getMenusApiCall()
+        queryFn: getMenusApiCall,
     })
+
     let MenuItems: PopulateType<MenuItemType> | null = null
     if (menusData) {
         const findMenu = menusData.data.filter((item: EntityType<MenuType>) => item.attributes.title === props.title);
