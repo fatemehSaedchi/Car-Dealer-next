@@ -12,7 +12,7 @@ export default function Contact() {
             </div>
             <Section className="mb-36 relative">
                 <div className="flex flex-wrap container mx-auto px-4 justify-between pt-10 lg:pt-28 gap-y-10 relative">
-                    <ImageView src={"/assets/images/circleElement.svg"} alt={"circleElement"} width={66} height={55}
+                    <ImageView src={"/assets/images/circleElement.svg"} alt={"circleElement"} width={66} height={50}
                                classname={"absolute w-16 top-1/2 left-0 lg:w-24 lg:top-1/4 lg:left-[46%] -z-10"}/>
                     <div className="mb-10 w-full lg:w-[45%]">
                         <ImageView src={"/assets/images/Vector.png"} alt={"Vector"} width={64} height={70}

@@ -19,7 +19,6 @@ export function ProductImagesSlider({data}: Props) {
                 <Swiper
                     className="thumbnail-slider"
                     modules={[Navigation, Thumbs, FreeMode]}
-                    loop={true}
                     navigation={true}
                     thumbs={{
                         swiper:
@@ -45,7 +44,6 @@ export function ProductImagesSlider({data}: Props) {
                     freeMode={true}
                     watchSlidesProgress={true}
                     modules={[Navigation, Thumbs, FreeMode]}
-                    loop={true}
                     slidesPerView={4}
                     spaceBetween={20}
                 >

@@ -5,6 +5,7 @@ import {MouseEvent, useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {ParsedUrlQueryInput} from "node:querystring";
 import {Loading} from "@/components/common/ui/loading/Loading";
+import Select from 'react-select';
 
 interface ObjFilter {
     title?: object,
@@ -98,6 +99,7 @@ export default function Products() {
         e.stopPropagation()
         setMobileFilter(true)
     }
+
 
     return (
         <>
