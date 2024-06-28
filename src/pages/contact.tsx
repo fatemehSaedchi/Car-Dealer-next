@@ -39,6 +39,6 @@ export default function Contact() {
     );
 }
 
-import getServerSideProps from '../utils/serverProps';
+import {getServerSideProps} from '@/utils/serverProps'
 
-export { getServerSideProps };
+export {getServerSideProps}
