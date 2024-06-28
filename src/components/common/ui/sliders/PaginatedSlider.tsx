@@ -38,11 +38,9 @@ export function PaginatedSlider() {
                     topDealsProduct &&
                     topDealsProduct.data.map((value: EntityType<CarsType>, index: number)=>{
                     return(
-                        <>
                         <SwiperSlide key={index} className={'relative rounded-[30px] overflow-hidden'}>
                             <PaginatedSliderCard data={value}/>
                         </SwiperSlide>
-                        </>
                     )
                 })}
             </Swiper>
