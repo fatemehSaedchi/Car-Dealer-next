@@ -1,3 +1,5 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import "@/styles/globals.css";
 import '@/styles/icons.css'
 import 'swiper/css'
@@ -62,7 +64,7 @@ export default function App({Component, pageProps}: AppProps) {
                     font-family: ${montserrat.style.fontFamily};
                 }
             `}</style>
-
+            <SpeedInsights/>
             <QueryClientProvider client={queryClient}>
                 <HydrationBoundary state={pageProps.dehydratedState}>
                     <AuthContextProvider>
