@@ -45,9 +45,9 @@ export default function Home() {
             })
         })
 
-    const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
+    const {data: classicAlbumData} = useQuery<ApiResponseType<AlbumType>>(
         {
-            queryKey: [getAllAlbumsApi.name],
+            queryKey: [getAllAlbumsApi.name, 'classics'],
             queryFn: () => getAllAlbumsApi({
                 populate: ['*'],
                 filters: {
@@ -58,7 +58,7 @@ export default function Home() {
 
     const {data: SportAlbumData} = useQuery<ApiResponseType<AlbumType>>(
         {
-            queryKey: [getAllAlbumsApi.name],
+            queryKey: [getAllAlbumsApi.name, 'sports'],
             queryFn: () => getAllAlbumsApi({
                 populate: ['*'],
                 filters: {
@@ -67,6 +67,7 @@ export default function Home() {
             })
         })
 
+    console.log('classicAlbumData:', classicAlbumData)
     console.log('SportAlbumData:', SportAlbumData)
 
     return (
@@ -164,8 +165,8 @@ export default function Home() {
                     </div>
                     <div className="w-full lg:basis-1/2 order-1 lg:order-2 h-56 sm:h-72 lg:h-96 2xl:pr-12">
                         {
-                            AlbumData &&
-                            <VerticalSlider data={AlbumData}
+                            SportAlbumData &&
+                            <VerticalSlider data={SportAlbumData}
                                             sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
                         }
                     </div>
@@ -189,8 +190,8 @@ export default function Home() {
                                classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
                     <div className="w-full lg:basis-1/2 h-56 sm:h-72 lg:h-96">
                         {
-                            SportAlbumData &&
-                            <VerticalSlider data={SportAlbumData}
+                            classicAlbumData &&
+                            <VerticalSlider data={classicAlbumData}
                                             sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
                         }
                     </div>
