@@ -225,6 +225,6 @@ export default function Home() {
     );
 }
 
-import getServerSideProps from '../utils/serverProps';
+import {getServerSideProps} from '@/utils/serverProps'
 
-export { getServerSideProps };
+export {getServerSideProps}
