@@ -72,6 +72,3 @@ export default function About({}: Props) {
     )
 }
 
-import {getServerSideProps} from '@/utils/serverProps'
-
-export {getServerSideProps}

@@ -21,6 +21,3 @@ export default function Location() {
     )
 }
 
-import {getServerSideProps} from '@/utils/serverProps'
-
-export {getServerSideProps}
