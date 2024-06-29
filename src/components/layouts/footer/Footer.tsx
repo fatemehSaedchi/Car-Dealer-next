@@ -11,11 +11,16 @@ import {
 import {useMenu} from "@/hooks";
 import Link from "next/link";
 import {useModal} from "@/store/ModalContext";
+import {ApiResponseType, MenuType} from "@/types";
 
-export function Footer() {
+interface Props {
+    MenuData: ApiResponseType<MenuType>
+}
+
+export function Footer({MenuData}: Props) {
 
     // const {data: quickMenuItems} = useMenu({title:"Quick Links"})
-    const {data: supportMenuItems} = useMenu({title: "Support"})
+    const {data: supportMenuItems} = useMenu({title: "Support", MenuData: MenuData})
 
     const {openModal, currentModal} = useModal()
 

@@ -13,7 +13,7 @@ export function Layout({children, MenuData}: Props) {
             <main>
                 {children}
             </main>
-            <Footer/>
+            <Footer MenuData={MenuData}/>
         </>
     );
 }
