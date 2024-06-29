@@ -1,4 +1,4 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import {SpeedInsights} from "@vercel/speed-insights/next"
 
 import "@/styles/globals.css";
 import '@/styles/icons.css'
@@ -11,38 +11,33 @@ import 'swiper/css/thumbs'
 import "swiper/css/effect-fade";
 import 'react-toastify/dist/ReactToastify.css'
 
+import {AppContext, default as NextApp} from 'next/app';
 
 import type {AppProps} from "next/app";
 import {Layout} from "@/components";
 import {Montserrat} from "next/font/google";
-import {dehydrate, HydrationBoundary, QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {ToastContainer} from "react-toastify";
 import {ModalContextProvider} from "@/store/ModalContext";
 import {AuthContextProvider} from "@/store/AuthContext";
 import {useState} from "react";
-import {getMenusApiCall} from "@/api";
+import {isSSR} from "@/utils/isSSR";
+import {ApiResponseType, MenuType} from "@/types";
 
 
 const montserrat = Montserrat({
     subsets: ['latin']
 })
 
-export async function getServerSideProps() {
 
-    const queryClient = new QueryClient()
+function App({Component, ...pageProps}: AppProps) {
 
-    await queryClient.prefetchQuery({
-        queryKey: [getMenusApiCall.name],
-        queryFn: getMenusApiCall
-    })
+    // @ts-ignore
+    console.log('pageProps', pageProps.initialQueryData.MenuData)
 
-    return {props: {dehydratedState: dehydrate(queryClient),}}
-}
-
-
-export default function App({Component, pageProps}: AppProps) {
-
+    // @ts-ignore
+    const MenuData: ApiResponseType<MenuType> = pageProps.initialQueryData.MenuData
 
     const [queryClient] = useState(() => new QueryClient({
             defaultOptions: {
@@ -66,11 +61,10 @@ export default function App({Component, pageProps}: AppProps) {
             `}</style>
             <SpeedInsights/>
             <QueryClientProvider client={queryClient}>
-                <HydrationBoundary state={pageProps.dehydratedState}>
                     <AuthContextProvider>
                         <ModalContextProvider>
                             <div id={'portal'}></div>
-                            <Layout>
+                            <Layout MenuData={MenuData}>
 
                                 <Component {...pageProps} />
                                 <ToastContainer
@@ -89,9 +83,26 @@ export default function App({Component, pageProps}: AppProps) {
                             <ReactQueryDevtools initialIsOpen={false}/>
                         </ModalContextProvider>
                     </AuthContextProvider>
-                </HydrationBoundary>
             </QueryClientProvider>
         </>
     );
 }
 
+App.getInitialProps = async (context: AppContext) /*: Promise<AppOwnProps & AppInitialProps>*/ =>{
+    const ctx = await NextApp.getInitialProps(context)
+    let MenuData = null
+
+    try {
+        // get data only on server
+        if (isSSR()){
+            MenuData = await (await fetch('https://cwebgostar.navaxcollege.com/api/menus?populate=%2A')).json()
+        }
+    } catch (error) {
+        return { ...ctx, initialQueryData: { MenuData: null } };
+    }
+
+    return {...ctx, initialQueryData: {MenuData}}
+}
+
+
+export default App

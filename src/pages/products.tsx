@@ -156,6 +156,3 @@ export default function Products() {
     )
 }
 
-import {getServerSideProps} from '@/utils/serverProps'
-
-export {getServerSideProps}

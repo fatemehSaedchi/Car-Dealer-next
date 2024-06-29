@@ -6,18 +6,20 @@ import {MenuItemType} from "@/types/MenuItem";
 
 interface Prop {
     title: string
+    MenuData: ApiResponseType<MenuType>
 }
 
-export function useMenu(props: Prop) {
+export function useMenu({title, MenuData}: Prop) {
 
     const {data: menusData} = useQuery<ApiResponseType<MenuType>>({
         queryKey: [getMenusApiCall.name],
         queryFn: getMenusApiCall,
+        initialData: MenuData
     })
 
     let MenuItems: PopulateType<MenuItemType> | null = null
     if (menusData) {
-        const findMenu = menusData.data.filter((item: EntityType<MenuType>) => item.attributes.title === props.title);
+        const findMenu = menusData.data.filter((item: EntityType<MenuType>) => item.attributes.title === title);
 
         if (findMenu) {
             MenuItems = findMenu[0].attributes.menu_items

@@ -7,6 +7,7 @@ interface Props {
 
 export function VerticalSliderCard({data}: Props) {
 
+    console.log(data)
 
     return (
         <>
