@@ -1,9 +1,9 @@
-// import Link from "next/link";
+import Link from "next/link";
 import {
     TrendingSlider,
-    // MiniFilter,
-    // Section,
-    // ImageView,
+    MiniFilter,
+    Section,
+    ImageView,
     // VerticalSlider,
     // PaginatedSlider, ServicesList, IconBox,
 } from "@/components";
@@ -81,39 +81,38 @@ export default function Home() {
                 <div className="swiper-button-next"></div>
                 <div className="swiper-button-prev"></div>
             </div>
-            {/*<Section>*/}
-            {/*    <div className="flex flex-col lg:flex-row container mx-auto px-4">*/}
-            {/*        <ImageView src="/assets/images/circleElement.svg" alt=""*/}
-            {/*                   classname="absolute w-auto h-auto top-[60px] right-[85%] lg:right-[52%]" height={66}*/}
-            {/*                   width={50}/>*/}
-            {/*        <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">*/}
-            {/*            <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">*/}
-            {/*                <button*/}
-            {/*                    className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">*/}
-            {/*                    TRENDING*/}
-            {/*                </button>*/}
-            {/*                {*/}
-            {/*                    trendingCarData &&*/}
-            {/*                    <Link href={`/product/${trendingCarData.data[0].id}`}*/}
-            {/*                          className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-nowrap sm:text-lg font-bold hover:bg-yellow-100 rounded-full">*/}
-            {/*                        {trendingCarData.data[0].attributes.title}*/}
-            {/*                    </Link>*/}
-            {/*                }*/}
-            {/*            </div>*/}
-            {/*            <div>*/}
-            {/*                <h1 className="text-4xl sm:text-5xl xl:text-6xl pr-2 sm:w-[500px] xl:w-[620px] font-bold sm:leading-[58px] xl:leading-[70px] pt-7 lg:pt-11">*/}
-            {/*                    Say hello to best car dealer platform</h1>*/}
-            {/*                <p className="text-sm md:w-10/12 leading-6 sm:leading-7 mt-3">*/}
-            {/*                    Experience unparalleled car buying and selling with a wide variety and reliable services*/}
-            {/*                    at <span className={'font-semibold text-md'}>Mobhil Car Dealer</span>. Discover the best*/}
-            {/*                    car deals and benefit from professional services with Us.*/}
-            {/*                </p>*/}
-            {/*            </div>*/}
-            {/*            <MiniFilter className={'mb-10'}/>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</Section>*/}
-
+            <Section>
+                <div className="flex flex-col lg:flex-row container mx-auto px-4">
+                    <ImageView src="/assets/images/circleElement.svg" alt=""
+                               classname="absolute w-auto h-auto top-[60px] right-[85%] lg:right-[52%]" height={66}
+                               width={50}/>
+                    <div className="w-full lg:w-2/4 lg:order-1 pt-[400px] lg:pt-28 xl:pt-20">
+                        <div className="w-full sm:w-96 h-12 text-xs sm:text-sm bg-White-300 rounded-[44px] relative">
+                            <button
+                                className="h-4/5 absolute left-2.5 my-auto top-0 bottom-0 px-6 bg-orange-100 rounded-[44px] text-white font-bold">
+                                TRENDING
+                            </button>
+                            {
+                                trendingCarData &&
+                                <Link href={`/product/${trendingCarData.data[0].id}`}
+                                      className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-nowrap sm:text-lg font-bold hover:bg-yellow-100 rounded-full">
+                                    {trendingCarData.data[0].attributes.title}
+                                </Link>
+                            }
+                        </div>
+                        <div>
+                            <h1 className="text-4xl sm:text-5xl xl:text-6xl pr-2 sm:w-[500px] xl:w-[620px] font-bold sm:leading-[58px] xl:leading-[70px] pt-7 lg:pt-11">
+                                Say hello to best car dealer platform</h1>
+                            <p className="text-sm md:w-10/12 leading-6 sm:leading-7 mt-3">
+                                Experience unparalleled car buying and selling with a wide variety and reliable services
+                                at <span className={'font-semibold text-md'}>Mobhil Car Dealer</span>. Discover the best
+                                car deals and benefit from professional services with Us.
+                            </p>
+                        </div>
+                        <MiniFilter className={'mb-10'}/>
+                    </div>
+                </div>
+            </Section>
             {/*<ImageView height={2134} width={1600}*/}
             {/*           classname={"w-10/12 lg:w-2/5 h-[400px] lg:h-[790px] absolute left-0 -z-10 rounded-br-[100px] rounded-tr-[100px] object-cover object-center"}*/}
             {/*           src="/assets/images/robin-vet-q6LFMQ6wVZ0-unsplash1.jpg" alt="classNameic car"/>*/}
