@@ -5,7 +5,7 @@ import {
     Section,
     ImageView,
     // VerticalSlider,
-    // PaginatedSlider, ServicesList, IconBox,
+    PaginatedSlider, ServicesList, IconBox,
 } from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {getAllCarsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
@@ -34,18 +34,17 @@ export default function Home() {
         }
     )
 
+    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
+        {
+            queryKey: [getAllServicesApi.name, '3 of'],
+            queryFn: () => getAllServicesApi({
+                populate: ['*'],
+                pagination: {
+                    pageSize: 3
+                }
+            })
+        })
 
-    // const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
-    //     {
-    //         queryKey: [getAllServicesApi.name, '3 of'],
-    //         queryFn: () => getAllServicesApi({
-    //             populate: ['*'],
-    //             pagination: {
-    //                 pageSize: 3
-    //             }
-    //         })
-    //     })
-    //
     // const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
     //     {
     //         queryKey: [getAllAlbumsApi.name],
@@ -114,34 +113,34 @@ export default function Home() {
                     </div>
                 </div>
             </Section>
-            {/*<ImageView height={2134} width={1600}*/}
-            {/*           classname={"w-10/12 lg:w-2/5 h-[400px] lg:h-[790px] absolute left-0 -z-10 rounded-br-[100px] rounded-tr-[100px] object-cover object-center"}*/}
-            {/*           src="/assets/images/robin-vet-q6LFMQ6wVZ0-unsplash1.jpg" alt="classNameic car"/>*/}
-            {/*<Section>*/}
-            {/*    <div className="flex flex-col lg:items-end gap-9 2xl:gap-16">*/}
-            {/*        <div*/}
-            {/*            className="sm:w-11/12 lg:w-[70%] order-1 lg:order-2 flex flex-row pt-80 lg:pt-0 gap-2.5 sm:gap-5 justify-between self-end 2xl:pr-24">*/}
-            {/*            {*/}
-            {/*                servicesData &&*/}
+            <ImageView height={2134} width={1600}
+                       classname={"w-10/12 lg:w-2/5 h-[400px] lg:h-[790px] absolute left-0 -z-10 rounded-br-[100px] rounded-tr-[100px] object-cover object-center"}
+                       src="/assets/images/robin-vet-q6LFMQ6wVZ0-unsplash1.jpg" alt="classNameic car"/>
+            <Section>
+                <div className="flex flex-col lg:items-end gap-9 2xl:gap-16">
+                    <div
+                        className="sm:w-11/12 lg:w-[70%] order-1 lg:order-2 flex flex-row pt-80 lg:pt-0 gap-2.5 sm:gap-5 justify-between self-end 2xl:pr-24">
+                        {
+                            servicesData &&
 
-            {/*                <ServicesList data={servicesData}/>*/}
-            {/*            }*/}
-            {/*        </div>*/}
-            {/*        <div className="w-full lg:w-3/5 order-2 lg:order-1 lg:pl-16">*/}
-            {/*            <h2 className="text-base md:text-lg text-primary-100 font-semibold tracking-[9px] md:pt-8 lg:pt-16">*/}
-            {/*                ABOUT*/}
-            {/*            </h2>*/}
-            {/*            <h3 className="text-3xl md:text-5xl font-bold pt-3 md:pt-5">*/}
-            {/*                About the Mobhil*/}
-            {/*            </h3>*/}
-            {/*            <p className="text-xs md:text-sm xl:text-lg pr-5 leading-[21px] xl:leading-8 pt-6 md:pt-8 xl:pt-10 lg:w-4/5">*/}
-            {/*                We have implemented this platform to provide better and more convenient services for both*/}
-            {/*                buyers and sellers. Here, you can easily find car buyers and sellers at any location. With a*/}
-            {/*                wide variety of cars and the provision of high-quality, reliable services, we ensure your*/}
-            {/*                experience here is exceptional.</p>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</Section>*/}
+                            <ServicesList data={servicesData}/>
+                        }
+                    </div>
+                    <div className="w-full lg:w-3/5 order-2 lg:order-1 lg:pl-16">
+                        <h2 className="text-base md:text-lg text-primary-100 font-semibold tracking-[9px] md:pt-8 lg:pt-16">
+                            ABOUT
+                        </h2>
+                        <h3 className="text-3xl md:text-5xl font-bold pt-3 md:pt-5">
+                            About the Mobhil
+                        </h3>
+                        <p className="text-xs md:text-sm xl:text-lg pr-5 leading-[21px] xl:leading-8 pt-6 md:pt-8 xl:pt-10 lg:w-4/5">
+                            We have implemented this platform to provide better and more convenient services for both
+                            buyers and sellers. Here, you can easily find car buyers and sellers at any location. With a
+                            wide variety of cars and the provision of high-quality, reliable services, we ensure your
+                            experience here is exceptional.</p>
+                    </div>
+                </div>
+            </Section>
             {/*<Section>*/}
             {/*    <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">*/}
             {/*        <ImageView src="/assets/images/circleElement.svg" alt="" width={66} height={50}*/}
