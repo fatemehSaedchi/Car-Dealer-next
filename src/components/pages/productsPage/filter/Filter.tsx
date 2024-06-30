@@ -135,7 +135,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
         <aside>
             <nav className="pt-5 lg:pt-20">
                 <div onClick={filterBodyHandler}
-                     className={`${mobileFilter ? 'translate-x-0 fixed' : '-translate-x-full fixed'} overflow-y-auto md: bg-[#fff] text-secondary-400 font-semibold z-[99] left-0 top-0 w-full h-screen py-5 px-4 sm:w-8/12 md:translate-x-0 md:relative md:flex md:bg-transparent md:w-fit md:gap-4 md:p-0 md:h-fit`}>
+                     className={`${mobileFilter ? 'translate-x-0 fixed overflow-y-auto' : '-translate-x-full fixed'} bg-[#fff] text-secondary-400 font-semibold z-[99] left-0 top-0 w-full sm:w-8/12 md:w-full h-screen md:h-full py-5 px-4 md:translate-x-0 md:relative md:bg-transparent md:gap-4 md:p-0`}>
                     <div className="md:hidden">
                         <ImageView src={'/assets/images/filterWave.png'} alt={'filterWave'} width={1000} height={400}
                                    classname={'absolute top-0 right-0 left-0'}/>
@@ -143,7 +143,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                             X
                         </button>
                     </div>
-                    <div className="max-w-xs overflow-y-auto h-full">
+                    <div className="max-w-xs md:w-full pb-10 px-3">
                         <h2 className="uppercase font-bold text-4xl pt-32 md:pt-5">
                             Filter
                         </h2>
@@ -188,7 +188,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         data={brandsData}
                                         queryKey={'carBrand'}
                                         placeholder={'Choose Brand'}
-                                        className="mt-4"
+                                        label={'Choose Brand'}
                                     />
                                 }
 
@@ -197,7 +197,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         data={classesData}
                                         queryKey={'carClass'}
                                         placeholder={'Choose Class'}
-                                        className="mt-4"
+                                        label={'Choose Class'}
                                     />
                                 }
 
@@ -206,7 +206,7 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         data={fuelsData}
                                         queryKey={'carFuel'}
                                         placeholder={'Any fuel'}
-                                        className="mt-4"
+                                        label={'Any fuel'}
                                     />
                                 }
 
@@ -215,10 +215,10 @@ export function Filter({mobileFilter, setMobileFilter}: Props) {
                                         data={transitionsData}
                                         queryKey={'carTransmission'}
                                         placeholder={'Any Transmission'}
-                                        className="mt-4"
+                                        label={'Any Transmission'}
+                                        className="min-w-52"
                                     />
                                 }
-
                                 <button type="submit" onClick={closeFilterHandler}
                                         className="h-12 w-full px-5 mt-7 bg-primary-100 rounded-lg flex justify-between items-center text-white shadow-6xl">
                                     <IconBox icon={'icon-angleRight'} title={'FIND CARS'}
