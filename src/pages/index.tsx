@@ -34,7 +34,6 @@ export default function Home() {
         }
     )
 
-
     // const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
     //     {
     //         queryKey: [getAllServicesApi.name, '3 of'],
