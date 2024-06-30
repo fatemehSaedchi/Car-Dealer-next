@@ -101,6 +101,13 @@ export default function Products() {
     }
 
 
+    const options = [
+        {value: 'Newest', label: 'Newest'},
+        {value: 'Ascending', label: 'Ascending'},
+        {value: 'Descending', label: 'Descending'},
+    ]
+
+
     return (
         <>
             <HeroSection title={'Car Collections'} backGround={'bg-collection-banner'}/>
@@ -115,14 +122,15 @@ export default function Products() {
                         </button>
                         <span className={'text-secondary-50 font-bold'}>FILTER</span>
                     </div>
-                    <div className="w-full flex flex-col lg:flex-row gap-5 pt-5 lg:pt-28 justify-between lg:items-center md:ml-5">
+                    <div
+                        className="flex flex-col lg:flex-row gap-5 md:justify-between pt-5 lg:pt-28 lg:items-center md:ml-5">
                         <h3 className="text-secondary-50">
                             Showing
                             <span className="font-bold mx-2">
                                 {
                                     mutation.data &&
                                     <>
-                                        {mutation.data?.meta.pagination.pageSize} product
+                                        {mutation.data?.data.length} product
                                         from {mutation.data.meta.pagination.total}
                                     </>
                                 }
@@ -131,20 +139,20 @@ export default function Products() {
                         <div>
                             <label className="text-secondary-50 flex gap-3 items-center">
                                 Sort by
-                                <select className="text-primary-100 bg-white border border-Purple-50 rounded-lg text-sm font-bold p-3">
-                                    <option value="Newest">
-                                        Newest
-                                    </option>
-                                </select>
+                                <Select
+                                    className="min-w-[147px] bg-white rounded-lg text-sm font-bold z-[60]"
+                                    options={options}
+                                    defaultValue={options[0]}
+                                />
                             </label>
                         </div>
                     </div>
                     {
                         mutation.isPending ?
-                        <Loading/>
+                            <Loading/>
                             :
-                        mutation.data &&
-                        <ProductsList data={mutation.data}/>
+                            mutation.data &&
+                            <ProductsList data={mutation.data}/>
                     }
                     {
                         mutation.data &&
