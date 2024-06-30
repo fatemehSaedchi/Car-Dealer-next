@@ -56,6 +56,7 @@ export default function Home() {
             })
         })
 
+
     const {data: SportAlbumData} = useQuery<ApiResponseType<AlbumType>>(
         {
             queryKey: [getAllAlbumsApi.name],
