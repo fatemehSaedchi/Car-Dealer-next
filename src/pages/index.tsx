@@ -34,27 +34,27 @@ export default function Home() {
         }
     )
 
-    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
-        {
-            queryKey: [getAllServicesApi.name, '3 of'],
-            queryFn: () => getAllServicesApi({
-                populate: ['*'],
-                pagination: {
-                    pageSize: 3
-                }
-            })
-        })
-
-    const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
-        {
-            queryKey: [getAllAlbumsApi.name],
-            queryFn: () => getAllAlbumsApi({
-                populate: ['*'],
-                filters: {
-                    title: {$eq: 'classicCars'}
-                }
-            })
-        })
+    // const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
+    //     {
+    //         queryKey: [getAllServicesApi.name, '3 of'],
+    //         queryFn: () => getAllServicesApi({
+    //             populate: ['*'],
+    //             pagination: {
+    //                 pageSize: 3
+    //             }
+    //         })
+    //     })
+    //
+    // const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
+    //     {
+    //         queryKey: [getAllAlbumsApi.name],
+    //         queryFn: () => getAllAlbumsApi({
+    //             populate: ['*'],
+    //             filters: {
+    //                 title: {$eq: 'classicCars'}
+    //             }
+    //         })
+    //     })
 
 
     const {data: SportAlbumData} = useQuery<ApiResponseType<AlbumType>>(
