@@ -1,9 +1,10 @@
-import {IconBox, ImageView, LoginModal, Logo, Menu, RegisterModal} from "@/components";
+import {ImageView, LoginModal, Logo, Menu, RegisterModal} from "@/components";
 import {useState, MouseEvent} from "react";
 import {useOverlay} from "@/hooks";
 import {useUser} from "@/store/AuthContext";
 import {useModal} from "@/store/ModalContext";
 import {ApiResponseType, MenuType} from "@/types";
+import Select, {StylesConfig} from "react-select";
 
 interface Props {
     MenuData: ApiResponseType<MenuType>
@@ -34,6 +35,19 @@ export function Header({MenuData}: Props) {
         }
     }
 
+    const options = [
+        { value: 'EN', label: 'EN' },
+        { value: 'Fa', label: 'Fa' }
+    ];
+
+    const SelectStyles: StylesConfig<any, false> = {
+        control: (provided) => ({
+            ...provided,
+            cursor: 'pointer',
+            minWidth: '83px'
+        }),
+    };
+
     return (
         <header className="shadow-5xl">
             {currentModal === 'login' && <LoginModal/>}
@@ -57,12 +71,12 @@ export function Header({MenuData}: Props) {
                                 isLogin ? 'Logout' : 'Login / Register'
                             }
                         </div>
-                        <button
-                            className="text-sm 2xl:text-base border-2 border-White-200 p-2 rounded-lg hover:bg-White-200 hover:shadow-lg font-semibold">
-                            EN
-                            <IconBox icon={'icon-angleDown text-sm ml-1'} size={10}/>
-                        </button>
-                        {/*<PhoneButton buttonStyle={"hidden lg:flex bg-White-200 hover:shadow-lg border border-White-200 hover:border-primary-100"}/>*/}
+                        <Select
+                            options={options}
+                            placeholder="EN"
+                            className={'z-10'}
+                            styles={SelectStyles}
+                        />
                     </div>
                 </div>
             </div>
