@@ -100,13 +100,11 @@ export default function Products() {
         setMobileFilter(true)
     }
 
-
     const options = [
         {value: 'Newest', label: 'Newest'},
         {value: 'Ascending', label: 'Ascending'},
         {value: 'Descending', label: 'Descending'},
     ]
-
 
     return (
         <>

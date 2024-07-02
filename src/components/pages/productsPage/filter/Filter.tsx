@@ -132,7 +132,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                             X
                         </button>
                     </div>
-                    <div className="max-w-xs md:w-full pb-10 px-3">
+                    <div className="max-w-xs md:w-full xl:max-w-56 pb-10 px-3">
                         <h2 className="uppercase font-bold text-4xl pt-32 md:pt-5">
                             Filter
                         </h2>
@@ -141,8 +141,8 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                         </h3>
 
                         <div className={'relative'}>
-                            <form className="flex items-center" onSubmit={searchForm.handleSubmit(onsubmit)}>
-                                <div className="h-10 relative mt-10 bg-white border border-White-100 rounded hover:border px-3">
+                            <form className="flex items-center w-full" onSubmit={searchForm.handleSubmit(onsubmit)}>
+                                <div className="h-10 w-full relative mt-10 bg-white border border-White-100 rounded hover:border px-3">
                                     <input className="search-input h-full w-full outline-none bg-transparent font-normal"
                                            type="text"
                                            placeholder="Search here..." {...searchForm.register('carSearch')} />
@@ -240,17 +240,15 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                                                 queryKey={'carTransmission'}
                                                 placeholder={'Any Transmission'}
                                                 label={'Any Transmission'}
-                                                className="min-w-52 mt-4"
+                                                className="mt-4"
                                                 value={field.value}
                                                 onChange={(value) => field.onChange(value)}
                                             />
                                         )}
                                     />
                                 }
-                                <button type="submit" onClick={closeFilterHandler}
-                                        className="h-12 w-full px-5 mt-7 bg-primary-100 rounded-lg flex justify-between items-center text-white shadow-6xl">
-                                    <IconBox icon={'icon-angleRight'} title={'FIND CARS'}
-                                             titleClassName={'order-first'} />
+                                <button type="submit" onClick={closeFilterHandler} className="h-12 w-full px-5 mt-7 bg-primary-100 rounded-lg flex justify-between items-center text-white shadow-6xl">
+                                    <IconBox icon={'icon-angleRight'} title={'FIND CARS'} titleClassName={'order-first'} />
                                 </button>
                             </form>
                         </FormProvider>
