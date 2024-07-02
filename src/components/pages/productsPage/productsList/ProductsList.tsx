@@ -1,8 +1,6 @@
 import { ProductsListCard} from "@/components";
 import {ApiResponseType, CarsType} from "@/types";
 import {useEffect} from "react";
-// import {isSSR} from "@/utils/isSSR";
-
 interface Props {
     data : ApiResponseType<CarsType>
 }

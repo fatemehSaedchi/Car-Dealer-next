@@ -52,7 +52,7 @@ export function Paginate({ data, pageSetter }: Props) {
             {
                 pages[0] !== 1 &&
 
-                <li onClick={decreament}>
+                <li onClick={decreament} className={'cursor-pointer '}>
                     <IconBox icon={'icon-angleLeft hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white'} />
                 </li>
             }
@@ -63,7 +63,7 @@ export function Paginate({ data, pageSetter }: Props) {
                     pageSetter(1);
                     scrollToPosition();
                 }}
-                    className={`hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
+                    className={`cursor-pointer hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
                     1
                 </li>
 
@@ -71,7 +71,7 @@ export function Paginate({ data, pageSetter }: Props) {
 
             {
                 pages[0] > 2 &&
-                <li className={`text-primary-100 py-2 px-7 rounded-lg font-bold`}>
+                <li className={`cursor-pointer text-primary-100 py-2 px-7 rounded-lg font-bold`}>
                     ...
                 </li>
             }
@@ -84,7 +84,7 @@ export function Paginate({ data, pageSetter }: Props) {
                             pageSetter(Number(value));
                             scrollToPosition();
                         }}
-                            className={`${value === pageNum ? 'bg-primary-100 text-White-200' : 'bg-White-200 text-primary-100'} hover:bg-primary-100 hover:text-White-200 py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
+                            className={`${value === pageNum ? 'bg-primary-100 text-White-200' : 'bg-White-200 text-primary-100'} cursor-pointer  hover:bg-primary-100 hover:text-White-200 py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
                             {value}
                         </li>
                     )
@@ -93,7 +93,7 @@ export function Paginate({ data, pageSetter }: Props) {
 
             {
                 pages[pages.length - 1] !== totalPage && pages[0] < totalPage - paginateLength &&
-                <li className={`text-primary-100 py-2 px-7 rounded-lg font-bold`}>
+                <li className={`cursor-pointer text-primary-100 py-2 px-7 rounded-lg font-bold`}>
                     ...
                 </li>
             }
@@ -104,14 +104,14 @@ export function Paginate({ data, pageSetter }: Props) {
                     pageSetter(totalPage);
                     scrollToPosition();
                 }}
-                    className={`hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
+                    className={`cursor-pointer hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-2 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white`}>
                     {totalPage}
                 </li>
             }
 
             {
                 pageNum !== totalPage &&
-                <li onClick={increament}>
+                <li onClick={increament} className={'cursor-pointer '}>
                     <IconBox icon={'icon-angleRight hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white'} />
                 </li>
             }

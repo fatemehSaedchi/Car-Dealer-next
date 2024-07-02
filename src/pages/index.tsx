@@ -5,7 +5,9 @@ import {
     Section,
     ImageView,
     // VerticalSlider,
-    PaginatedSlider, ServicesList, IconBox,
+    // PaginatedSlider,
+    // IconBox,
+    ServicesList
 } from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {getAllCarsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
@@ -17,11 +19,7 @@ export default function Home() {
         {
             queryKey: [getAllCarsApi.name, 'trendingCarData'],
             queryFn: () => getAllCarsApi({
-                populate: [
-                    'thumbnail',
-                    'car_class',
-                    'car_model'
-                ],
+                populate: ['thumbnail', 'car_class', 'car_model'],
                 filters: {
                     Trending: {
                         $eq: true
@@ -171,18 +169,20 @@ export default function Home() {
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</Section>*/}
-            <Section className={"flex flex-col items-center"}>
-                <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-center">
-                    Top deals of the week
-                </h2>
-                <p className="max-w-xl lg:max-w-3xl text-sm lg:text-lg leading-6 xl:leading-8 text-center pt-2 md:pt-5">
-                    Discover exclusive offers and unbeatable prices on our top vehicles this week. Don't miss out on
-                    these exceptional opportunities to find your dream car.
-                </p>
-                <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">
-                    <PaginatedSlider/>
-                </div>
-            </Section>
+
+            {/*<Section className={"flex flex-col items-center"}>*/}
+            {/*    <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-center">*/}
+            {/*        Top deals of the week*/}
+            {/*    </h2>*/}
+            {/*    <p className="max-w-xl lg:max-w-3xl text-sm lg:text-lg leading-6 xl:leading-8 text-center pt-2 md:pt-5">*/}
+            {/*        Discover exclusive offers and unbeatable prices on our top vehicles this week. Don't miss out on*/}
+            {/*        these exceptional opportunities to find your dream car.*/}
+            {/*    </p>*/}
+            {/*    <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">*/}
+            {/*        <PaginatedSlider/>*/}
+            {/*    </div>*/}
+            {/*</Section>*/}
+
             {/*<Section>*/}
             {/*    <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">*/}
             {/*        <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt=""*/}
