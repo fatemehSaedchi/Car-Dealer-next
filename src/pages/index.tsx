@@ -1,19 +1,22 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
     TrendingSlider,
     MiniFilter,
     Section,
     ImageView,
-    // VerticalSlider,
-    // PaginatedSlider,
-    // IconBox,
-    ServicesList
+    ServicesList, IconBox, PaginatedSlider
 } from "@/components";
 import {useQuery} from "@tanstack/react-query";
-import {getAllCarsApi, getAllServicesApi, getAllAlbumsApi} from "@/api";
-import {ApiResponseType, CarsType, AlbumType, ServicesType} from "@/types";
+import {getAllAlbumsApi, getAllCarsApi, getAllServicesApi} from "@/api";
+import {AlbumType, ApiResponseType, CarsType, ServicesType} from "@/types";
+
+const VerticalSlider = dynamic(() =>
+    import('@/components/pages/home-page/sliders/VerticalSlider').then((value)=> value.VerticalSlider), {ssr: false}
+)
 
 export default function Home() {
+
 
     const {data: trendingCarData} = useQuery<ApiResponseType<CarsType>>(
         {
@@ -43,30 +46,30 @@ export default function Home() {
             })
         })
 
-    // const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
-    //     {
-    //         queryKey: [getAllAlbumsApi.name],
-    //         queryFn: () => getAllAlbumsApi({
-    //             populate: ['*'],
-    //             filters: {
-    //                 title: {$eq: 'classicCars'}
-    //             }
-    //         })
-    //     })
+    const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
+        {
+            queryKey: [getAllAlbumsApi.name],
+            queryFn: () => getAllAlbumsApi({
+                populate: ['*'],
+                filters: {
+                    title: {$eq: 'classicCars'}
+                }
+            })
+        })
 
 
-    // const {data: SportAlbumData} = useQuery<ApiResponseType<AlbumType>>(
-    //     {
-    //         queryKey: [getAllAlbumsApi.name],
-    //         queryFn: () => getAllAlbumsApi({
-    //             populate: ['*'],
-    //             filters: {
-    //                 title: {$eq: 'sportCars'}
-    //             }
-    //         })
-    //     })
-    //
-    // console.log('SportAlbumData:', SportAlbumData)
+    const {data: SportAlbumData} = useQuery<ApiResponseType<AlbumType>>(
+        {
+            queryKey: [getAllAlbumsApi.name],
+            queryFn: () => getAllAlbumsApi({
+                populate: ['*'],
+                filters: {
+                    title: {$eq: 'sportCars'}
+                }
+            })
+        })
+
+    console.log('SportAlbumData:', SportAlbumData)
 
     return (
         <>
@@ -139,88 +142,88 @@ export default function Home() {
                     </div>
                 </div>
             </Section>
-            {/*<Section>*/}
-            {/*    <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">*/}
-            {/*        <ImageView src="/assets/images/circleElement.svg" alt="" width={66} height={50}*/}
-            {/*                   classname="w-[50px] absolute left-0 md:left-16 lg:left-2/4 xl:left-[51%] 2xl:left-[53%] lg:top-80 top-40 z-50"/>*/}
-            {/*        <div className="w-full lg:basis-1/2 order-2 lg:order-1 pt-9">*/}
-            {/*            <h3 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">*/}
-            {/*                We Bring You to The Future*/}
-            {/*            </h3>*/}
-            {/*            <h3 className="font-bold text-[30px] lg:text-[40px] xl:text-[45px] 2xl:text-[48px] mt-3 md:mt-[14px]">*/}
-            {/*                Don’t worries, <br/>*/}
-            {/*                we check all of unit*/}
-            {/*            </h3>*/}
-            {/*            <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">*/}
-            {/*                In Mobhil Car Dealer, we are dedicated to innovation and progress. Without any concerns, we*/}
-            {/*                meticulously inspect every unit to ensure quality and reliability for you.*/}
-            {/*            </p>*/}
-            {/*            <Link href={'#'}*/}
-            {/*                  className="inline-block px-4 xl:px-9 py-[12px] xl:py-[18px] text-sm md:text-base xl:text-lg font-medium rounded-[7px] bg-primary-100 text-white mt-6 lg:mt-9">*/}
-            {/*                Discover More*/}
-            {/*            </Link>*/}
-            {/*        </div>*/}
-            {/*        <div className="w-full lg:basis-1/2 order-1 lg:order-2 h-56 sm:h-72 lg:h-96 2xl:pr-12">*/}
-            {/*            {*/}
-            {/*                AlbumData &&*/}
-            {/*                <VerticalSlider data={AlbumData}*/}
-            {/*                                sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>*/}
-            {/*            }*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</Section>*/}
+            <Section>
+                <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">
+                    <ImageView src="/assets/images/circleElement.svg" alt="" width={66} height={50}
+                               classname="w-[50px] absolute left-0 md:left-16 lg:left-2/4 xl:left-[51%] 2xl:left-[53%] lg:top-80 top-40 z-50"/>
+                    <div className="w-full lg:basis-1/2 order-2 lg:order-1 pt-9">
+                        <h3 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">
+                            We Bring You to The Future
+                        </h3>
+                        <h3 className="font-bold text-[30px] lg:text-[40px] xl:text-[45px] 2xl:text-[48px] mt-3 md:mt-[14px]">
+                            Don’t worries, <br/>
+                            we check all of unit
+                        </h3>
+                        <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">
+                            In Mobhil Car Dealer, we are dedicated to innovation and progress. Without any concerns, we
+                            meticulously inspect every unit to ensure quality and reliability for you.
+                        </p>
+                        <Link href={'#'}
+                              className="inline-block px-4 xl:px-9 py-[12px] xl:py-[18px] text-sm md:text-base xl:text-lg font-medium rounded-[7px] bg-primary-100 text-white mt-6 lg:mt-9">
+                            Discover More
+                        </Link>
+                    </div>
+                    <div className="w-full lg:basis-1/2 order-1 lg:order-2 h-56 sm:h-72 lg:h-96 2xl:pr-12">
+                        {
+                            AlbumData &&
+                            <VerticalSlider data={AlbumData}
+                                            sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                        }
+                    </div>
+                </div>
+            </Section>
 
-            {/*<Section className={"flex flex-col items-center"}>*/}
-            {/*    <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-center">*/}
-            {/*        Top deals of the week*/}
-            {/*    </h2>*/}
-            {/*    <p className="max-w-xl lg:max-w-3xl text-sm lg:text-lg leading-6 xl:leading-8 text-center pt-2 md:pt-5">*/}
-            {/*        Discover exclusive offers and unbeatable prices on our top vehicles this week. Don't miss out on*/}
-            {/*        these exceptional opportunities to find your dream car.*/}
-            {/*    </p>*/}
-            {/*    <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">*/}
-            {/*        <PaginatedSlider/>*/}
-            {/*    </div>*/}
-            {/*</Section>*/}
+            <Section className={"flex flex-col items-center"}>
+                <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-center">
+                    Top deals of the week
+                </h2>
+                <p className="max-w-xl lg:max-w-3xl text-sm lg:text-lg leading-6 xl:leading-8 text-center pt-2 md:pt-5">
+                    Discover exclusive offers and unbeatable prices on our top vehicles this week. Don't miss out on
+                    these exceptional opportunities to find your dream car.
+                </p>
+                <div className="h-fit w-4/5 sm:w-full 2xl:max-w-7xl pt-10">
+                    <PaginatedSlider/>
+                </div>
+            </Section>
 
-            {/*<Section>*/}
-            {/*    <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">*/}
-            {/*        <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt=""*/}
-            {/*                   classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>*/}
-            {/*        <div className="w-full lg:basis-1/2 h-56 sm:h-72 lg:h-96">*/}
-            {/*            {*/}
-            {/*                SportAlbumData &&*/}
-            {/*                <VerticalSlider data={SportAlbumData}*/}
-            {/*                                sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>*/}
-            {/*            }*/}
-            {/*        </div>*/}
-            {/*        <div className="w-full lg:basis-1/2 pt-9">*/}
-            {/*            <h2 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">*/}
-            {/*                Best Car in The World*/}
-            {/*            </h2>*/}
-            {/*            <h3 className="font-bold text-[30px] lg:text-[40px] xl:text-[45px] 2xl:text-[48px] mt-3 md:mt-[14px]">*/}
-            {/*                We serve you with<br/>*/}
-            {/*                best car in the world*/}
-            {/*            </h3>*/}
-            {/*            <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">*/}
-            {/*                We are committed to providing you with the highest level of automotive excellence. Through*/}
-            {/*                careful selection and meticulous quality inspection, we ensure that each vehicle meets our*/}
-            {/*                high standards. With our unparalleled experience, our outstanding cars exceed your*/}
-            {/*                expectations.*/}
-            {/*            </p>*/}
-            {/*            <div className={'flex items-center mt-4 gap-3'}>*/}
-            {/*                <div*/}
-            {/*                    className={'w-[70px] h-[70px] border border-secondary-20 rounded-full flex justify-center items-center'}>*/}
-            {/*                    <div*/}
-            {/*                        className={'w-[46px] h-[46px] bg-primary-100 rounded-full flex justify-center items-center'}>*/}
-            {/*                        <IconBox icon={'icon-play text-white'} size={22}/>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*                <Link href={'#'} className={'text-secondary-300 underline'}>Learn more</Link>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</Section>*/}
+            <Section>
+                <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 items-center">
+                    <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt=""
+                               classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
+                    <div className="w-full lg:basis-1/2 h-56 sm:h-72 lg:h-96">
+                        {
+                            SportAlbumData &&
+                            <VerticalSlider data={SportAlbumData}
+                                            sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
+                        }
+                    </div>
+                    <div className="w-full lg:basis-1/2 pt-9">
+                        <h2 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">
+                            Best Car in The World
+                        </h2>
+                        <h3 className="font-bold text-[30px] lg:text-[40px] xl:text-[45px] 2xl:text-[48px] mt-3 md:mt-[14px]">
+                            We serve you with<br/>
+                            best car in the world
+                        </h3>
+                        <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">
+                            We are committed to providing you with the highest level of automotive excellence. Through
+                            careful selection and meticulous quality inspection, we ensure that each vehicle meets our
+                            high standards. With our unparalleled experience, our outstanding cars exceed your
+                            expectations.
+                        </p>
+                        <div className={'flex items-center mt-4 gap-3'}>
+                            <div
+                                className={'w-[70px] h-[70px] border border-secondary-20 rounded-full flex justify-center items-center'}>
+                                <div
+                                    className={'w-[46px] h-[46px] bg-primary-100 rounded-full flex justify-center items-center'}>
+                                    <IconBox icon={'icon-play text-white'} size={22}/>
+                                </div>
+                            </div>
+                            <Link href={'#'} className={'text-secondary-300 underline'}>Learn more</Link>
+                        </div>
+                    </div>
+                </div>
+            </Section>
         </>
     );
 }
