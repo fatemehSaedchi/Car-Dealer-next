@@ -3,6 +3,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {twMerge} from "tailwind-merge";
 import {VerticalSliderCard} from "@/components";
 import {ApiResponseType, AlbumType} from "@/types";
+import {log} from "node:util";
 
 interface Props {
     data: ApiResponseType<AlbumType>
@@ -26,6 +27,7 @@ export function VerticalSlider({data, sliderClass}: Props) {
             >
                 {
                     data?.data[0]?.attributes.Images?.data.map((value, index) => {
+                        console.log()
 
 
                         return (
