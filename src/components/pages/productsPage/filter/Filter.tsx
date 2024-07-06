@@ -10,6 +10,7 @@ import { useEffect, MouseEvent, Dispatch, SetStateAction, useState } from "react
 import useDebounce from "@/hooks/use-debounce";
 import { useOverlay } from "@/hooks";
 import Link from "next/link";
+import {Loading} from "@/components/common/ui/loading/Loading";
 
 interface Props {
     mobileFilter: boolean
@@ -31,7 +32,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
 
     const router = useRouter();
 
-    const { mutate } = useMutation({
+    const { mutate, isPending } = useMutation({
         mutationFn: (data: FilterData) => getAllCarsApi({
             filters: data
         })
@@ -151,6 +152,9 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                             </form>
 
                             {
+                                isPending ?
+                                    <Loading className={'absolute rounded-lg bg-gray-500 w-max z-50 left-full ml-1 top-0 text-center'}/>
+                                    :
                                 searchData &&
                                 <div className={'absolute rounded-lg bg-gray-500 w-max z-50 left-full ml-1 top-0 text-center'}>
                                     <ul>
@@ -176,7 +180,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                                     <Controller
                                         name="carBrand"
                                         control={filterForm.control}
-                                        defaultValue=""
+                                        defaultValue={`${router.query.carBrand ? router.query.carBrand : ''}`}
                                         render={({ field }) => (
                                             <FilterSelect
                                                 data={brandsData}
@@ -186,6 +190,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                                                 value={field.value}
                                                 onChange={(value) => field.onChange(value)}
                                                 className={'mt-4'}
+
                                             />
                                         )}
                                     />
@@ -195,7 +200,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                                     <Controller
                                         name="carClass"
                                         control={filterForm.control}
-                                        defaultValue=""
+                                        defaultValue={`${router.query.carClass ? router.query.carClass : ''}`}
                                         render={({ field }) => (
                                             <FilterSelect
                                                 data={classesData}
@@ -214,7 +219,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                                     <Controller
                                         name="carFuel"
                                         control={filterForm.control}
-                                        defaultValue=""
+                                        defaultValue={`${router.query.carFuel ? router.query.carFuel : ''}`}
                                         render={({ field }) => (
                                             <FilterSelect
                                                 data={fuelsData}
@@ -233,7 +238,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                                     <Controller
                                         name="carTransmission"
                                         control={filterForm.control}
-                                        defaultValue=""
+                                        defaultValue={`${router.query.carTransmission ? router.query.carTransmission : ''}`}
                                         render={({ field }) => (
                                             <FilterSelect
                                                 data={transitionsData}

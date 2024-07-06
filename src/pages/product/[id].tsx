@@ -15,13 +15,14 @@ import {ApiSingleResponseType, CarsType} from "@/types";
 import {getOneCarApi} from "@/api/car";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
+import {Loading} from "@/components/common/ui/loading/Loading";
 
 export default function ProductDetail() {
 
     const router = useRouter()
     const {id:Id} = router.query
 
-    const {data: CarData, refetch} = useQuery<ApiSingleResponseType<CarsType>>({
+    const {data: CarData, refetch, isPending} = useQuery<ApiSingleResponseType<CarsType>>({
         queryKey: [getOneCarApi.name, 'carsAllData'],
         queryFn: () => getOneCarApi({populate: ['*'], id: Id}),
         retry: true,
@@ -42,6 +43,9 @@ export default function ProductDetail() {
     return (
         <>
             {
+                isPending ?
+                    <Loading/>
+                    :
                 (CarData) &&
                 <>
                     <Breadcrumb title={CarData.data.attributes.title}/>

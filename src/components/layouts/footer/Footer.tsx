@@ -42,10 +42,10 @@ export function Footer({MenuData}: Props) {
                         </div>
                         <div className="flex pt-5 sm:pt-9 lg:pt-14 gap-2 lg:gap-4">
                             <PhoneButton buttonStyle={"bg-white"}/>
-                            <button
-                                className="hidden sm:inline-block text-[8px] sm:text-xs lg:text-base py-1 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg border border-White-200 text-White-200 font-medium">
+                            <Link
+                                className="hidden self-center sm:inline-block text-[8px] sm:text-xs lg:text-base py-2 px-1.5 sm:px-3 lg:px-5 text-center rounded-lg border border-White-200 text-White-200 font-medium" href={'/contact'}>
                                 Contact Us
-                            </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="basis-2/4 relative">

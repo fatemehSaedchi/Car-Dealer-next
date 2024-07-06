@@ -1,13 +1,13 @@
-import { Meta } from "@/mock";
-import { IconBox } from "@/components";
-import { Dispatch, SetStateAction } from "react";
+import {Meta} from "@/mock";
+import {IconBox} from "@/components";
+import {Dispatch, SetStateAction} from "react";
 
 interface Props {
     data: Meta,
     pageSetter: Dispatch<SetStateAction<number>>
 }
 
-export function Paginate({ data, pageSetter }: Props) {
+export function Paginate({data, pageSetter}: Props) {
 
     let pages = [];
     let pageNum = data.pagination.page;
@@ -43,7 +43,9 @@ export function Paginate({ data, pageSetter }: Props) {
     pages = pages.splice(0, paginateLength);
 
     if (totalPage === 0) {
-        return <div className="flex justify-center items-center mt-24 col-span-2 2xl:col-span-3 text-secondary-400 text-3xl font-bold">No product found !</div>;
+        return <div
+            className="flex justify-center items-center mt-24 col-span-2 2xl:col-span-3 text-secondary-400 text-3xl font-bold">No
+            product found !</div>;
     }
 
     return (
@@ -53,7 +55,8 @@ export function Paginate({ data, pageSetter }: Props) {
                 pages[0] !== 1 &&
 
                 <li onClick={decreament} className={'cursor-pointer '}>
-                    <IconBox icon={'icon-angleLeft hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white'} />
+                    <IconBox
+                        icon={'icon-angleLeft hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white'}/>
                 </li>
             }
 
@@ -112,7 +115,8 @@ export function Paginate({ data, pageSetter }: Props) {
             {
                 pageNum !== totalPage &&
                 <li onClick={increament} className={'cursor-pointer '}>
-                    <IconBox icon={'icon-angleRight hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white'} />
+                    <IconBox
+                        icon={'icon-angleRight hover:bg-primary-100 hover:text-White-200 bg-White-200 text-primary-100 py-3 px-7 rounded-lg font-bold active:bg-primary-100 active:text-white'}/>
                 </li>
             }
         </ul>

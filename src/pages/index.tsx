@@ -1,24 +1,30 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import {
-    TrendingSlider,
     MiniFilter,
     Section,
     ImageView,
-    ServicesList, IconBox, PaginatedSlider
+    ServicesList, IconBox
 } from "@/components";
 import {useQuery} from "@tanstack/react-query";
 import {getAllAlbumsApi, getAllCarsApi, getAllServicesApi} from "@/api";
 import {AlbumType, ApiResponseType, CarsType, ServicesType} from "@/types";
+import {Loading} from "@/components/common/ui/loading/Loading";
 
+const TrendingSlider = dynamic(() =>
+    import('@/components').then((value) => value.TrendingSlider), {ssr: false}
+)
+const PaginatedSlider = dynamic(() =>
+    import('@/components').then((value) => value.PaginatedSlider), {ssr: false}
+)
 const VerticalSlider = dynamic(() =>
-    import('@/components/pages/home-page/sliders/VerticalSlider').then((value)=> value.VerticalSlider), {ssr: false}
+    import('@/components/pages/home-page/sliders/VerticalSlider').then((value) => value.VerticalSlider), {ssr: false}
 )
 
 export default function Home() {
 
 
-    const {data: trendingCarData} = useQuery<ApiResponseType<CarsType>>(
+    const {data: trendingCarData, isPending: trendingCarPending} = useQuery<ApiResponseType<CarsType>>(
         {
             queryKey: [getAllCarsApi.name, 'trendingCarData'],
             queryFn: () => getAllCarsApi({
@@ -35,7 +41,7 @@ export default function Home() {
         }
     )
 
-    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
+    const {data: servicesData, isPending: servicesPending} = useQuery<ApiResponseType<ServicesType>>(
         {
             queryKey: [getAllServicesApi.name, '3 of'],
             queryFn: () => getAllServicesApi({
@@ -46,7 +52,7 @@ export default function Home() {
             })
         })
 
-    const {data: AlbumData} = useQuery<ApiResponseType<AlbumType>>(
+    const {data: AlbumData, isPending: AlbumPending} = useQuery<ApiResponseType<AlbumType>>(
         {
             queryKey: [getAllAlbumsApi.name],
             queryFn: () => getAllAlbumsApi({
@@ -58,7 +64,7 @@ export default function Home() {
         })
 
 
-    const {data: SportAlbumData} = useQuery<ApiResponseType<AlbumType>>(
+    const {data: SportAlbumData, isPending: SportAlbumPending} = useQuery<ApiResponseType<AlbumType>>(
         {
             queryKey: [getAllAlbumsApi.name],
             queryFn: () => getAllAlbumsApi({
@@ -69,12 +75,14 @@ export default function Home() {
             })
         })
 
-    console.log('SportAlbumData:', SportAlbumData)
 
     return (
         <>
             <div className="absolute right-0 lg:order-2 self-end lg:self-start w-10/12 lg:w-2/4">
                 {
+                    trendingCarPending ?
+                        <Loading/>
+                        :
                     trendingCarData &&
                     <TrendingSlider sliderData={trendingCarData} nextEl={".swiper-button-next"}
                                     prevEl={".swiper-button-prev"}/>
@@ -94,6 +102,9 @@ export default function Home() {
                                 TRENDING
                             </button>
                             {
+                                trendingCarPending ?
+                                    <Loading/>
+                                    :
                                 trendingCarData &&
                                 <Link href={`/product/${trendingCarData.data[0].id}`}
                                       className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-nowrap sm:text-lg font-bold hover:bg-yellow-100 rounded-full">
@@ -122,6 +133,10 @@ export default function Home() {
                     <div
                         className="sm:w-11/12 lg:w-[70%] order-1 lg:order-2 flex flex-row pt-80 lg:pt-0 gap-2.5 sm:gap-5 justify-between self-end 2xl:pr-24">
                         {
+                            servicesPending ?
+                                <Loading/>
+                                :
+
                             servicesData &&
 
                             <ServicesList data={servicesData}/>
@@ -158,13 +173,17 @@ export default function Home() {
                             In Mobhil Car Dealer, we are dedicated to innovation and progress. Without any concerns, we
                             meticulously inspect every unit to ensure quality and reliability for you.
                         </p>
-                        <Link href={'#'}
+                        <Link href={'/about'}
                               className="inline-block px-4 xl:px-9 py-[12px] xl:py-[18px] text-sm md:text-base xl:text-lg font-medium rounded-[7px] bg-primary-100 text-white mt-6 lg:mt-9">
                             Discover More
                         </Link>
                     </div>
                     <div className="w-full lg:basis-1/2 order-1 lg:order-2 h-56 sm:h-72 lg:h-96 2xl:pr-12">
                         {
+                            AlbumPending ?
+                                <Loading/>
+                                :
+
                             AlbumData &&
                             <VerticalSlider data={AlbumData}
                                             sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
@@ -192,6 +211,10 @@ export default function Home() {
                                classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
                     <div className="w-full lg:basis-1/2 h-56 sm:h-72 lg:h-96">
                         {
+                            SportAlbumPending ?
+                                <Loading/>
+                                :
+
                             SportAlbumData &&
                             <VerticalSlider data={SportAlbumData}
                                             sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
@@ -211,7 +234,7 @@ export default function Home() {
                             high standards. With our unparalleled experience, our outstanding cars exceed your
                             expectations.
                         </p>
-                        <div className={'flex items-center mt-4 gap-3'}>
+                        <Link href={'/about'} className={'flex items-center mt-4 gap-3'}>
                             <div
                                 className={'w-[70px] h-[70px] border border-secondary-20 rounded-full flex justify-center items-center'}>
                                 <div
@@ -219,8 +242,8 @@ export default function Home() {
                                     <IconBox icon={'icon-play text-white'} size={22}/>
                                 </div>
                             </div>
-                            <Link href={'#'} className={'text-secondary-300 underline'}>Learn more</Link>
-                        </div>
+                            <span className={'text-secondary-300 underline'}>Learn more</span>
+                        </Link>
                     </div>
                 </div>
             </Section>

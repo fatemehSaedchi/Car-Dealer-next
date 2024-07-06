@@ -95,7 +95,7 @@ export default function Products() {
         mutation.mutate(query)
     }, [query, pageState])
 
-    const showFilterHandler = (e: MouseEvent)=>{
+    const showFilterHandler = (e: MouseEvent) => {
         e.stopPropagation()
         setMobileFilter(true)
     }
@@ -112,7 +112,8 @@ export default function Products() {
             <Section className="flex justify-between">
                 <Filter mobileFilter={mobileFilter} setMobileFilter={setMobileFilter}/>
                 <div className="w-full md:basis-4/5">
-                    <div className={'flex gap-2 mt-4 items-center cursor-pointer md:hidden'} onClick={showFilterHandler}>
+                    <div className={'flex gap-2 mt-4 items-center cursor-pointer md:hidden'}
+                         onClick={showFilterHandler}>
                         <button className="flex flex-col gap-1 lg:hidden text-center  hover:shadow-lg">
                             <span className="w-[18px] h-[1px] bg-secondary-50 inline-block rounded"></span>
                             <span className="w-[18px] h-[1px] bg-secondary-50 inline-block rounded"></span>
@@ -149,8 +150,13 @@ export default function Products() {
                         mutation.isPending ?
                             <Loading/>
                             :
-                            mutation.data &&
-                            <ProductsList data={mutation.data}/>
+                            mutation.data == null ?
+                                <div
+                                    className="flex justify-center items-center mt-24 col-span-2 2xl:col-span-3 text-secondary-400 text-3xl font-bold">No
+                                    product found !</div>
+                                :
+                                mutation.data &&
+                                <ProductsList data={mutation.data}/>
                     }
                     {
                         mutation.data &&
