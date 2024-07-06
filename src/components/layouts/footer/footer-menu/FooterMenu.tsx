@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {EntityType, MenuType, PopulateType} from "@/types";
+import {PopulateType} from "@/types";
 import {MenuItemType} from "@/types/MenuItem";
 
 interface Props {

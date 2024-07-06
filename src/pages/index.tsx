@@ -221,14 +221,14 @@ export default function Home() {
                         }
                     </div>
                     <div className="w-full lg:basis-1/2 pt-9">
-                        <h2 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">
+                        <h2 className="text-sm lg:text-sm xl:text-xl text-secondary-200 font-semibold">
                             Best Car in The World
                         </h2>
                         <h3 className="font-bold text-[30px] lg:text-[40px] xl:text-[45px] 2xl:text-[48px] mt-3 md:mt-[14px]">
                             We serve you with<br/>
                             best car in the world
                         </h3>
-                        <p className="text-xs sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">
+                        <p className="text-sm sm:text-sm lg:text-base 2xl:text-lg 2xl:w-[90%] lg:leading-8 mt-3 md:mt-[14px] lg:mt-[20px] xl:mt-[30px]">
                             We are committed to providing you with the highest level of automotive excellence. Through
                             careful selection and meticulous quality inspection, we ensure that each vehicle meets our
                             high standards. With our unparalleled experience, our outstanding cars exceed your
@@ -242,7 +242,7 @@ export default function Home() {
                                     <IconBox icon={'icon-play text-white'} size={22}/>
                                 </div>
                             </div>
-                            <span className={'text-secondary-300 underline'}>Learn more</span>
+                            <span className={'text-secondary-300 underline text-md'}>Learn more</span>
                         </Link>
                     </div>
                 </div>
