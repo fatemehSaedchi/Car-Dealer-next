@@ -179,15 +179,15 @@ export default function Home() {
                         </Link>
                     </div>
                     <div className="w-full lg:basis-1/2 order-1 lg:order-2 h-56 sm:h-72 lg:h-96 2xl:pr-12">
-                        {
-                            AlbumPending ?
-                                <Loading/>
-                                :
+                        {/*{*/}
+                        {/*    AlbumPending ?*/}
+                        {/*        <Loading/>*/}
+                        {/*        :*/}
 
-                            AlbumData &&
-                            <VerticalSlider data={AlbumData}
-                                            sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
-                        }
+                        {/*    AlbumData &&*/}
+                        {/*    <VerticalSlider data={AlbumData}*/}
+                        {/*                    sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>*/}
+                        {/*}*/}
                     </div>
                 </div>
             </Section>
@@ -210,15 +210,15 @@ export default function Home() {
                     <ImageView height={66} width={50} src="/assets/images/circleElement.svg" alt=""
                                classname="w-[50px] absolute left-0 md:left-16 2xl:left-[70px] lg:left-0 top-32 lg:top-60 z-50"/>
                     <div className="w-full lg:basis-1/2 h-56 sm:h-72 lg:h-96">
-                        {
-                            SportAlbumPending ?
-                                <Loading/>
-                                :
+                        {/*{*/}
+                        {/*    SportAlbumPending ?*/}
+                        {/*        <Loading/>*/}
+                        {/*        :*/}
 
-                            SportAlbumData &&
-                            <VerticalSlider data={SportAlbumData}
-                                            sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
-                        }
+                        {/*    SportAlbumData &&*/}
+                        {/*    <VerticalSlider data={SportAlbumData}*/}
+                        {/*                    sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>*/}
+                        {/*}*/}
                     </div>
                     <div className="w-full lg:basis-1/2 pt-9">
                         <h2 className="text-xs lg:text-sm xl:text-xl text-secondary-200 font-semibold">
