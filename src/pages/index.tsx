@@ -52,9 +52,9 @@ export default function Home() {
             })
         })
 
-    const {data: AlbumData, isPending: AlbumPending} = useQuery<ApiResponseType<AlbumType>>(
+    const {data: ClassicAlbumData, isPending: AlbumPending} = useQuery<ApiResponseType<AlbumType>>(
         {
-            queryKey: [getAllAlbumsApi.name],
+            queryKey: [getAllAlbumsApi.name, 'ClassicAlbum'],
             queryFn: () => getAllAlbumsApi({
                 populate: ['*'],
                 filters: {
@@ -66,7 +66,7 @@ export default function Home() {
 
     const {data: SportAlbumData, isPending: SportAlbumPending} = useQuery<ApiResponseType<AlbumType>>(
         {
-            queryKey: [getAllAlbumsApi.name],
+            queryKey: [getAllAlbumsApi.name, 'sportAlbum'],
             queryFn: () => getAllAlbumsApi({
                 populate: ['*'],
                 filters: {
@@ -184,8 +184,8 @@ export default function Home() {
                                 <Loading/>
                                 :
 
-                            AlbumData &&
-                            <VerticalSlider data={AlbumData}
+                                ClassicAlbumData &&
+                            <VerticalSlider data={ClassicAlbumData}
                                             sliderClass={'max-w-xl lg:w-full rounded-[60px]'}/>
                         }
                     </div>
