@@ -10,7 +10,7 @@ interface LoginData {
 
 export function SendMessageForm() {
 
-    const {register, handleSubmit, formState: {errors}} = useForm<LoginData>()
+    const {register, formState: {errors}} = useForm<LoginData>()
 
     const {currentModal, openModal} = useModal()
 

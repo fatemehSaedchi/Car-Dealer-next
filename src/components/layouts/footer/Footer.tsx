@@ -33,12 +33,8 @@ export function Footer({MenuData}: Props) {
                     className="max-w-6xl m-auto bg-primary-100 max-h-72 rounded-3xl lg:rounded-[40px] relative flex p-4 sm:py-7 md:p-9 lg:p-16">
                     <div className="basis-2/4">
                         <div
-                            className="w-full text-xs xs:text-[15px] sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white">
-                            Have any question
-                        </div>
-                        <div
-                            className="w-full text-xs xs:text-[15px] sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-white lg:pt-2">
-                            about us?
+                            className="w-full text-sm text-wrap xs:text-[15px] sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] text-white">
+                            Have any question about us?
                         </div>
                         <div className="flex pt-5 sm:pt-9 lg:pt-14 gap-2 lg:gap-4">
                             <PhoneButton buttonStyle={"bg-white"}/>

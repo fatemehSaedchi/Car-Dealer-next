@@ -28,7 +28,7 @@ export function RegisterForm() {
 
     const {currentModal, openModal} = useModal()
     const mutate = useMutation({mutationFn: registerApiCall})
-    const {onLogin, isLogin, onLogout} = useUser()
+    const {onLogin, onLogout} = useUser()
     const onSubmit = (data: FormData) => {
         console.log(data)
         mutate.mutate(data, {

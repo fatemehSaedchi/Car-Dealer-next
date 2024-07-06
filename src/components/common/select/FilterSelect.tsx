@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Select, {mergeStyles, SingleValue, StylesConfig} from 'react-select';
 import { CarSpecificsType, ApiResponseType } from '@/types';
-import { useRouter } from 'next/router';
 
 interface FilterSelectProps {
     data: ApiResponseType<CarSpecificsType>;
@@ -14,9 +13,7 @@ interface FilterSelectProps {
     onChange: (value: string) => void;
 }
 
-export function FilterSelect({data, queryKey, placeholder, className = '', styles = {}, label, value = '', onChange,}: FilterSelectProps) {
-    const router = useRouter();
-
+export function FilterSelect({data, placeholder, className = '', styles = {}, label, value = '', onChange,}: FilterSelectProps) {
     const options = [
         { value: '', label: label },
         ...(data?.data.map(item => ({

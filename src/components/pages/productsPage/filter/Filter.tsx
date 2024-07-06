@@ -129,7 +129,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                     <div className="md:hidden">
                         <ImageView src={'/assets/images/filterWave.png'} alt={'filterWave'} width={1000} height={400}
                                    classname={'absolute top-0 right-0 left-0'} />
-                        <button className="relative text-white font-bold" onClick={closeFilterHandler}>
+                        <button className="relative text-white border-2 rounded-2xl py-2 px-4 hover:bg-gray-200 hover:text-black" onClick={closeFilterHandler}>
                             X
                         </button>
                     </div>

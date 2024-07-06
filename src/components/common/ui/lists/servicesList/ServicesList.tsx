@@ -17,7 +17,7 @@ export function ServicesList({data, cardNumber = 3, className, topBar = false}: 
             {
                 data.data.map((value , index) => {
                     return (
-                        <div className={twMerge("basis-1/3 flex flex-col justify-center items-center shadow-Xl rounded-2xl bg-white", className)} key={index}>
+                        <div className={twMerge("basis-1/3 flex flex-col justify-start items-center shadow-Xl rounded-2xl bg-white", className)} key={index}>
                             {
                                 topBar ?
                                     <>
