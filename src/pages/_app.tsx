@@ -1,6 +1,4 @@
-import {SpeedInsights} from "@vercel/speed-insights/next"
-
-import "@/styles/globals.css";
+import { SpeedInsights } from '@vercel/speed-insights/next';import "@/styles/globals.css";
 import '@/styles/icons.css'
 import 'swiper/css'
 import "swiper/css/autoplay"
@@ -78,6 +76,7 @@ function App({Component, ...pageProps}: AppProps) {
                                     theme="dark"
                                     className={'custom-toast-container'}
                                 />
+                                <SpeedInsights />
 
                             </Layout>
                             <ReactQueryDevtools initialIsOpen={false}/>
