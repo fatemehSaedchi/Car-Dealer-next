@@ -25,7 +25,7 @@ export function VerticalSlider({data, sliderClass}: Props) {
                 }}
             >
                 {
-                    data?.data[0]?.attributes.Images.data.map((value, index) => {
+                    data?.data[0]?.attributes.Images?.data.map((value, index) => {
 
 
                         return (
