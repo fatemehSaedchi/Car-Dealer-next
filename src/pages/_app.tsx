@@ -1,4 +1,7 @@
-import { SpeedInsights } from '@vercel/speed-insights/next';import "@/styles/globals.css";
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
+
+import "@/styles/globals.css";
 import '@/styles/icons.css'
 import 'swiper/css'
 import "swiper/css/autoplay"
@@ -22,7 +25,6 @@ import {AuthContextProvider} from "@/store/AuthContext";
 import {useState} from "react";
 import {isSSR} from "@/utils/isSSR";
 import {ApiResponseType, MenuType} from "@/types";
-
 
 const montserrat = Montserrat({
     subsets: ['latin']
@@ -77,6 +79,7 @@ function App({Component, ...pageProps}: AppProps) {
                                     className={'custom-toast-container'}
                                 />
                                 <SpeedInsights />
+                                <Analytics />
 
                             </Layout>
                             <ReactQueryDevtools initialIsOpen={false}/>
