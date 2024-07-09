@@ -4,26 +4,11 @@ import {ApiResponseType, ServicesType, TeamMemberType} from "@/types";
 import {getAllServicesApi, getAllTeamMembersApi} from "@/api";
 
 interface Props {
-
+    servicesData: ApiResponseType<ServicesType>
+    TeamData: ApiResponseType<TeamMemberType>
 }
 
-export default function About({}: Props) {
-
-    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>(
-        {
-            queryKey: [getAllServicesApi.name + 'all'],
-            queryFn: () => getAllServicesApi({
-                populate: ['*'],
-            })
-        })
-
-    const {data: TeamData} = useQuery<ApiResponseType<TeamMemberType>>(
-        {
-            queryKey: [getAllTeamMembersApi.name + 'all'],
-            queryFn: () => getAllTeamMembersApi({
-                populate: ['*'],
-            })
-        })
+export default function About({servicesData, TeamData}: Props) {
 
     return (
         <>
@@ -43,7 +28,6 @@ export default function About({}: Props) {
                 </div>
                 <div className="flex flex-wrap pt-7 md:pt-11">
                     {
-                        servicesData &&
                         <ServicesList data={servicesData}
                                       className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"}
                                       cardNumber={4} topBar={true}/>
@@ -64,11 +48,19 @@ export default function About({}: Props) {
                     </p>
                 </div>
                 {
-                    TeamData &&
                     <OurTeam data={TeamData}/>
                 }
             </Section>
         </>
     )
+}
+
+export async function getStaticProps() {
+
+    const servicesData = await getAllServicesApi({populate: ['*']})
+
+    const TeamData = await getAllTeamMembersApi({populate: ['*']})
+
+    return {props: {servicesData, TeamData}}
 }
 
