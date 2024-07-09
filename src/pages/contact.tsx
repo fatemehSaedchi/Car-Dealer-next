@@ -31,7 +31,6 @@ export default function Contact() {
                             </li>
                         </ul>
                     </div>
-                    {/*<RegisterForm/>*/}
                     <SendMessageForm/>
                 </div>
             </Section>
