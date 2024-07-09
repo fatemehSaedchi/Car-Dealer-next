@@ -6,15 +6,15 @@ import {MenuItemType} from "@/types/MenuItem";
 
 interface Prop {
     title: string
-    MenuData: ApiResponseType<MenuType>
+    // MenuData: ApiResponseType<MenuType>
 }
 
-export function useMenu({title, MenuData}: Prop) {
+export function useMenu({title, /*MenuData*/}: Prop) {
 
     const {data: menusData} = useQuery<ApiResponseType<MenuType>>({
         queryKey: [getMenusApiCall.name],
         queryFn: getMenusApiCall,
-        initialData: MenuData
+        // initialData: MenuData
     })
 
     let MenuItems: PopulateType<MenuItemType> | null = null

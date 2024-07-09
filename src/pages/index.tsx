@@ -4,12 +4,11 @@ import {
     MiniFilter,
     Section,
     ImageView,
-    ServicesList, IconBox
+    ServicesList, IconBox, VerticalSlider, Loading
 } from "@/components";
-import {useQuery} from "@tanstack/react-query";
-import {getAllAlbumsApi, getAllCarsApi, getAllServicesApi} from "@/api";
+import {dehydrate, HydrationBoundary, QueryClient, useQuery} from "@tanstack/react-query";
+import {getAllAlbumsApi, getAllCarsApi, getAllServicesApi, getMenusApiCall} from "@/api";
 import {AlbumType, ApiResponseType, CarsType, ServicesType} from "@/types";
-import {Loading} from "@/components/common/ui/loading/Loading";
 
 const TrendingSlider = dynamic(() =>
     import('@/components').then((value) => value.TrendingSlider), {ssr: false}
@@ -17,11 +16,9 @@ const TrendingSlider = dynamic(() =>
 const PaginatedSlider = dynamic(() =>
     import('@/components').then((value) => value.PaginatedSlider), {ssr: false}
 )
-const VerticalSlider = dynamic(() =>
-    import('@/components/pages/home-page/sliders/VerticalSlider').then((value) => value.VerticalSlider), {ssr: false}
-)
 
-export default function Home() {
+
+function Home() {
 
 
     const {data: trendingCarData, isPending: trendingCarPending} = useQuery<ApiResponseType<CarsType>>(
@@ -249,4 +246,57 @@ export default function Home() {
             </Section>
         </>
     );
+}
+
+
+
+export async function getStaticProps() {
+
+    const queryClient = new QueryClient()
+
+    await queryClient.prefetchQuery({
+        queryKey: [getMenusApiCall.name],
+        queryFn: getMenusApiCall,
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: [getAllServicesApi.name, '3 of'],
+        queryFn: () => getAllServicesApi({
+            populate: ['*'],
+            pagination: {
+                pageSize: 3
+            }
+        })
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: [getAllAlbumsApi.name, 'ClassicAlbum'],
+        queryFn: () => getAllAlbumsApi({
+            populate: ['*'],
+            filters: {
+                title: {$eq: 'classicCars'}
+            }
+        })
+    })
+
+    await queryClient.prefetchQuery({
+        queryKey: [getAllAlbumsApi.name, 'sportAlbum'],
+        queryFn: () => getAllAlbumsApi({
+            populate: ['*'],
+            filters: {
+                title: {$eq: 'sportCars'}
+            }
+        })
+    })
+
+    return {props: {dehydratedState: dehydrate(queryClient)}}
+}
+
+// @ts-ignore
+export default function HomeRoute({ dehydratedState }) {
+    return (
+        <HydrationBoundary state={dehydratedState}>
+            <Home />
+        </HydrationBoundary>
+    )
 }

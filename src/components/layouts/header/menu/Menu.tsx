@@ -3,19 +3,19 @@ import {useMenu} from "@/hooks";
 import {ImageView} from "@/components";
 import {useUser} from "@/store/AuthContext";
 import {useModal} from "@/store/ModalContext";
-import {ApiResponseType, EntityType, MenuItemType, MenuType} from "@/types";
+import {EntityType, MenuItemType, /*MenuType, ApiResponseType*/} from "@/types";
 import Link from "next/link";
 
 interface Props {
     showMobileMenu: boolean,
     setShowMobileMenu: Dispatch<SetStateAction<boolean>>
-    MenuData: ApiResponseType<MenuType>
+    // MenuData: ApiResponseType<MenuType>
 }
 
-export function Menu({showMobileMenu, setShowMobileMenu, MenuData}: Props) {
+export function Menu({showMobileMenu, setShowMobileMenu, /*MenuData*/}: Props) {
 
 
-    const {data: mainMenuItems} = useMenu({title: 'main menu', MenuData: MenuData})
+    const {data: mainMenuItems} = useMenu({title: 'main menu', /*MenuData: MenuData*/})
 
     const closeMobileMenuHandler = () => {
         setShowMobileMenu(false)
