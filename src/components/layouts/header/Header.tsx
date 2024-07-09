@@ -3,14 +3,14 @@ import {useState, MouseEvent} from "react";
 import {useOverlay} from "@/hooks";
 import {useUser} from "@/store/AuthContext";
 import {useModal} from "@/store/ModalContext";
-import {ApiResponseType, MenuType} from "@/types";
+// import {ApiResponseType, MenuType} from "@/types";
 import Select, {StylesConfig} from "react-select";
 
 interface Props {
-    MenuData: ApiResponseType<MenuType>
+    // MenuData: ApiResponseType<MenuType>
 }
 
-export function Header({MenuData}: Props) {
+export function Header({/*MenuData*/}: Props) {
     const [showMobileMenu,setShowMobileMenu] = useState(false)
 
     useOverlay({
@@ -62,7 +62,7 @@ export function Header({MenuData}: Props) {
                             <span className="w-[24px] h-[1.5px] bg-secondary-400 inline-block rounded"></span>
                             <span className="w-[24px] h-[1.5px] bg-secondary-400 inline-block rounded"></span>
                         </button>
-                        <Menu showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} MenuData={MenuData}/>
+                        <Menu showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} /*MenuData={MenuData}*//>
                     </nav>
                     <div className="order-2 lg:order-3 text-xs lg:text-sm 2xl:text-base lg:flex lg:items-center xl:w-fit xl:h-fit lg:gap-3 lg:pt-6">
                         <div className={'hidden cursor-pointer text-secondary-400 font-semibold lg:flex items-center gap-2'} onClick={accountHandler}>

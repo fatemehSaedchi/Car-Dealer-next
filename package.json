@@ -23,7 +23,8 @@
     "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
     "swiper": "^11.0.7",
-    "tailwind-merge": "^2.2.2"
+    "tailwind-merge": "^2.2.2",
+    "use-dehydrated-state": "^0.1.0"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.28.6",
