@@ -11,7 +11,6 @@ interface Props {
 
 export function TeamCard({data, first, last}: Props) {
 
-    console.log(data.attributes.image.data.attributes.url)
 
     return (
         <>
