@@ -142,7 +142,7 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
                         </h3>
 
                         <div className={'relative'}>
-                            <form className="flex items-center w-full" onSubmit={searchForm.handleSubmit(onsubmit)}>
+                            <form autoComplete={'off'} className="flex items-center w-full" onSubmit={searchForm.handleSubmit(onsubmit)}>
                                 <div className="h-10 w-full relative mt-10 bg-white border border-White-100 rounded hover:border px-3">
                                     <input className="search-input h-full w-full outline-none bg-transparent font-normal"
                                            type="text"
@@ -153,16 +153,16 @@ export function Filter({ mobileFilter, setMobileFilter }: Props) {
 
                             {
                                 isPending ?
-                                    <Loading className={'absolute rounded-lg bg-gray-500 w-max z-50 left-full ml-1 top-0 text-center'}/>
+                                    <Loading className={'absolute rounded-lg bg-gray-500 w-max z-50 ml-1 left-0 md:left-full top-20 md:top-10 text-center'}/>
                                     :
                                 searchData &&
-                                <div className={'absolute rounded-lg bg-gray-500 w-max z-50 left-full ml-1 top-0 text-center'}>
+                                <div className={'absolute rounded-lg bg-gray-500 w-full md:w-max z-50 left-0 md:left-full top-20 md:top-10 mt-1 md:mt-0 md:ml-1 text-center'}>
                                     <ul>
                                         {
                                             searchData.map((item: EntityType<CarsType>) => (
                                                 <li
                                                     key={item.id}
-                                                    className={'p-4 m-2 bg-gray-200 rounded-2xl hover:bg-green-200 hover:text-white hover:cursor-pointer'}>
+                                                    className={'px-4 py-2 m-2 text-sm bg-gray-200 rounded-2xl hover:bg-primary-70 hover:text-white hover:cursor-pointer'}>
                                                     <Link href={`/product/${item.id}`}>
                                                         {item.attributes.title}
                                                     </Link>
