@@ -1,11 +1,15 @@
 import {Branches, HeroSection, Map, Section} from "@/components";
 import {getLocationApiCall} from "@/api";
 import {ApiResponseType, LocationType} from "@/types";
+import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
 
-interface props {
-    locationData: ApiResponseType<LocationType>
-}
-export default function Location({locationData}: props) {
+export default function Location() {
+
+    const {data: locationData} = useQuery<ApiResponseType<LocationType>>({
+        queryKey: [getLocationApiCall.name, 'locationData'],
+        queryFn: () => getLocationApiCall()
+    })
+
     return (
         <>
             <HeroSection title={"Dealer Locations"} backGround={'bg-location-banner'}/>
@@ -18,7 +22,14 @@ export default function Location({locationData}: props) {
 }
 
 export async function getStaticProps() {
-    const locationData = await getLocationApiCall()
-    return{ props: {locationData}}
-} 
+    const queryClient = new QueryClient()
+
+    await queryClient.prefetchQuery({
+        queryKey: [getLocationApiCall.name, 'locationData'],
+        queryFn: () => getLocationApiCall()
+    })
+
+    return{props: {dehydratedStates: dehydrate(queryClient)}}
+}
+
 
