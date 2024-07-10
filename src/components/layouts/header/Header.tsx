@@ -53,9 +53,9 @@ export function Header({/*MenuData*/}: Props) {
             {currentModal === 'login' && <LoginModal/>}
             {currentModal === 'register' && <RegisterModal/>}
             <div className="container mx-auto px-4 py-6 lg:py-0">
-                <div className="flex flex-wrap justify-between lg:items-start">
+                <div className="flex justify-between items-center lg:items-start">
                     <Logo/>
-                    <nav className="order-3 lg:order-2 h-full">
+                    <nav className="order-3 lg:order-2 h-full ml-2 lg:ml-0">
                         <button onClick={showMobileMenuHandler}
                                 className="flex flex-col justify-between h-[43px] px-[10px] py-[11px] lg:hidden border-2 border-White-200 rounded-lg text-center hover:bg-White-200 hover:shadow-lg">
                             <span className="w-[24px] h-[1.5px] bg-secondary-400 inline-block rounded"></span>
