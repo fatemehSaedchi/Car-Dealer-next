@@ -18,7 +18,7 @@ const PaginatedSlider = dynamic(() =>
 )
 
 
-function Home() {
+export default function Home() {
 
 
     const {data: trendingCarData, isPending: trendingCarPending} = useQuery<ApiResponseType<CarsType>>(
@@ -290,13 +290,4 @@ export async function getStaticProps() {
     })
 
     return {props: {dehydratedState: dehydrate(queryClient)}}
-}
-
-// @ts-ignore
-export default function HomeRoute({ dehydratedState }) {
-    return (
-        <HydrationBoundary state={dehydratedState}>
-            <Home />
-        </HydrationBoundary>
-    )
 }
