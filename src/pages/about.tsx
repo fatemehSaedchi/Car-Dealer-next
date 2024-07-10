@@ -1,14 +1,24 @@
 import {HeroSection, OurTeam, Section, Map, ServicesList} from "@/components";
-import {useQuery} from "@tanstack/react-query";
+import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
 import {ApiResponseType, ServicesType, TeamMemberType} from "@/types";
 import {getAllServicesApi, getAllTeamMembersApi} from "@/api";
 
-interface Props {
-    servicesData: ApiResponseType<ServicesType>
-    TeamData: ApiResponseType<TeamMemberType>
-}
 
-export default function About({servicesData, TeamData}: Props) {
+export default function About() {
+
+    const {data: servicesData} = useQuery<ApiResponseType<ServicesType>>({
+        queryKey: [getAllServicesApi.name],
+        queryFn: ()=> getAllServicesApi({
+            populate: ['*']
+        })
+    })
+
+    const {data: TeamData} = useQuery<ApiResponseType<TeamMemberType>>({
+        queryKey: [getAllTeamMembersApi.name],
+        queryFn: ()=>getAllTeamMembersApi({
+            populate: ['*']
+        })
+    })
 
     return (
         <>
@@ -28,7 +38,7 @@ export default function About({servicesData, TeamData}: Props) {
                 </div>
                 <div className="flex flex-wrap pt-7 md:pt-11">
                     {
-                        <ServicesList data={servicesData}
+                        servicesData && <ServicesList data={servicesData}
                                       className={"basis-1/2 md:basis-1/4 px-5 xl:px-9 py-6 xl:py-14 shadow-none justify-normal items-start"}
                                       cardNumber={4} topBar={true}/>
                     }
@@ -48,7 +58,7 @@ export default function About({servicesData, TeamData}: Props) {
                     </p>
                 </div>
                 {
-                    <OurTeam data={TeamData}/>
+                    TeamData && <OurTeam data={TeamData}/>
                 }
             </Section>
         </>
@@ -57,10 +67,22 @@ export default function About({servicesData, TeamData}: Props) {
 
 export async function getStaticProps() {
 
-    const servicesData = await getAllServicesApi({populate: ['*']})
+    const queryClient = new QueryClient()
 
-    const TeamData = await getAllTeamMembersApi({populate: ['*']})
+    await queryClient.prefetchQuery({
+        queryKey: [getAllServicesApi.name],
+        queryFn: () => getAllServicesApi({
+            populate: ['*']
+        })
+    })
 
-    return {props: {servicesData, TeamData}}
+    await queryClient.prefetchQuery({
+        queryKey: [getAllTeamMembersApi.name],
+        queryFn: () => getAllTeamMembersApi({
+            populate: ['*']
+        })
+    })
+
+    return {props: {dehydratedState: dehydrate(queryClient)}}
 }
 
