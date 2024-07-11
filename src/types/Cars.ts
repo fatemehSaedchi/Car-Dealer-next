@@ -26,6 +26,6 @@ export interface CarsType {
     car_brand: {
         data: EntityType<CarSpecificsType>
     }
-    fuels: PopulateType<FuelTransitionType>
-    transitions: PopulateType<FuelTransitionType>
+    fuels?: PopulateType<FuelTransitionType> | undefined
+    transitions?: PopulateType<FuelTransitionType> | undefined
 }

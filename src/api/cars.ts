@@ -2,7 +2,7 @@ import {apiClient} from "@/api/config";
 import {ApiResponseType, CarsType} from "@/types";
 
 interface Interface {
-    populate?: Array<'thumbnail' | 'car_class' | "car_model" | 'gallery' | 'transitions' | 'fuels' | '*'>
+    populate?: Array<'thumbnail' | 'car_class' | "car_model" | 'gallery' | 'transition' | 'fuel' | '*'>
     filters?: {}
     sort?: Array<string>
     pagination?: {
