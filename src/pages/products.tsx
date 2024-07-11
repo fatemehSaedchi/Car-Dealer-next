@@ -10,8 +10,8 @@ import Select from 'react-select';
 interface ObjFilter {
     title?: object,
     car_class?: object,
-    fuels?: object,
-    transitions?: object
+    fuel?: object,
+    transition?: object
 }
 
 export default function Products() {
@@ -55,16 +55,16 @@ export default function Products() {
                 }
             }
             if (filter.carFuel && filter.carFuel?.toString().length > 0) {
-                objFilter['fuels'] = {
-                    type: {
-                        $eq: `${filter.carFuel}`
+                objFilter['fuel'] = {
+                    title: {
+                        $containsi: `${filter.carFuel}`
                     }
                 }
             }
             if (filter.carTransmission && filter.carTransmission?.toString().length > 0) {
-                objFilter['transitions'] = {
-                    type: {
-                        $eq: `${filter.carTransmission}`
+                objFilter['transition'] = {
+                    title: {
+                        $containsi: `${filter.carTransmission}`
                     }
                 }
             }
@@ -74,8 +74,8 @@ export default function Products() {
                     'thumbnail',
                     'car_class',
                     'car_model',
-                    'transitions',
-                    'fuels'
+                    'transition',
+                    'fuel'
                 ],
                 filters: objFilter,
                 pagination: {
