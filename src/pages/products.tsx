@@ -1,5 +1,5 @@
 import {Filter, HeroSection, Paginate, ProductsList, Section} from "@/components";
-import {useMutation} from "@tanstack/react-query";
+import { useMutation} from "@tanstack/react-query";
 import {getAllCarsApi} from "@/api";
 import {MouseEvent, useEffect, useState} from "react";
 import {useRouter} from "next/router";
@@ -167,4 +167,3 @@ export default function Products() {
         </>
     )
 }
-

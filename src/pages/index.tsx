@@ -6,8 +6,8 @@ import {
     ImageView,
     ServicesList, IconBox, VerticalSlider, Loading
 } from "@/components";
-import {dehydrate, HydrationBoundary, QueryClient, useQuery} from "@tanstack/react-query";
-import {getAllAlbumsApi, getAllCarsApi, getAllServicesApi, getMenusApiCall} from "@/api";
+import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
+import {getAllAlbumsApi, getAllCarsApi, getAllServicesApi} from "@/api";
 import {AlbumType, ApiResponseType, CarsType, ServicesType} from "@/types";
 
 const TrendingSlider = dynamic(() =>
@@ -254,10 +254,6 @@ export async function getStaticProps() {
 
     const queryClient = new QueryClient()
 
-    await queryClient.prefetchQuery({
-        queryKey: [getMenusApiCall.name],
-        queryFn: getMenusApiCall,
-    })
 
     await queryClient.prefetchQuery({
         queryKey: [getAllServicesApi.name, '3 of'],
