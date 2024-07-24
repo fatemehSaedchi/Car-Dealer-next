@@ -13,9 +13,9 @@ import 'swiper/css/thumbs'
 import "swiper/css/effect-fade";
 import 'react-toastify/dist/ReactToastify.css'
 
-// import {AppContext, default as NextApp} from 'next/app';
+import {AppContext, AppInitialProps, default as NextApp} from 'next/app';
 
-import type {AppProps} from "next/app";
+import type { AppProps} from "next/app";
 import {Layout} from "@/components";
 import {Montserrat} from "next/font/google";
 import {HydrationBoundary, QueryClient, QueryClientProvider} from "@tanstack/react-query";
@@ -24,8 +24,7 @@ import {ToastContainer} from "react-toastify";
 import {ModalContextProvider} from "@/store/ModalContext";
 import {AuthContextProvider} from "@/store/AuthContext";
 import {useState} from "react";
-// import {isSSR} from "@/utils/isSSR";
-// import {ApiResponseType, MenuType} from "@/types";
+import {isSSR} from "@/utils";
 
 
 const montserrat = Montserrat({
@@ -33,11 +32,11 @@ const montserrat = Montserrat({
 })
 
 
-export default function App({Component, pageProps}: AppProps) {
+function App({Component, ...pageProps}: AppProps) {
 
 
     // @ts-ignore
-    // const MenuData: ApiResponseType<MenuType> = pageProps.initialQueryData.MenuData
+    const MenuData: ApiResponseType<MenuType> = pageProps.initialQueryData.MenuData
 
     const [queryClient] = useState(() => new QueryClient({
             defaultOptions: {
@@ -51,6 +50,8 @@ export default function App({Component, pageProps}: AppProps) {
         })
     )
 
+    console.log('pageProps:', pageProps)
+
     return (
         <>
             <style jsx global>{`
@@ -60,12 +61,12 @@ export default function App({Component, pageProps}: AppProps) {
             `}</style>
 
             <QueryClientProvider client={queryClient}>
-                <HydrationBoundary state={pageProps.dehydratedState}>
+                <HydrationBoundary state={pageProps.pageProps.dehydratedState}>
 
                     <AuthContextProvider>
                         <ModalContextProvider>
                             <div id={'portal'}></div>
-                            <Layout /*MenuData={MenuData}*/>
+                            <Layout MenuData={MenuData}>
 
                                 <Component {...pageProps} />
                                 <ToastContainer
@@ -93,25 +94,25 @@ export default function App({Component, pageProps}: AppProps) {
     );
 }
 
-// App.getInitialProps = async (context: AppContext) /*: Promise<AppOwnProps & AppInitialProps>*/ => {
-//     const ctx = await NextApp.getInitialProps(context)
-//     let MenuData = null
-//
-//     try {
-//         // get data only on server
-//         if (isSSR()) {
-//             MenuData = await (await fetch('https://cwebgostar.navaxcollege.com/api/menus?populate=%2A')).json()
-//         }
-//     } catch (error) {
-//         return {...ctx, initialQueryData: {MenuData: null}};
-//     }
-//
-//
-//
-//
-//
-//     return {...ctx, initialQueryData: {MenuData}}
-// }
+App.getInitialProps = async (context: AppContext) : Promise<any & AppInitialProps> => {
+    const ctx = await NextApp.getInitialProps(context)
+    let MenuData = null
+
+    try {
+        // get data only on server
+        if (isSSR()) {
+            MenuData = await (await fetch('https://cwebgostar.navaxcollege.com/api/menus?populate=%2A')).json()
+        }
+    } catch (error) {
+        return {...ctx, initialQueryData: {MenuData: null}};
+    }
 
 
-// export default App
+
+
+
+    return {...ctx, initialQueryData: {MenuData}}
+}
+
+
+export default App
