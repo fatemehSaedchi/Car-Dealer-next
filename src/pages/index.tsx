@@ -6,7 +6,7 @@ import {
     ImageView,
     ServicesList, IconBox, VerticalSlider, Loading
 } from "@/components";
-import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
+import { useQuery} from "@tanstack/react-query";
 import {getAllAlbumsApi, getAllCarsApi, getAllServicesApi} from "@/api";
 import {AlbumType, ApiResponseType, CarsType, ServicesType} from "@/types";
 
@@ -250,40 +250,40 @@ export default function Home() {
 
 
 
-export async function getStaticProps() {
-
-    const queryClient = new QueryClient()
-
-
-    await queryClient.prefetchQuery({
-        queryKey: [getAllServicesApi.name, '3 of'],
-        queryFn: () => getAllServicesApi({
-            populate: ['*'],
-            pagination: {
-                pageSize: 3
-            }
-        })
-    })
-
-    await queryClient.prefetchQuery({
-        queryKey: [getAllAlbumsApi.name, 'ClassicAlbum'],
-        queryFn: () => getAllAlbumsApi({
-            populate: ['*'],
-            filters: {
-                title: {$eq: 'classicCars'}
-            }
-        })
-    })
-
-    await queryClient.prefetchQuery({
-        queryKey: [getAllAlbumsApi.name, 'sportAlbum'],
-        queryFn: () => getAllAlbumsApi({
-            populate: ['*'],
-            filters: {
-                title: {$eq: 'sportCars'}
-            }
-        })
-    })
-
-    return {props: {dehydratedState: dehydrate(queryClient)}}
-}
+// export async function getStaticProps() {
+//
+//     const queryClient = new QueryClient()
+//
+//
+//     await queryClient.prefetchQuery({
+//         queryKey: [getAllServicesApi.name, '3 of'],
+//         queryFn: () => getAllServicesApi({
+//             populate: ['*'],
+//             pagination: {
+//                 pageSize: 3
+//             }
+//         })
+//     })
+//
+//     await queryClient.prefetchQuery({
+//         queryKey: [getAllAlbumsApi.name, 'ClassicAlbum'],
+//         queryFn: () => getAllAlbumsApi({
+//             populate: ['*'],
+//             filters: {
+//                 title: {$eq: 'classicCars'}
+//             }
+//         })
+//     })
+//
+//     await queryClient.prefetchQuery({
+//         queryKey: [getAllAlbumsApi.name, 'sportAlbum'],
+//         queryFn: () => getAllAlbumsApi({
+//             populate: ['*'],
+//             filters: {
+//                 title: {$eq: 'sportCars'}
+//             }
+//         })
+//     })
+//
+//     return {props: {dehydratedState: dehydrate(queryClient)}}
+// }
