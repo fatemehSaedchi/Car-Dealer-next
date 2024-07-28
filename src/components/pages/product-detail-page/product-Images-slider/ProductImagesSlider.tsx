@@ -48,7 +48,7 @@ export function ProductImagesSlider({data}: Props) {
                     spaceBetween={20}
                 >
                     {data.attributes.gallery.data.map((item, index) => (
-                        <SwiperSlide key={index} className="opacity-70 border border-gray-500">
+                        <SwiperSlide key={index} className="opacity-70 border border-gray-500 rounded-xl">
                             <ProductImagesCard
                                 data={item}
                                 index={index}

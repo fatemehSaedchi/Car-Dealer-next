@@ -99,9 +99,6 @@ export default function Home() {
                                 TRENDING
                             </button>
                             {
-                                trendingCarPending ?
-                                    <Loading/>
-                                    :
                                 trendingCarData &&
                                 <Link href={`/product/${trendingCarData.data[0].id}`}
                                       className="w-full h-full pl-44 bg-transparent outline-none pr-8 text-center flex flex-col justify-center text-nowrap sm:text-lg font-bold hover:bg-yellow-100 rounded-full">
