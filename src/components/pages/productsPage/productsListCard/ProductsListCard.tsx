@@ -15,8 +15,7 @@ export function ProductsListCard({data, className}: Props) {
 
     return (
         <Link href={`/product/${data.id}`}>
-            <div
-                className={twMerge("w-full min-w-[312px] lg:min-w-[364px] mx-auto overflow-hidden rounded-lg shadow-7xl hover:shadow-8xl hover:transition-shadow hover:duration-500 duration-500 cursor-pointer relative", className) }>
+            <div className={twMerge("w-[330px] h-[426px] lg:w-[354px] mx-auto overflow-hidden rounded-lg shadow-7xl hover:shadow-8xl hover:transition-shadow hover:duration-500 duration-500 cursor-pointer relative", className) }>
                 <div className={'relative'}>
                     <ImageView classname="h-48 w-full object-cover object-center"
                                src={data.attributes.thumbnail.data.attributes.url} height={data.attributes.thumbnail.data.attributes.height} width={data.attributes.thumbnail.data.attributes.width} alt=""/>
