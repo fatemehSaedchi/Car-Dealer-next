@@ -21,7 +21,6 @@ export default function ProductDetail() {
 
     const router = useRouter()
     const {id:Id} = router.query
-
     const {data: CarData, refetch, isPending} = useQuery<ApiSingleResponseType<CarsType>>({
         queryKey: [getOneCarApi.name, 'carsAllData'],
         queryFn: () => getOneCarApi({populate: ['*'], id: Id}),
