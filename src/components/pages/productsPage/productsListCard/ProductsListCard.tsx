@@ -15,7 +15,7 @@ export function ProductsListCard({data, className}: Props) {
 
     return (
         <Link href={`/product/${data.id}`}>
-            <div className={twMerge("w-[330px] h-[426px] lg:w-[354px] mx-auto overflow-hidden rounded-lg shadow-7xl hover:shadow-8xl hover:transition-shadow hover:duration-500 duration-500 cursor-pointer relative", className) }>
+            <div className={twMerge("w-[330px] lg:w-[354px] h-[395px] xl:h-[415px] mx-auto overflow-hidden rounded-lg shadow-7xl hover:shadow-8xl hover:transition-shadow hover:duration-500 duration-500 cursor-pointer relative", className) }>
                 <div className={'relative'}>
                     <ImageView classname="h-48 w-full object-cover object-center"
                                src={data.attributes.thumbnail.data.attributes.url} height={data.attributes.thumbnail.data.attributes.height} width={data.attributes.thumbnail.data.attributes.width} alt=""/>
@@ -30,8 +30,7 @@ export function ProductsListCard({data, className}: Props) {
                     <h4 className="text-secondary-50 text-[15px] font-semibold pt-1 uppercase">
                         {data.attributes.car_class.data.attributes.title} CAR
                     </h4>
-                    <span
-                        className="px-4 py-2 bg-primary-100 rounded-[30px] text-base font-semibold text-white absolute top-[45%] right-5 z-50">
+                    <span className="px-4 py-2 bg-primary-100 rounded-[30px] text-base font-semibold text-white absolute top-[43%] xl:top-[42%] right-5 z-50">
                         $ {formattedPrice}
                     </span>
                     <CarFeatures data={data}/>
