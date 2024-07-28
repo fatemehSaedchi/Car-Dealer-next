@@ -1,5 +1,5 @@
 import {HeroSection, OurTeam, Section, Map, ServicesList} from "@/components";
-import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
+import { useQuery} from "@tanstack/react-query";
 import {ApiResponseType, ServicesType, TeamMemberType} from "@/types";
 import {getAllServicesApi, getAllTeamMembersApi} from "@/api";
 
@@ -65,24 +65,24 @@ export default function About() {
     )
 }
 
-export async function getStaticProps() {
-
-    const queryClient = new QueryClient()
-
-    await queryClient.prefetchQuery({
-        queryKey: [getAllServicesApi.name],
-        queryFn: () => getAllServicesApi({
-            populate: ['*']
-        })
-    })
-
-    await queryClient.prefetchQuery({
-        queryKey: [getAllTeamMembersApi.name],
-        queryFn: () => getAllTeamMembersApi({
-            populate: ['*']
-        })
-    })
-
-    return {props: {dehydratedState: dehydrate(queryClient)}}
-}
+// export async function getStaticProps() {
+//
+//     const queryClient = new QueryClient()
+//
+//     await queryClient.prefetchQuery({
+//         queryKey: [getAllServicesApi.name],
+//         queryFn: () => getAllServicesApi({
+//             populate: ['*']
+//         })
+//     })
+//
+//     await queryClient.prefetchQuery({
+//         queryKey: [getAllTeamMembersApi.name],
+//         queryFn: () => getAllTeamMembersApi({
+//             populate: ['*']
+//         })
+//     })
+//
+//     return {props: {dehydratedState: dehydrate(queryClient)}}
+// }
 

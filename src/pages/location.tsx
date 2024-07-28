@@ -1,7 +1,7 @@
 import {Branches, HeroSection, Map, Section} from "@/components";
 import {getLocationApiCall} from "@/api";
 import {ApiResponseType, LocationType} from "@/types";
-import {dehydrate, QueryClient, useQuery} from "@tanstack/react-query";
+import { useQuery} from "@tanstack/react-query";
 
 export default function Location() {
 
@@ -21,15 +21,15 @@ export default function Location() {
     )
 }
 
-export async function getStaticProps() {
-    const queryClient = new QueryClient()
-
-    await queryClient.prefetchQuery({
-        queryKey: [getLocationApiCall.name, 'locationData'],
-        queryFn: () => getLocationApiCall()
-    })
-
-    return{props: {dehydratedStates: dehydrate(queryClient)}}
-}
+// export async function getStaticProps() {
+//     const queryClient = new QueryClient()
+//
+//     await queryClient.prefetchQuery({
+//         queryKey: [getLocationApiCall.name, 'locationData'],
+//         queryFn: () => getLocationApiCall()
+//     })
+//
+//     return{props: {dehydratedStates: dehydrate(queryClient)}}
+// }
 
 

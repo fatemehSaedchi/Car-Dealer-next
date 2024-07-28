@@ -1,19 +1,19 @@
 import {Footer, Header} from "@/components";
 import {ReactNode} from "react";
-// import {ApiResponseType, MenuType} from "@/types";
+import {ApiResponseType, MenuType} from "@/types";
 interface Props {
     children: ReactNode
-    // MenuData: ApiResponseType<MenuType>
+    MenuData: ApiResponseType<MenuType>
 }
 
-export function Layout({children, /*MenuData*/}: Props) {
+export function Layout({children, MenuData}: Props) {
     return (
         <>
-            <Header /*MenuData={MenuData}*//>
+            <Header MenuData={MenuData}/>
             <main>
                 {children}
             </main>
-            <Footer /*MenuData={MenuData}*//>
+            <Footer MenuData={MenuData}/>
         </>
     );
 }
